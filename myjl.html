@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>我的简历</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+
+	<body style="background: #FFF;">
+		<header class="mui-bar mui-bar-nav per_head">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的简历</h1>
+		</header>
+		<!--头部end-->
+		<ul class="myjl_list">
+			<li>
+				<span>头像</span>
+				<div>
+					<img id="pic" src="images/60x60.gif">
+					<input id="upload" name="file" accept="image/*" type="file" style="display: none" />
+				</div>
+			</li>
+			<li>
+				<span>姓名</span>
+				<div>
+					<input class="namee" type="text" placeholder="请输入真实姓名" />
+				</div>
+			</li>
+			<li>
+				<span>性别</span>
+				<div>
+					<div class="sex">
+						<input type="radio" checked="checked" value="男" name="sex" />男
+						<input type="radio" value="女" name="sex" />女
+					</div>
+				</div>
+			</li>
+			<li>
+				<span>年龄</span>
+				<div>
+					<input class="agee" type="tel" placeholder="请输入年龄" />
+				</div>
+			</li>
+			<li>
+				<span>身份证</span>
+				<div>
+					<input class="sfz" type="text" placeholder="请输入身份证号码" />
+				</div>
+			</li>
+			<li>
+				<span>手机号</span>
+				<div>
+					<input class="phonee" type="text" value="15223059337" placeholder="请输入手机号" />
+				</div>
+			</li>
+		</ul>
+		<div class="myjl_btn">
+			保存
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script>
+			$(function() {
+				$("#pic").click(function() {
+					$("#upload").click(); //隐藏了input:file样式后，点击头像就可以本地上传
+					$("#upload").on("change", function() {
+						var objUrl = getObjectURL(this.files[0]); //获取图片的路径，该路径不是图片在本地的路径
+						if(objUrl) {
+							$("#pic").attr("src", objUrl); //将图片路径存入src中，显示出图片
+						}
+					});
+				});
+			});
+
+			//建立一個可存取到該file的url
+			function getObjectURL(file) {
+				var url = null;
+				if(window.createObjectURL != undefined) { // basic
+					url = window.createObjectURL(file);
+				} else if(window.URL != undefined) { // mozilla(firefox)
+					url = window.URL.createObjectURL(file);
+				} else if(window.webkitURL != undefined) { // webkit or chrome
+					url = window.webkitURL.createObjectURL(file);
+				}
+				return url;
+			}
+		</script>
+	</body>
+
+</html>

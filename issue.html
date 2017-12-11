@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>发布兼职</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/mui.picker.min.css" />
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav per_head">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">发布兼职</h1>
+		</header>
+		<ul class="iss_cont iss_cont2">
+			<li>
+				<div>兼职标题</div>
+				<div>
+					<input type="text" placeholder="请输入兼职标题" />
+				</div>
+			</li>
+			<li>
+				<div>兼职类型</div>
+				<div>
+					<input class="par" type="text" readonly="readonly" placeholder="请选择兼职类型" />
+				</div>
+			</li>
+			<li>
+				<div>工作日期</div>
+				<div>
+					<input id='demo2' data-options='{"type":"date","beginYear":2017,"endYear":2020}' class="iss_time_btn btn btn_t mui-btn mui-btn-block" type="button" value="+ 添加工作日期"/>
+					<span class=" demo2_ti"></span>
+					<span style="display: none;" class="demo2_ti1"></span>
+				</div>
+			</li>
+			<li class="iss_he_box">
+				<div>上班时段</div>
+				<div>
+					<input id='demo1' data-options='{"type":"time"}' class="iss_time_btn btn btn_t11 mui-btn mui-btn-block" type="button" value="+ 添加工作日期"/>
+					<span class="demo1_ti"></span>
+					<span style="display: none;" class="demo1_ti1"></span>
+					<div>
+						<div class="mui-input-row mui-checkbox mui-left">  
+							<label class="iss_ch_span">上班时间不限，完成任务即可</label>  
+							<input class="iss_ch" name="checkbox1" value="" type="checkbox">  
+						</div>  
+					</div>
+				</div>
+			</li>
+			<li >
+				<div>招聘人数</div>
+				<div class="iss_text_img">
+					<input  type="text" placeholder="请输入有效数字"/>
+					<span>人</span>
+				</div>
+			</li>
+			<li class="iis_mon">
+				<div>工资待遇</div>
+				<div class="iss_text_img">
+					<input class="iis_qian"  type="text" placeholder="请输入有效数字"/>
+					<span class="iss_qian">元/天</span>
+					<img src="images/icon/down.png" />
+				</div>
+			</li>
+			<li class="iis_sex">
+				<div>性别要求</div>
+				<div class="iss_text_img">
+					<input  type="text" readonly="readonly" value="不限" class="iis_sex_text"  placeholder="请选择性别"/>
+					<img src="images/icon/down.png" />
+				</div>
+			</li>
+		</ul>
+		<ul class="iss_cont iss_cont1">
+			<li class="iss_he_box">
+					<div>兼职描述</div>
+					<div>
+						<textarea class="iis_text" placeholder="请输入相关工作内容，岗位要求等。" name="" rows="" cols=""></textarea>
+					</div>
+			</li>
+			<li>
+				<div>发布机构</div>
+				<div>
+					<input type="text" placeholder="请输入发布机构" />
+				</div>
+			</li>
+			<li>
+				<div>详细地址</div>
+				<div>
+					<input type="text" placeholder="请输入详细地址" />
+				</div>
+			</li>
+			<li>
+				<div>联系人</div>
+				<div>
+					<input type="text" placeholder="请输入联系人姓名" />
+				</div>
+			</li>
+			<li>
+				<div>联系人电话</div>
+				<div>
+					<input type="text" placeholder="请输入手机号" />
+				</div>
+			</li>
+		</ul>
+		<div class="issue_box"></div>
+		<div class="issue_btn">发布</div>
+		<!--弹出层-->
+		<div class="iss_box">
+			<div class="iss_mob iss_moob1">
+				<div>请选择</div>
+				<li class="active">不限</li>
+				<li>女</li>
+				<li>男</li>
+			</div>
+			<div class="iss_mob iss_moob2">
+				<div>请选择</div>
+				<li class="active">元/天</li>
+				<li>元/次</li>
+				<li>元/时</li>
+				<li>元/月</li>
+				<li>元/次</li>
+				<li>元/单</li>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/mui.picker.min.js" ></script>
+		<script>
+			(function($) {
+				$.init();
+				var result = $('.demo2_ti')[0];
+				var result1 = $('.demo2_ti1')[0];
+				var btns = $('.btn_t');
+				var a = 0;
+				//时间段
+				var result2 = $('.demo1_ti')[0];
+				var result22 = $('.demo1_ti1')[0];
+				var btns2 = $('.btn_t11');
+				var b = 0;
+				btns.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var _self = this;
+						if(_self.picker) {
+							_self.picker.show(function (rs) {
+								result.innerText =rs.text;
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						} else {
+							var optionsJson = this.getAttribute('data-options') || '{}';
+							var options = JSON.parse(optionsJson);
+							var id = this.getAttribute('id');
+							_self.picker = new $.DtPicker(options);
+							_self.picker.show(function(rs) {
+								a++;
+								if(a==1){
+									result.innerHTML =rs.text;
+								}else{
+									result1.style.display="block";
+									result1.innerHTML =rs.text;
+									_self.remove();
+								}
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						}
+					}, false);
+				});
+				//时间段
+				btns2.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var _self = this;
+						if(_self.picker) {
+							_self.picker.show(function (rs) {
+								result2.innerText =rs.text;
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						} else {
+							var optionsJson = this.getAttribute('data-options') || '{}';
+							var options = JSON.parse(optionsJson);
+							var id = this.getAttribute('id');
+							_self.picker = new $.DtPicker(options);
+							_self.picker.show(function(rs) {
+								b++;
+								if(b==1){
+									result2.innerHTML =rs.text;
+								}else{
+									result22.style.display="block";
+									result22.innerHTML =rs.text;
+									_self.remove();
+								}
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						}
+					}, false);
+				});
+
+			})(mui);
+		</script>
+	</body>
+
+</html>
