@@ -3,6 +3,7 @@
  */
 
 define(function() {
+	var wait = 60;
 	return {
 		/**
 		 * 验证手机号是否合法
@@ -31,20 +32,18 @@ define(function() {
 		 * @param {Object} o 点击按钮this
 		 */
 		time: function(o) {
-			var wait = 60;
 			if(wait == 0) {
 				o.removeAttribute("disabled");
 				o.value = "获取验证码";
 				o.innerHTML = "获取验证码";
 				wait = 60;
+				return wait;
 			} else {
 				o.setAttribute("disabled", true);
 				o.value = "重新发送(" + wait + ")";
 				o.innerHTML = "重新发送(" + wait + ")";
 				wait--;
-				setTimeout(function() {
-					time(o)
-				}, 1000)
+				return wait;
 			}
 		}
 	}

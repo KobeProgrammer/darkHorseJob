@@ -139,17 +139,17 @@ $(function(){
 		$(".mysc_>.mysc_active").remove();
 	})
 	//登录
-	$(".login_btn").click(function(){
-		if(!(phone.test($(".log_phone").val()))){
-			mui.toast('手机号有误！');
-		}else if($(".log_pwd").val().length>12 || $(".log_pwd").val().length<6){
-			mui.toast('请输入6-12位密码！');
-		}else{
-			if($(".log_phone").val()==15223059337 && $(".log_pwd").val()==123456){
-				location.href="index.html";
-			}
-		}
-	})
+//	$(".login_btn").click(function(){
+//		if(!(phone.test($(".log_phone").val()))){
+//			mui.toast('手机号有误！');
+//		}else if($(".log_pwd").val().length>12 || $(".log_pwd").val().length<6){
+//			mui.toast('请输入6-12位密码！');
+//		}else{
+//			if($(".log_phone").val()==15223059337 && $(".log_pwd").val()==123456){
+//				location.href="index.html";
+//			}
+//		}
+//	})
 	//验证码
 //	$(".reg_yzm_btn").click(function(){
 //		if(phone.test($(".reg_phone").val())){

@@ -22,6 +22,7 @@ require(['jquery', 'ini', 'Vue', 'util'], function($, ini, Vue, util) {
 	 * 点击获取验证码
 	 */
 	$("#getCode").on("click", function() {
+		var _this = this;
 		if(util.mobileValidator($(".reg_phone").val())) {
 			mui.toast('手机号有误！');
 		} else {
@@ -34,11 +35,17 @@ require(['jquery', 'ini', 'Vue', 'util'], function($, ini, Vue, util) {
 				dataType: 'json',
 				success: function(data) {
 					if(data.code > 0) {
-						util.time(this);//定时效果60s
-						ini.setSessionParams("verificationCode",data.obj.code);//把验证码存入sessionStorage
-					} else if(data.code == -400){//已被注册
+						var setCOde = setInterval(function() {
+							var wait = util.time(_this); //定时效果60s
+							console.log(wait)
+							if(wait == 60) {
+								clearInterval(setCOde);
+							}
+						}, 1000);
+						ini.setSessionParams("verificationCode", data.obj); //把验证码存入sessionStorage
+					} else if(data.code == -400) { //已被注册
 						mui.toast(data.mssage);
-					}else{
+					} else {
 						mui.toast('发送验证失败！');
 					}
 
@@ -57,30 +64,64 @@ require(['jquery', 'ini', 'Vue', 'util'], function($, ini, Vue, util) {
 			mui.toast('手机号有误！');
 		} else if($(".reg_pwd").val().length > 12 || $(".reg_pwd").val().length < 6) {
 			mui.toast('请输入6-12位密码！');
-		}else if(typeof(code) == "undefined"){
+		} else if(typeof(code) == "undefined") {
 			mui.toast('验证码有误');
-		}else if($(".reg_yzm").val() == "" || $(".log_pwd").val() != ini.getSessionParams("verificationCode")) {
+		} else if($(".reg_yzm").val() == "" || $(".reg_yzm").val() != code) {
 			mui.toast('验证码有误');
-		}else{
+		} else {
 			$.ajax({
-				type: "post",
-				url: url + "/user/register",
-				data: {
-					"userCall": $(".reg_phone").val(),
-					"userPwd" : $(".reg_pwd").val()
-				},
-				dataType: 'json',
-				success: function(data) {
-					if(data.code > 0) {
-						//把验证码存入localStorage
-						ini.setLocalParams("call",$(".reg_phone").val());
-					} else {
-						mui.toast('注册失败');
-					}
-
+			type: "post",
+			url: url + "/user/register",
+			data: {
+				"userCall": $(".reg_phone").val(),
+				"userPwd": $(".reg_pwd").val()
+			},
+			dataType: 'json',
+			success: function(data) {
+				if(data.code > 0) {
+					login($(".reg_phone").val(),$(".reg_pwd").val());
+				} else {
+					mui.toast('注册失败!!');
 				}
-			});
+			}
+		});
 		}
 	});
+
+	/**
+	 * 点击登录
+	 */
+	$("#loginClick").on("click", function() {
+		console.log($(".log_phone").val())
+		if(util.mobileValidator($(".log_phone").val())) {
+			mui.toast('手机号有误！');
+		} else if($(".log_pwd").val().length > 12 || $(".log_pwd").val().length < 6) {
+			mui.toast('请输入6-12位密码！');
+		} else {
+			login($(".log_phone").val(),$(".log_pwd").val()); //登录
+		}
+	});
+
+	function login(call,pwd) {
+		$.ajax({
+			type: "post",
+			url: url + "/user/login",
+			data: {
+				"userCall": call,
+				"userPwd": pwd
+			},
+			dataType: 'json',
+			success: function(data) {
+				if(data.code > 0) {
+					window.localStorage.clear();
+					//把电话号码存入localStorage
+					ini.setLocalParams("call", call);
+					location.href = "index.html"
+				} else {
+					mui.toast('失败!!');
+				}
+			}
+		});
+	}
 
 });

@@ -19,7 +19,7 @@ define(function() {
 		 */
 		getSessionParams: function(type) {
 			switch(type) {
-				case "verificationCode "://验证码
+				case "verificationCode"://验证码
 					{
 						return sessionStorage.getItem("verificationCode");
 					}
