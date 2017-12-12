@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>签到</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav per_head">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">签到</h1>
+		</header>
+		<!--头部end-->
+		<div class="per_top qiandao">
+			<div class="per_top_img">
+				<!--<img src="images/cbd.jpg" />-->
+				<div class="per_top_text">
+					<span>我的兼职豆：5枚</span>
+					<span>连续签到3天以上可获得5枚兼职豆</span>
+				</div>
+			</div>
+			<div class="qiandao_right">
+					<span class="qiandao_btn">签到</span>
+			</div>
+		</div>
+		<!--内容头部end-->
+		<div class="qiandao_cont">
+			<p>签到领取详情</p>
+			<ul class="qiandao_list">
+				<li><span></span><span>连续签到3天后可以获得赠送5枚兼职豆</span></li>
+				<li><span></span><span>连续签到5天后可以获得赠送8枚兼职豆</span></li>
+				<li><span></span><span>连续签到7天后可以获得赠送12枚兼职豆</span></li>
+			</ul>
+		</div>
+		<div class="qiandao_l_btn">领取兼职豆</div>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script>
+			setInterval(function(){
+				//12点刷新
+				var myDate = new Date();
+				var h=myDate.getHours();       //获取当前小时数(0-23)
+				var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+				if(h==00 && m==00){
+					$(".qiandao_btn").html("签到");
+				}
+			},60000)
+		</script>
+	</body>
+
+</html>
