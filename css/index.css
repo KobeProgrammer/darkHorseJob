@@ -31,6 +31,7 @@ textarea,
 menu {
 	margin: 0;
 	padding: 0;
+	font-size: .9rem;
 }
 h1, h2, h3, h4, h5, h6, small {
     font-size: 100%;
@@ -181,15 +182,16 @@ oa-contact-position {
 	float: left;
 }
 .tit {
-    /*font-size: .8rem;*/
     color: #333;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 82%;
-    font-weight: 400;
+    height: 1.5rem;
+    line-height: 1.5rem;
     padding: 0;
-    margin: 0;
+    margin-top:0 ;
+    
 }
 .bottom {
     font-size: .7rem;
@@ -352,7 +354,7 @@ oa-contact-position {
 	text-indent: .5rem;
 }
 .index_g div span:first-of-type{
-	margin-top: 1rem;
+	margin-top: .5rem;
 }
 .index_g div span:last-of-type{
 	font-size:.8rem;
@@ -368,11 +370,11 @@ oa-contact-position {
 .per_top{
 	margin-top: 2.7rem;
 	width: 100%;
-	height: 10rem;
+	height: 9.5rem;
 	background: #fe7418;
 }
 .per_top_img{
-	width: 70%;
+	width: 75%;
 	height: 100%;
 	float: left;
 }
@@ -927,8 +929,8 @@ oa-contact-position {
 	color: #FFF;
 	text-align: center;
 	line-height: 2.5rem;
-	margin-top: 1rem;
 	border-radius:.2rem ;
+	margin-top: .5rem;
 }
 /*我的简历*/
 .myjl_list{
@@ -1022,4 +1024,92 @@ oa-contact-position {
 	text-align: center;
 	border-radius:.5rem ;
 	margin-top: 2rem;
+}
+/*签到*/
+.qiandao>.per_top_img>img{
+	width: 4rem;
+	height: 4rem;
+}
+.qiandao_right{
+	float: right;
+	margin-right: 1rem;
+	margin-top: 4rem;
+	color: #fff;
+	font-size: 1rem;
+}
+.qiandao_btn{
+	display: block;
+	width: 4rem;
+	height: 2rem;
+	border: solid 1px #fff;
+	border-radius:.3rem ;
+	line-height: 2rem;
+	text-align: center;
+	box-sizing: border-box;
+}
+.qiandao_cont{
+	width: 100%;
+	margin-top: 1rem;
+	height: auto;
+	padding-left: 3%;
+	padding-right: 3%;
+	box-sizing: border-box;
+}
+.qiandao_cont>p{
+	font-size: 1.1rem;
+	color: #FE7418;
+}
+.qiandao_list{
+	width: 100%;
+	height: auto;
+}
+.qiandao_list>li{
+	width: 100%;
+	height: 2rem;
+	line-height: 2rem;
+}
+.qiandao_list>li>span{
+	display: block;
+	float: left;
+	margin-left: .5rem;
+}
+.qiandao_list>li>span:first-of-type{
+	width: .5rem;
+	height: .5rem;
+	background: #FE7418;
+	border-radius:50% ;
+	margin-top: .6rem;
+}
+.qiandao_l_btn{
+	width: 70%;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	text-align: center;
+	background: #FE7418;
+	color: #fff;
+	margin-left: 15%;
+	margin-top: 1rem;
+	border-radius:.5rem ;
+}
+/*搜索*/
+.sou_list{
+	width: 100%;
+	height: auto;
+	background: #fff;
+	margin-top: 2.9rem;
+	overflow: hidden;
+	padding-bottom: 2rem;
+	box-sizing: border-box;
+}
+.sou_list>li{
+	width: 22%;
+	margin-left: 2.5%;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	text-align: center;
+	border: solid 1px #eee;
+	border-radius:5px ;
+	box-sizing: border-box;
+	margin-top: 1rem;
+	float: left;
 }

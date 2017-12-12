@@ -2,10 +2,14 @@ $(function(){
 	//显示隐藏弹出层
 	$(".address").click(function(){
 		if($(".index_address_list_box").is(":hidden")){
-			$(".index_address_list_box").show(300);
+			$(".index_address_list_box").show();
 		}else{
-			$(".index_address_list_box").hide(300);
+			$(".index_address_list_box").hide();
 		}
+	})
+	//关闭遮罩
+	$(".index_address_list_box").click(function(){
+		$(".index_address_list_box").hide();
 	})
 	//选项卡
 	$(".index_address_tit>div").click(function(){
@@ -219,7 +223,7 @@ $(function(){
 	})
 	//我要发布
 	$(".fb").click(function(){
-		location.href="issue.html"
+		location.href="par.html"
 	})
 	//修改密码
 	$(".updata").click(function(){
@@ -228,6 +232,19 @@ $(function(){
 	//兼职详情
 	$(".index_>li").click(function(){
 		location.href="issue_part.html"
+	})
+	//签到
+	$(".qd").click(function(){
+		location.href="qiandao.html"
+	})
+	$(".qiandao_btn").click(function(){
+		if($(this).text()=="签到"){
+			$(this).text("已签到");
+			mui.toast('签到成功');
+		}else{
+			mui.toast('今天你已经签到过了哦！明天再来吧！');
+		}
+		
 	})
 })
 //验证码倒计时
