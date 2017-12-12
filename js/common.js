@@ -151,25 +151,25 @@ $(function(){
 		}
 	})
 	//验证码
-	$(".reg_yzm_btn").click(function(){
-		if(phone.test($(".reg_phone").val())){
-			time(this);
-		}else{
-			mui.toast('手机号有误！');
-		}
-	})
+//	$(".reg_yzm_btn").click(function(){
+//		if(phone.test($(".reg_phone").val())){
+//			time(this);
+//		}else{
+//			mui.toast('手机号有误！');
+//		}
+//	})
 	//注册
-	$(".reg_btn").click(function(){
-		if(!(phone.test($(".reg_phone").val()))){
-			mui.toast('手机号有误！');
-		}
-		else if($(".reg_pwd").val().length>12 || $(".reg_pwd").val().length<6){
-			mui.toast('请输入6-12位密码！');
-		}
-		else if($(".reg_yzm").val()=="" || $(".log_pwd").val()!=1234){
-			mui.toast('验证码有误');
-		}
-	})
+//	$(".reg_btn").click(function(){
+//		if(!(phone.test($(".reg_phone").val()))){
+//			mui.toast('手机号有误！');
+//		}
+//		else if($(".reg_pwd").val().length>12 || $(".reg_pwd").val().length<6){
+//			mui.toast('请输入6-12位密码！');
+//		}
+//		else if($(".reg_yzm").val()=="" || $(".log_pwd").val()!=1234){
+//			mui.toast('验证码有误');
+//		}
+//	})
 	//退出登录
 	$(".per_btn").click(function(){
 		location.href="loging.html"
@@ -231,20 +231,20 @@ $(function(){
 	})
 })
 //验证码倒计时
-var wait=60;
-function time(o) {
-	if (wait == 0) {
-		o.removeAttribute("disabled");			
-		o.value="获取验证码";
-		o.innerHTML="获取验证码";
-		wait = 60;
-	} else {
-		o.setAttribute("disabled", true);
-		o.value="重新发送(" + wait + ")";
-		o.innerHTML="重新发送(" + wait + ")";
-		wait--;
-		setTimeout(function() {
-			time(o)
-		},1000)
-	}
-}
+//var wait=60;
+//function time(o) {
+//	if (wait == 0) {
+//		o.removeAttribute("disabled");			
+//		o.value="获取验证码";
+//		o.innerHTML="获取验证码";
+//		wait = 60;
+//	} else {
+//		o.setAttribute("disabled", true);
+//		o.value="重新发送(" + wait + ")";
+//		o.innerHTML="重新发送(" + wait + ")";
+//		wait--;
+//		setTimeout(function() {
+//			time(o)
+//		},1000)
+//	}
+//}
