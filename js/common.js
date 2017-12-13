@@ -47,7 +47,8 @@ $(function(){
 //	})
 	//选择兼职类型
 	$(".par_list>li").click(function(){
-		$(this).addClass("active").siblings().removeClass("active")
+		$(this).addClass("active").siblings().removeClass("active");
+		console.log($(this).children("span").html())
 		location.href="issue.html";
 	})
 	//选择性别
