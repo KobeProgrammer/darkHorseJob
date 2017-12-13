@@ -649,12 +649,15 @@ oa-contact-position {
 /*兼职类型*/
 .par_list{
 	width: 100%;
-	height: auto;
+	height: 100%;
 	background: #fff;
-	margin-top: 2.9rem;
 	overflow: hidden;
-	padding-bottom: 2rem;
+	position: fixed;
+	top: 0;
+	left: 0;
 	box-sizing: border-box;
+	margin-top: 2.7rem;
+	display: none;
 }
 .par_list>li{
 	width: 22%;
