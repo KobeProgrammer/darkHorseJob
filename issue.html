@@ -24,7 +24,7 @@
 					<input type="text" placeholder="请输入兼职标题" />
 				</div>
 			</li>
-			<li>
+			<li class="lx">
 				<div>兼职类型</div>
 				<div>
 					<input class="par" type="text" readonly="readonly" placeholder="请选择兼职类型" />
@@ -127,83 +127,24 @@
 				<li>元/单</li>
 			</div>
 		</div>
+		<ul class="par_list">
+			<li class="active"><span>调研</span></li>
+			<li><span>调研</span></li>
+			<li><span>调研</span></li>
+			<li><span>调研</span></li>
+			<li><span>调研</span></li>
+			<li><span>调研</span></li>
+			<li><span>调研</span></li>
+			<li><span>调研</span></li>
+			<li><span>调研</span></li>
+			<li><span>调研</span></li>
+		</ul>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
 		<script type="text/javascript" src="js/mui.picker.min.js" ></script>
 		<script>
-			(function($) {
-				$.init();
-				var result = $('.demo2_ti')[0];
-				var result1 = $('.demo2_ti1')[0];
-				var btns = $('.btn_t');
-				var a = 0;
-				//时间段
-				var result2 = $('.demo1_ti')[0];
-				var result22 = $('.demo1_ti1')[0];
-				var btns2 = $('.btn_t11');
-				var b = 0;
-				btns.each(function(i, btn) {
-					btn.addEventListener('tap', function() {
-						var _self = this;
-						if(_self.picker) {
-							_self.picker.show(function (rs) {
-								result.innerText =rs.text;
-								_self.picker.dispose();
-								_self.picker = null;
-							});
-						} else {
-							var optionsJson = this.getAttribute('data-options') || '{}';
-							var options = JSON.parse(optionsJson);
-							var id = this.getAttribute('id');
-							_self.picker = new $.DtPicker(options);
-							_self.picker.show(function(rs) {
-								a++;
-								if(a==1){
-									result.innerHTML =rs.text;
-								}else{
-									result1.style.display="block";
-									result1.innerHTML =rs.text;
-									_self.remove();
-								}
-								_self.picker.dispose();
-								_self.picker = null;
-							});
-						}
-					}, false);
-				});
-				//时间段
-				btns2.each(function(i, btn) {
-					btn.addEventListener('tap', function() {
-						var _self = this;
-						if(_self.picker) {
-							_self.picker.show(function (rs) {
-								result2.innerText =rs.text;
-								_self.picker.dispose();
-								_self.picker = null;
-							});
-						} else {
-							var optionsJson = this.getAttribute('data-options') || '{}';
-							var options = JSON.parse(optionsJson);
-							var id = this.getAttribute('id');
-							_self.picker = new $.DtPicker(options);
-							_self.picker.show(function(rs) {
-								b++;
-								if(b==1){
-									result2.innerHTML =rs.text;
-								}else{
-									result22.style.display="block";
-									result22.innerHTML =rs.text;
-									_self.remove();
-								}
-								_self.picker.dispose();
-								_self.picker = null;
-							});
-						}
-					}, false);
-				});
-
-			})(mui);
+			
 		</script>
 	</body>
 
