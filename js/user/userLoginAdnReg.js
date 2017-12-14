@@ -112,10 +112,12 @@ require(['jquery', 'ini', 'Vue', 'util'], function($, ini, Vue, util) {
 			},
 			dataType: 'json',
 			success: function(data) {
+				console.log(data.obj.userId)
 				if(data.code > 0) {
 					window.localStorage.clear();
 					//把电话号码存入localStorage
 					ini.setLocalParams("call", call);
+					ini.setLocalParams("userId", data.obj.userId);
 					location.href = "index.html"
 				} else {
 					mui.toast('失败!!');

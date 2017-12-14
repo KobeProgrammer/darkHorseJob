@@ -1,76 +1,76 @@
 $(function(){
-	var b = 0;
-	(function($) {
-				$.init();
-				var result = $('.demo2_ti')[0];
-				var result1 = $('.demo2_ti1')[0];
-				var btns = $('.btn_t');
-				var a = 0;
-				//时间段
-				var result2 = $('.demo1_ti')[0];
-				var result22 = $('.demo1_ti1')[0];
-				var btns2 = $('.btn_t11');
-				btns.each(function(i, btn) {
-					btn.addEventListener('tap', function() {
-						var _self = this;
-						if(_self.picker) {
-							_self.picker.show(function (rs) {
-								result.innerText =rs.text;
-								_self.picker.dispose();
-								_self.picker = null;
-							});
-						} else {
-							var optionsJson = this.getAttribute('data-options') || '{}';
-							var options = JSON.parse(optionsJson);
-							var id = this.getAttribute('id');
-							_self.picker = new $.DtPicker(options);
-							_self.picker.show(function(rs) {
-								a++;
-								if(a==1){
-									result.innerHTML =rs.text;
-								}else{
-									result1.style.display="block";
-									result1.innerHTML =rs.text;
-									_self.remove();
-								}
-								_self.picker.dispose();
-								_self.picker = null;
-							});
-						}
-					}, false);
-				});
-				//时间段
-				btns2.each(function(i, btn) {
-					btn.addEventListener('tap', function() {
-						var _self = this;
-						if(_self.picker) {
-							_self.picker.show(function (rs) {
-								result2.innerText =rs.text;
-								_self.picker.dispose();
-								_self.picker = null;
-							});
-						} else {
-							var optionsJson = this.getAttribute('data-options') || '{}';
-							var options = JSON.parse(optionsJson);
-							var id = this.getAttribute('id');
-							_self.picker = new $.DtPicker(options);
-							_self.picker.show(function(rs) {
-								b++;
-								if(b==1){
-									result2.innerHTML =rs.text;
-								}else{
-									result22.style.display="block";
-									result22.innerHTML =rs.text;
-									_self.style.display="none";
-								}
-								_self.picker.dispose();
-								_self.picker = null;
-							});
-						}
-					}, false);
-				});
-
-			})(mui);
+//	var b = 0;
+//	(function($) {
+//				$.init();
+//				var result = $('.demo2_ti')[0];
+//				var result1 = $('.demo2_ti1')[0];
+//				var btns = $('.btn_t');
+//				var a = 0;
+//				//时间段
+//				var result2 = $('.demo1_ti')[0];
+//				var result22 = $('.demo1_ti1')[0];
+//				var btns2 = $('.btn_t11');
+//				btns.each(function(i, btn) {
+//					btn.addEventListener('tap', function() {
+//						var _self = this;
+//						if(_self.picker) {
+//							_self.picker.show(function (rs) {
+//								result.innerText =rs.text;
+//								_self.picker.dispose();
+//								_self.picker = null;
+//							});
+//						} else {
+//							var optionsJson = this.getAttribute('data-options') || '{}';
+//							var options = JSON.parse(optionsJson);
+//							var id = this.getAttribute('id');
+//							_self.picker = new $.DtPicker(options);
+//							_self.picker.show(function(rs) {
+//								a++;
+//								if(a==1){
+//									result.innerHTML =rs.text;
+//								}else{
+//									result1.style.display="block";
+//									result1.innerHTML =rs.text;
+//									_self.remove();
+//								}
+//								_self.picker.dispose();
+//								_self.picker = null;
+//							});
+//						}
+//					}, false);
+//				});
+//				//时间段
+//				btns2.each(function(i, btn) {
+//					btn.addEventListener('tap', function() {
+//						var _self = this;
+//						if(_self.picker) {
+//							_self.picker.show(function (rs) {
+//								result2.innerText =rs.text;
+//								_self.picker.dispose();
+//								_self.picker = null;
+//							});
+//						} else {
+//							var optionsJson = this.getAttribute('data-options') || '{}';
+//							var options = JSON.parse(optionsJson);
+//							var id = this.getAttribute('id');
+//							_self.picker = new $.DtPicker(options);
+//							_self.picker.show(function(rs) {
+//								b++;
+//								if(b==1){
+//									result2.innerHTML =rs.text;
+//								}else{
+//									result22.style.display="block";
+//									result22.innerHTML =rs.text;
+//									_self.style.display="none";
+//								}
+//								_self.picker.dispose();
+//								_self.picker = null;
+//							});
+//						}
+//					}, false);
+//				});
+//
+//			})(mui);
 	//显示隐藏弹出层
 	$(".address").click(function(){
 		if($(".index_address_list_box").is(":hidden")){
@@ -118,56 +118,56 @@ $(function(){
 //		location.href="par.html";
 //	})
 	//选择兼职类型
-	$(".par_list>li").click(function(){
-		$(this).addClass("active").siblings().removeClass("active");
-		$(".par").val($(this).text());
-		$(".par_list").hide();
-	})
+//	$(".par_list>li").click(function(){
+//		$(this).addClass("active").siblings().removeClass("active");
+//		$(".par").val($(this).text());
+//		$(".par_list").hide();
+//	})
 	//点击禁止选择时间
-	$(".iss_ch").click(function(){
-		if($(this).is(':checked')){
-			$("#demo1").attr("disabled","disabled");
-			if($(".demo1_ti").html()!="" && $(".demo1_ti1").html()==""){
-				$(".demo1_ti").html("");
-				b=0;
-			}else if($(".demo1_ti").html()!="" && $(".demo1_ti1").html()!=""){
-				b=0;
-				$(".demo1_ti").html("");
-				$(".demo1_ti1").html("");
-				$(".demo1_ti1").hide();
-				$("#demo1").show()
-			}
-		}else{
-			$("#demo1").attr("disabled",false);
-		}
-	})
+//	$(".iss_ch").click(function(){
+//		if($(this).is(':checked')){
+//			$("#demo1").attr("disabled","disabled");
+//			if($(".demo1_ti").html()!="" && $(".demo1_ti1").html()==""){
+//				$(".demo1_ti").html("");
+//				b=0;
+//			}else if($(".demo1_ti").html()!="" && $(".demo1_ti1").html()!=""){
+//				b=0;
+//				$(".demo1_ti").html("");
+//				$(".demo1_ti1").html("");
+//				$(".demo1_ti1").hide();
+//				$("#demo1").show()
+//			}
+//		}else{
+//			$("#demo1").attr("disabled",false);
+//		}
+//	})
 	//选择性别
-	$(".iis_sex").click(function(){
-		//显示弹出层
-		$(".iss_box").show(100);
-		$(".iss_moob1").show();
-		$(".iss_moob2").hide();
-	})
-	//选择钱
-	$(".iis_mon").click(function(){
-		//显示弹出层
-		$(".iss_box").show(100);
-		$(".iss_moob2").show();
-		$(".iss_moob1").hide();
-	})
-	$(".iss_box").click(function(){
-		$(".iss_box").hide(100);
-	})
+//	$(".iis_sex").click(function(){
+//		//显示弹出层
+//		$(".iss_box").show(100);
+//		$(".iss_moob1").show();
+//		$(".iss_moob2").hide();
+//	})
+//	//选择钱
+//	$(".iis_mon").click(function(){
+//		//显示弹出层
+//		$(".iss_box").show(100);
+//		$(".iss_moob2").show();
+//		$(".iss_moob1").hide();
+//	})
+//	$(".iss_box").click(function(){
+//		$(".iss_box").hide(100);
+//	})
 	//取值 赋值
-	$(".iss_mob>li").click(function(){
-		$(this).addClass("active").siblings().removeClass("active")
-		if($(".iss_moob2").is(":hidden")){
-			$(".iis_sex_text").val($(this).text());
-		}else{
-			$(".iss_qian").text($(this).text());
-		}
-		$(".iss_box").hide(100);
-	})
+//	$(".iss_mob>li").click(function(){
+//		$(this).addClass("active").siblings().removeClass("active")
+//		if($(".iss_moob2").is(":hidden")){
+//			$(".iis_sex_text").val($(this).text());
+//		}else{
+//			$(".iss_qian").text($(this).text());
+//		}
+//		$(".iss_box").hide(100);
+//	})
 	//点击input
 	$(".iis_qian").click(function(){
 		event.stopPropagation();//阻止冒泡 
@@ -199,29 +199,29 @@ $(function(){
 	//手机号码正则
 	var  phone = /^1[34578]\d{9}$/;
 	//发布
-	$(".issue_btn").click(function(){
-		if($(".iss_cont2 li:nth-of-type(1) input").val()==""){
-			mui.toast('请输入兼职标题！');
-		}else if($(".iss_cont li:nth-of-type(3) span:first-of-type").text()=="" || $(".iss_cont li:nth-of-type(3) span:last-of-type").text()=="" ){
-			mui.toast('请选择工作日期！');
-		}else if($(".iss_cont li:nth-of-type(5) input").val()==""){
-			mui.toast('请输入招聘人数！');	
-		}else if($(".iss_cont li:nth-of-type(6) input").val()==""){
-			mui.toast('请输入工资待遇！');	
-		}else if($(".iss_cont1 li:nth-of-type(2) input").val()==""){
-			mui.toast('请输入发布机构！');
-		}else if($(".iss_cont1 li:nth-of-type(3) input").val()==""){
-			mui.toast('请输入详细地址！');
-		}else if($(".iss_cont1 li:nth-of-type(4) input").val()==""){
-			mui.toast('请输入姓名！');
-		}else if($(".iss_cont1 li:nth-of-type(5) input").val()==""){
-			mui.toast('请输入手机号！');
-		}else if(!(phone.test($(".iss_cont1 li:nth-of-type(5) input").val()))){
-			mui.toast('手机号有误！');
-		}else{
-			mui.toast('发布成功！');
-		}
-	})
+//	$(".issue_btn").click(function(){
+//		if($(".iss_cont2 li:nth-of-type(1) input").val()==""){
+//			mui.toast('请输入兼职标题！');
+//		}else if($(".iss_cont li:nth-of-type(3) span:first-of-type").text()=="" || $(".iss_cont li:nth-of-type(3) span:last-of-type").text()=="" ){
+//			mui.toast('请选择工作日期！');
+//		}else if($(".iss_cont li:nth-of-type(5) input").val()==""){
+//			mui.toast('请输入招聘人数！');	
+//		}else if($(".iss_cont li:nth-of-type(6) input").val()==""){
+//			mui.toast('请输入工资待遇！');	
+//		}else if($(".iss_cont1 li:nth-of-type(2) input").val()==""){
+//			mui.toast('请输入发布机构！');
+//		}else if($(".iss_cont1 li:nth-of-type(3) input").val()==""){
+//			mui.toast('请输入详细地址！');
+//		}else if($(".iss_cont1 li:nth-of-type(4) input").val()==""){
+//			mui.toast('请输入姓名！');
+//		}else if($(".iss_cont1 li:nth-of-type(5) input").val()==""){
+//			mui.toast('请输入手机号！');
+//		}else if(!(phone.test($(".iss_cont1 li:nth-of-type(5) input").val()))){
+//			mui.toast('手机号有误！');
+//		}else{
+//			mui.toast('发布成功！');
+//		}
+//	})
 	//点击选中收藏
 	$(".mysc_>li").click(function(){
 		$(this).find(".mysc_time").find("img").attr("src","images/icon/checked.png");

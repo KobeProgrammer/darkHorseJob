@@ -13,6 +13,7 @@
 	</head>
 
 	<body>
+		<div id="vueIssue">
 		<header class="mui-bar mui-bar-nav per_head">
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		    <h1 class="mui-title">发布兼职</h1>
@@ -21,20 +22,20 @@
 			<li>
 				<div>兼职标题</div>
 				<div>
-					<input type="text" placeholder="请输入兼职标题" />
+					<input type="text" placeholder="请输入兼职标题" v-model="jobName"/>
 				</div>
 			</li>
-			<li class="lx">
+			<li class="lx" @click="selectTypeLx">
 				<div>兼职类型</div>
 				<div>
-					<input class="par" type="text" readonly="readonly" placeholder="请选择兼职类型" />
+					<input class="par" type="text" readonly="readonly" placeholder="请选择兼职类型" v-model="jobTypeText"/>
 				</div>
 			</li>
 			<li>
 				<div>工作日期</div>
 				<div>
 					<input id='demo2' data-options='{"type":"date","beginYear":2017,"endYear":2020}' class="iss_time_btn btn btn_t mui-btn mui-btn-block" type="button" value="+工作日期"/>
-					<span class=" demo2_ti"></span>
+					<span class="demo2_ti"></span>
 					<span style="display: none;" class="demo2_ti1"></span>
 				</div>
 			</li>
@@ -55,22 +56,22 @@
 			<li >
 				<div>招聘人数</div>
 				<div class="iss_text_img">
-					<input  type="text" placeholder="请输入有效数字"/>
+					<input  type="number" placeholder="请输入有效数字" v-model="jobNumber"/>
 					<span>人</span>
 				</div>
 			</li>
-			<li class="iis_mon">
+			<li class="iis_mon" >
 				<div>工资待遇</div>
 				<div class="iss_text_img">
-					<input class="iis_qian"  type="text" placeholder="请输入有效数字"/>
-					<span class="iss_qian">元/天</span>
+					<input class="iis_qian"  type="text" placeholder="请输入有效数字" v-model="jobMoney"/>
+					<span  @click="selectMon" class="iss_qian">{{jobMoneyText}}</span>
 					<img src="images/icon/down.png" />
 				</div>
 			</li>
-			<li class="iis_sex">
+			<li class="iis_sex" @click="selectSex">
 				<div>性别要求</div>
 				<div class="iss_text_img">
-					<input  type="text" readonly="readonly" value="不限" class="iis_sex_text"  placeholder="请选择性别"/>
+					<input  type="text" readonly="readonly" v-model="sex" class="iis_sex_text"  placeholder="请选择性别"/>
 					<img src="images/icon/down.png" />
 				</div>
 			</li>
@@ -79,73 +80,72 @@
 			<li class="iss_he_box">
 					<div>兼职描述</div>
 					<div>
-						<textarea class="iis_text" placeholder="请输入相关工作内容，岗位要求等。" name="" rows="" cols=""></textarea>
+						<textarea class="iis_text" placeholder="请输入相关工作内容，岗位要求等。" name="" rows="" cols="" v-model="jobText"></textarea>
 					</div>
 			</li>
 			<li>
 				<div>发布机构</div>
 				<div>
-					<input type="text" placeholder="请输入发布机构" />
+					<input type="text" placeholder="请输入发布机构" v-model="jobCompany"/>
 				</div>
 			</li>
 			<li>
 				<div>详细地址</div>
 				<div>
-					<input type="text" placeholder="请输入详细地址" />
+					<input type="text" placeholder="请输入详细地址" v-model="jobAddress"/>
 				</div>
 			</li>
 			<li>
 				<div>联系人</div>
 				<div>
-					<input type="text" placeholder="请输入联系人姓名" />
+					<input type="text" placeholder="请输入联系人姓名" v-model="jobContacts"/>
 				</div>
 			</li>
 			<li>
 				<div>联系电话</div>
 				<div>
-					<input type="text" placeholder="请输入手机号" />
+					<input type="text" placeholder="请输入手机号" v-model="jobCall"/>
 				</div>
 			</li>
 		</ul>
 		<div class="issue_box"></div>
-		<div class="issue_btn">发布</div>
+		<div class="issue_btn" @click="jobCommit">发布</div>
 		<!--弹出层-->
-		<div class="iss_box">
+		<div class="iss_box" @click="closebox">
+			<!--
+            	作者：1104079072@qq.com
+            	时间：2017-12-14
+            	描述：选择性别
+            -->
 			<div class="iss_mob iss_moob1">
 				<div>请选择</div>
-				<li class="active">不限</li>
-				<li>女</li>
-				<li>男</li>
+				<li v-for="s in jobSelectSex" @click="selectSexJob($event,s.sex)">{{s.sex}}</li>
 			</div>
+			
+			<!--
+            	作者：1104079072@qq.com
+            	时间：2017-12-14
+            	描述：工资待遇
+            -->
 			<div class="iss_mob iss_moob2">
 				<div>请选择</div>
-				<li class="active">元/天</li>
-				<li>元/次</li>
-				<li>元/时</li>
-				<li>元/月</li>
-				<li>元/次</li>
-				<li>元/单</li>
+				<li  v-for="t in jobTimeType" @click="selectMoneyJob($event,t)">{{t.jttName}}</li>
 			</div>
 		</div>
-		<ul class="par_list">
-			<li class="active"><span>调研</span></li>
-			<li><span>调研</span></li>
-			<li><span>调研</span></li>
-			<li><span>调研</span></li>
-			<li><span>调研</span></li>
-			<li><span>调研</span></li>
-			<li><span>调研</span></li>
-			<li><span>调研</span></li>
-			<li><span>调研</span></li>
-			<li><span>调研</span></li>
+		
+		<!--
+            	作者：1104079072@qq.com
+            	时间：2017-12-14
+            	描述：兼职类型
+            -->
+		<ul class="par_list" >
+			<li   v-for="t in jobType" ><span @click="selectType($event,t)">{{t.jtName}}</span></li>
 		</ul>
+		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script src="js/mui.min.js"></script>
-		<script type="text/javascript" src="js/common.js"></script>
 		<script type="text/javascript" src="js/mui.picker.min.js" ></script>
-		<script>
-			
-		</script>
+		<script type="text/javascript" src="js/require.js" data-main="js/job/issue.js"></script>
 	</body>
 
 </html>

@@ -19,7 +19,7 @@ define(function() {
 		 */
 		getSessionParams: function(type) {
 			switch(type) {
-				case "verificationCode"://验证码
+				case "verificationCode": //验证码
 					{
 						return sessionStorage.getItem("verificationCode");
 					}
@@ -33,7 +33,7 @@ define(function() {
 		 */
 		setSessionParams: function(type, value) {
 			switch(type) {
-				case "verificationCode"://验证码
+				case "verificationCode": //验证码
 					{
 						sessionStorage.setItem("verificationCode", value);
 					}
@@ -44,11 +44,16 @@ define(function() {
 		 * 获取localStorage中的值
 		 * @param {Object} type
 		 */
-		getLocalParams : function(type){
+		getLocalParams: function(type) {
 			switch(type) {
-				case "call"://电话号码
+				case "call": //电话号码
 					{
 						return localStorage.getItem("call");
+					}
+					break;
+				case "userId": //用户ID
+					{
+						return localStorage.getItem("userId");
 					}
 					break;
 			}
@@ -58,11 +63,16 @@ define(function() {
 		 * @param {Object} type
 		 * @param {Object} value
 		 */
-		setLocalParams : function(type, value){
+		setLocalParams: function(type, value) {
 			switch(type) {
-				case "call"://电话号码
+				case "call": //电话号码
 					{
 						localStorage.setItem("call", value);
+					}
+					break;
+				case "userId": //用户ID
+					{
+						localStorage.setItem("userId", value);
 					}
 					break;
 			}
