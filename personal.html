@@ -13,90 +13,94 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav per_head">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">个人中心</h1>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">个人中心</h1>
 		</header>
 		<!--头部end-->
-		<div class="per_top">
-			<div class="per_top_img">
-				<img src="images/cbd.jpg" />
-				<div class="per_top_text">
-					<span>username</span>
-					<span class="qd">我要签到</span>
+		<div id="vueUser">
+			<div class="per_top">
+				<div class="per_top_img">
+					<img :src="userPhoto" />
+					<div class="per_top_text">
+						<span v-if="userName == null">Hello</span>
+						<span v-if="userName != null">{{userName}}</span>
+						<span class="qd" ><a href="qiandao.html" style="color: #fff;">我要签到</a></span>
+					</div>
 				</div>
-			</div>
-			<div class="per_top_right">
-					<span>编辑简历</span>
+				<div class="per_top_right">
+					<a href="myjl.html"><span style="color: #fff;">编辑简历</span></a>
 					<img src="images/icon/rightt.png" />
+				</div>
 			</div>
+			<!--内容头部end-->
+			<ul class="per_list">
+				<li class="bm" @click="myBm">
+					<div>
+						<img src="images/icon/baoming.png" />
+						<span>我的报名</span>
+					</div>
+					<div>
+						<span></span>
+						<img src="images/icon/down.png" />
+					</div>
+				</li>
+				<li class="qb" @click="myQb">
+					<div>
+						<img src="images/icon/qianbao.png" />
+						<span>我的钱包</span>
+					</div>
+					<div>
+						<span>{{walletBean}}枚</span>
+						<img src="images/icon/down.png" />
+					</div>
+				</li>
+				<li class="sc" @click="MySc">
+					<div>
+						<img src="images/icon/shouchang.png" />
+						<span>我的收藏</span>
+					</div>
+					<div>
+						<span></span>
+						<img src="images/icon/down.png" />
+					</div>
+				</li>
+				<li class="fb" @click="myFb">
+					<div>
+						<img src="images/icon/fabu.png" />
+						<span>我要发布</span>
+					</div>
+					<div>
+						<span></span>
+						<img src="images/icon/down.png" />
+					</div>
+				</li>
+				<li>
+					<div>
+						<img src="images/icon/women.png" />
+						<span>关于我们</span>
+					</div>
+					<div>
+						<span></span>
+						<img src="images/icon/down.png" />
+					</div>
+				</li>
+				<li class="updata" @click="myUpdata">
+					<div>
+						<img src="images/icon/shezhi.png" />
+						<span>修改密码</span>
+					</div>
+					<div>
+						<span></span>
+						<img src="images/icon/down.png" />
+					</div>
+				</li>
+			</ul>
+			<div class="per_btn"><a href="loging.html" style="color:#FFFFFF;">退出登录</a></div>
 		</div>
-		<!--内容头部end-->
-		<ul class="per_list">
-			<li class="bm">
-				<div>
-					<img src="images/icon/baoming.png" />
-					<span>我的报名</span>
-				</div>
-				<div>
-					<span></span>
-					<img src="images/icon/down.png" />
-				</div>
-			</li>
-			<li class="qb">
-				<div>
-					<img src="images/icon/qianbao.png" />
-					<span>我的钱包</span>
-				</div>
-				<div>
-					<span>20枚</span>
-					<img src="images/icon/down.png" />
-				</div>
-			</li>
-			<li class="sc">
-				<div>
-					<img src="images/icon/shouchang.png" />
-					<span>我的收藏</span>
-				</div>
-				<div>
-					<span></span>
-					<img src="images/icon/down.png" />
-				</div>
-			</li>
-			<li class="fb">
-				<div>
-					<img src="images/icon/fabu.png" />
-					<span>我要发布</span>
-				</div>
-				<div>
-					<span></span>
-					<img src="images/icon/down.png" />
-				</div>
-			</li>
-			<li>
-				<div>
-					<img src="images/icon/women.png" />
-					<span>关于我们</span>
-				</div>
-				<div>
-					<span></span>
-					<img src="images/icon/down.png" />
-				</div>
-			</li>
-			<li class="updata">
-				<div>
-					<img src="images/icon/shezhi.png" />
-					<span>修改密码</span>
-				</div>
-				<div>
-					<span></span>
-					<img src="images/icon/down.png" />
-				</div>
-			</li>
-		</ul>
-		<div class="per_btn">退出登录</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
+		<script src="js/require.js" data-main="js/user/updateUser.js"></script>
 	</body>
 
 </html>

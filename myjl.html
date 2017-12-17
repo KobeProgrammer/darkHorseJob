@@ -17,81 +17,59 @@
 			<h1 class="mui-title">我的简历</h1>
 		</header>
 		<!--头部end-->
+		<div id="vueUser">
+		<form :action="urlAjax" enctype="multipart/form-data" id="form_user"  method="post">
 		<ul class="myjl_list">
 			<li>
 				<span>头像</span>
 				<div>
-					<img id="pic" src="images/60x60.gif">
-					<input id="upload" name="file" accept="image/*" type="file" style="display: none" />
+					<img id="pic" :src="userPhoto" @click="updateImg()">
+					<input id="userPhoto" name="file" accept="image/*" type="file" style="display: none" />
 				</div>
 			</li>
 			<li>
 				<span>姓名</span>
 				<div>
-					<input class="namee" type="text" placeholder="请输入真实姓名" />
+					<input class="namee" name="userName" type="text" placeholder="请输入真实姓名" v-model="userName" />
 				</div>
 			</li>
 			<li>
 				<span>性别</span>
 				<div>
 					<div class="sex">
-						<input type="radio" checked="checked" value="男" name="sex" />男
-						<input type="radio" value="女" name="sex" />女
+						<input name="userSex" type="radio" checked="checked" value="1" />男
+						<input name="userSex" type="radio" value="0"  />女
 					</div>
 				</div>
 			</li>
 			<li>
-				<span>年龄</span>
+				<span>出生日期</span>
 				<div>
-					<input class="agee" type="tel" placeholder="请输入年龄" />
+					<input class="agee" type="date" placeholder="出生日期" v-model="userBirthday"/>
 				</div>
 			</li>
 			<li>
 				<span>身份证</span>
 				<div>
-					<input class="sfz" type="text" placeholder="请输入身份证号码" />
+					<input name="userCard" class="sfz" type="text" placeholder="请输入身份证号码"  v-model="userCard" />
 				</div>
 			</li>
 			<li>
 				<span>手机号</span>
 				<div>
-					<input class="phonee" type="text" value="15223059337" placeholder="请输入手机号" />
+					<input name="userCall" class="phonee" type="text"  v-model="userCall" placeholder="请输入手机号" />
 				</div>
 			</li>
 		</ul>
-		<div class="myjl_btn">
+		</form>
+		<div class="myjl_btn" @click="doUser">
 			保存
+		</div>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
 		<script src="js/require.js" data-main="js/user/updateUser.js"></script>
-		<script>
-			$(function() {
-				$("#pic").click(function() {
-					$("#upload").click(); //隐藏了input:file样式后，点击头像就可以本地上传
-					$("#upload").on("change", function() {
-						var objUrl = getObjectURL(this.files[0]); //获取图片的路径，该路径不是图片在本地的路径
-						if(objUrl) {
-							$("#pic").attr("src", objUrl); //将图片路径存入src中，显示出图片
-						}
-					});
-				});
-			});
-
-			//建立一個可存取到該file的url
-			function getObjectURL(file) {
-				var url = null;
-				if(window.createObjectURL != undefined) { // basic
-					url = window.createObjectURL(file);
-				} else if(window.URL != undefined) { // mozilla(firefox)
-					url = window.URL.createObjectURL(file);
-				} else if(window.webkitURL != undefined) { // webkit or chrome
-					url = window.webkitURL.createObjectURL(file);
-				}
-				return url;
-			}
-		</script>
 	</body>
 
 </html>

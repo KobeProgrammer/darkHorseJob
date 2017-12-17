@@ -17,6 +17,17 @@ define(function() {
 			return false;
 		},
 		/**
+		 * 验证身份证号码 
+		 * 不合法 true ， 合法 false
+		 * @param {Object} val
+		 */
+		cardValidator : function(val){
+			if(!(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(val))) {
+				return true;
+			}
+			return false;
+		},
+		/**
 		 * 验证是否为空
 		 * @param {Object} val 
 		 * 为空 true ，不为空 false 

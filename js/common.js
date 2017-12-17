@@ -71,14 +71,14 @@ $(function(){
 //				});
 //
 //			})(mui);
-	//显示隐藏弹出层
-	$(".address").click(function(){
-		if($(".index_address_list_box").is(":hidden")){
-			$(".index_address_list_box").show();
-		}else{
-			$(".index_address_list_box").hide();
-		}
-	})
+//	//显示隐藏弹出层
+//	$(".address").click(function(){
+//		if($(".index_address_list_box").is(":hidden")){
+//			$(".index_address_list_box").show();
+//		}else{
+//			$(".index_address_list_box").hide();
+//		}
+//	})
 	//关闭遮罩
 	$(".index_address_list_box").click(function(){
 		$(".index_address_list_box").hide();
@@ -266,9 +266,9 @@ $(function(){
 //		}
 //	})
 	//退出登录
-	$(".per_btn").click(function(){
-		location.href="loging.html"
-	})
+//	$(".per_btn").click(function(){
+//		location.href="loging.html"
+//	})
 	//修改密码
 	$(".updata_btn").click(function(){
 		if(!($(".updata_oldpwd").val()==123456)){
@@ -285,41 +285,41 @@ $(function(){
 		}
 	})
 	//简历保存
-	var  namee = /^[\u4E00-\u9FA5]{1,6}$/;
-	var sfz = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
-	$(".myjl_btn").click(function(){
-		if(!(namee.test($(".namee").val()))){
-			mui.toast('请输入真实姓名');
-		}else if(!(sfz.test($(".sfz").val()))){
-			mui.toast('身份证号码有误');
-		}else if(!(phone.test($(".phonee").val()))){
-			mui.toast('手机号有误');
-		}
-	})
+//	var  namee = /^[\u4E00-\u9FA5]{1,6}$/;
+//	var sfz = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+//	$(".myjl_btn").click(function(){
+//		if(!(namee.test($(".namee").val()))){
+//			mui.toast('请输入真实姓名');
+//		}else if(!(sfz.test($(".sfz").val()))){
+//			mui.toast('身份证号码有误');
+//		}else if(!(phone.test($(".phonee").val()))){
+//			mui.toast('手机号有误');
+//		}
+//	})
 	//编辑简历
-	$(".per_top_right").click(function(){
-		location.href="myjl.html"
-	})
+//	$(".per_top_right").click(function(){
+//		location.href="myjl.html"
+//	})
 	//我的报名
-	$(".bm").click(function(){
-		location.href="mybm.html"
-	})
+//	$(".bm").click(function(){
+//		location.href="mybm.html"
+//	})
 	//我的钱包
-	$(".qb").click(function(){
-		location.href="wallet.html"
-	})
+//	$(".qb").click(function(){
+//		location.href="wallet.html"
+//	})
 	//我的收藏
-	$(".sc").click(function(){
-		location.href="mysc.html"
-	})
+//	$(".sc").click(function(){
+//		location.href="mysc.html"
+//	})
 	//我要发布
-	$(".fb").click(function(){
-		location.href="issue.html"
-	})
+//	$(".fb").click(function(){
+//		location.href="issue.html"
+//	})
 	//修改密码
-	$(".updata").click(function(){
-		location.href="pwdupdata.html"
-	})
+//	$(".updata").click(function(){
+//		location.href="pwdupdata.html"
+//	})
 	//兼职详情
 	$(".index_>li").click(function(){
 		location.href="issue_part.html"

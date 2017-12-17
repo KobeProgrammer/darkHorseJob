@@ -64,7 +64,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			queryJobType: function() {
 				var _this = this;
 				$.ajax({
-					url: url + '/job/jobType',
+					url: url + '/job/jobTypeAndAreaAndTime',
 					type: 'POST',
 					dataType: 'json',
 					success: function(data) {
