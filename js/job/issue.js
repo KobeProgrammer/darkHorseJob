@@ -56,6 +56,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			this.queryJobType(); //查询出全部的类型
 			commont.selectTime(); //MUI时间插件
 			commont.NoTime(); //点击禁止选择时间
+			commont.adress();
 		},
 		methods: {
 			/**

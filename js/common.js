@@ -312,8 +312,12 @@ $(function(){
 	$(".sc").click(function(){
 		location.href="mysc.html"
 	})
-	//我要发布
+	//我的发布
 	$(".fb").click(function(){
+		location.href="myissue.html"
+	})
+	//我要发布
+	$(".my_btn").click(function(){
 		location.href="issue.html"
 	})
 	//修改密码
@@ -340,6 +344,13 @@ $(function(){
 	//选择类型
 	$(".lx").click(function(){
 		$(".par_list").show();
+	})
+	//搜索显示隐藏
+	$(".par_s").click(function(){
+		$(".par_box").hide();
+	})
+	$(".par_box>li").click(function(){
+		$(".par_box").hide();
 	})
 })
 //验证码倒计时
