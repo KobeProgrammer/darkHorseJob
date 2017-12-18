@@ -347,11 +347,20 @@ $(function(){
 		$(".par_list").show();
 	})
 	//搜索显示隐藏
+	$(".sousuo").click(function(){
+		$(".index_box1").hide();
+		$(".index_box2").show();
+		$(".par_box").show()
+	})
 	$(".par_s").click(function(){
-		$(".par_box").hide();
+		$(".par_box").hide()
+	})
+	$(".index_box2_left").click(function(){
+		$(".index_box2").hide();
+		$(".index_box1").show();
 	})
 	$(".par_box>li").click(function(){
-		$(".par_box").hide();
+		$(".par_box").hide()
 	})
 })
 //验证码倒计时

@@ -63,9 +63,12 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 
 		}
 	})
-	
-		window.onload = function() {
-			vm.initVuePage();
-	};
+		console.log(vm.$nextTick())
+			 vm.$nextTick(function () {
+        // DOM 现在更新了
+ mui("#slider").slider({
+               interval: 3000
+          });
+      })
 
 });

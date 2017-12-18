@@ -12,61 +12,63 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav index_head">
-			<a class="address">重庆<span class="mui-icon mui-icon-arrowdown"></span></a>
-			<a class="myed" href="personal.html"><span class="mui-icon mui-icon-contact"></span></a>
-			<div class="mui-input-row mui-search sousuo">
-				<input type="search" class="mui-input-clear index_sou" placeholder="大家都在搜：实习">
+
+		<div class="index_box1">
+			<header class="mui-bar mui-bar-nav index_head">
+				<a class="address">重庆<span class="mui-icon mui-icon-arrowdown"></span></a>
+				<a class="myed" href="personal.html"><span class="mui-icon mui-icon-contact"></span></a>
+				<div class="mui-input-row mui-search sousuo">
+					<input type="search" class="mui-input-clear index_sou" placeholder="大家都在搜：实习">
+				</div>
+			</header>
+			<!-- 轮番图 -->
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="images/yuantiao.jpg">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/shuijiao.jpg">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/muwu.jpg">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/cbd.jpg">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="images/yuantiao.jpg">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="images/shuijiao.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
 			</div>
-		</header>
-		<!-- 轮番图 -->
-		<div id="slider" class="mui-slider">
-			<div class="mui-slider-group mui-slider-loop">
-				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-				<div class="mui-slider-item mui-slider-item-duplicate">
-					<a href="#">
-						<img src="images/yuantiao.jpg">
-					</a>
-				</div>
-				<!-- 第一张 -->
-				<div class="mui-slider-item">
-					<a href="#">
-						<img src="images/shuijiao.jpg">
-					</a>
-				</div>
-				<!-- 第二张 -->
-				<div class="mui-slider-item">
-					<a href="#">
-						<img src="images/muwu.jpg">
-					</a>
-				</div>
-				<!-- 第三张 -->
-				<div class="mui-slider-item">
-					<a href="#">
-						<img src="images/cbd.jpg">
-					</a>
-				</div>
-				<!-- 第四张 -->
-				<div class="mui-slider-item">
-					<a href="#">
-						<img src="images/yuantiao.jpg">
-					</a>
-				</div>
-				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-				<div class="mui-slider-item mui-slider-item-duplicate">
-					<a href="#">
-						<img src="images/shuijiao.jpg">
-					</a>
-				</div>
-			</div>
-			<div class="mui-slider-indicator">
-				<div class="mui-indicator mui-active"></div>
-				<div class="mui-indicator"></div>
-				<div class="mui-indicator"></div>
-				<div class="mui-indicator"></div>
-			</div>
-		</div>
-		<div id="vueJob">
+
 			<!--遮罩-->
 			<div class="index_address_list_box">
 				<!--区域选择-->
@@ -128,146 +130,168 @@
 					</div>
 				</div>
 			</div>
-			<ul class="mui-table-view mui-table-view-striped index_ mui-table-view-condensed">
-				<li class="mui-table-view-cell">
-					<div class="mui-slider-cell">
-						<div class="oa-contact-cell mui-table">
-							<div class="oa-contact-avatar mui-table-cell">
-								<img src="images/60x60.gif" />
-							</div>
-							<div class="oa-contact-content mui-table-cell">
-								<div class="mui-clearfix">
-									<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-									<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-								</div>
-								<p class="oa-contact-email mui-h6">
-									天河&nbsp;&nbsp;11月25日起工作（共96天）
-								</p>
-								<div class="bottom clearfix">
-									<div class="money">14元/小时</div>
-									<div class="time">刚刚</div>
-								</div>
-							</div>
-						</div>
-					</div>
+		</div>
+		<div class="index_box2">
+			<header class="mui-bar mui-bar-nav per_head">
+				<a class="index_box2_left mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<a class="myed par_s">搜索 </a>
+				<div class="mui-input-row mui-search sousuo">
+					<input type="text" class="index_sou1" placeholder="大家都在搜：实习">
+				</div>
+			</header>
+			<ul class="par_box">
+				<p>热搜</p>
+				<li>
+					<span>实习</span>
 				</li>
-
-				<li class="mui-table-view-cell">
-					<div class="mui-slider-cell">
-						<div class="oa-contact-cell mui-table">
-							<div class="oa-contact-avatar mui-table-cell">
-								<img src="images/60x60.gif" />
-							</div>
-							<div class="oa-contact-content mui-table-cell">
-								<div class="mui-clearfix">
-									<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-									<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-								</div>
-								<p class="oa-contact-email mui-h6">
-									天河&nbsp;&nbsp;11月25日起工作（共96天）
-								</p>
-								<div class="bottom clearfix">
-									<div class="money">14元/小时</div>
-									<div class="time">刚刚</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				<li>
+					<span>日结</span>
 				</li>
-
-				<li class="mui-table-view-cell">
-					<div class="mui-slider-cell">
-						<div class="oa-contact-cell mui-table">
-							<div class="oa-contact-avatar mui-table-cell">
-								<img src="images/60x60.gif" />
-							</div>
-							<div class="oa-contact-content mui-table-cell">
-								<div class="mui-clearfix">
-									<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-									<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-								</div>
-								<p class="oa-contact-email mui-h6">
-									天河&nbsp;&nbsp;11月25日起工作（共96天）
-								</p>
-								<div class="bottom clearfix">
-									<div class="money">14元/小时</div>
-									<div class="time">刚刚</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</li>
-
-				<li class="mui-table-view-cell">
-					<div class="mui-slider-cell">
-						<div class="oa-contact-cell mui-table">
-							<div class="oa-contact-avatar mui-table-cell">
-								<img src="images/60x60.gif" />
-							</div>
-							<div class="oa-contact-content mui-table-cell">
-								<div class="mui-clearfix">
-									<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-									<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-								</div>
-								<p class="oa-contact-email mui-h6">
-									天河&nbsp;&nbsp;11月25日起工作（共96天）
-								</p>
-								<div class="bottom clearfix">
-									<div class="money">14元/小时</div>
-									<div class="time">刚刚</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</li>
-
-				<li class="mui-table-view-cell">
-					<div class="mui-slider-cell">
-						<div class="oa-contact-cell mui-table">
-							<div class="oa-contact-avatar mui-table-cell">
-								<img src="images/60x60.gif" />
-							</div>
-							<div class="oa-contact-content mui-table-cell">
-								<div class="mui-clearfix">
-									<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-									<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-								</div>
-								<p class="oa-contact-email mui-h6">
-									天河&nbsp;&nbsp;11月25日起工作（共96天）
-								</p>
-								<div class="bottom clearfix">
-									<div class="money">14元/小时</div>
-									<div class="time">刚刚</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</li>
-
-				<li class="mui-table-view-cell">
-					<div class="mui-slider-cell">
-						<div class="oa-contact-cell mui-table">
-							<div class="oa-contact-avatar mui-table-cell">
-								<img src="images/60x60.gif" />
-							</div>
-							<div class="oa-contact-content mui-table-cell">
-								<div class="mui-clearfix">
-									<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-									<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-								</div>
-								<p class="oa-contact-email mui-h6">
-									天河&nbsp;&nbsp;11月25日起工作（共96天）
-								</p>
-								<div class="bottom clearfix">
-									<div class="money">14元/小时</div>
-									<div class="time">刚刚</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				<li>
+					<span>哈哈</span>
 				</li>
 			</ul>
+			<div class="index_box2_ss"></div>
 		</div>
+		<ul class="mui-table-view mui-table-view-striped index_ mui-table-view-condensed">
+			<li class="mui-table-view-cell">
+				<div class="mui-slider-cell">
+					<div class="oa-contact-cell mui-table">
+						<div class="oa-contact-avatar mui-table-cell">
+							<img src="images/60x60.gif" />
+						</div>
+						<div class="oa-contact-content mui-table-cell">
+							<div class="mui-clearfix">
+								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
+								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
+							</div>
+							<p class="oa-contact-email mui-h6">
+								天河&nbsp;&nbsp;11月25日起工作（共96天）
+							</p>
+							<div class="bottom clearfix">
+								<div class="money">14元/小时</div>
+								<div class="time">刚刚</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+
+			<li class="mui-table-view-cell">
+				<div class="mui-slider-cell">
+					<div class="oa-contact-cell mui-table">
+						<div class="oa-contact-avatar mui-table-cell">
+							<img src="images/60x60.gif" />
+						</div>
+						<div class="oa-contact-content mui-table-cell">
+							<div class="mui-clearfix">
+								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
+								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
+							</div>
+							<p class="oa-contact-email mui-h6">
+								天河&nbsp;&nbsp;11月25日起工作（共96天）
+							</p>
+							<div class="bottom clearfix">
+								<div class="money">14元/小时</div>
+								<div class="time">刚刚</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+
+			<li class="mui-table-view-cell">
+				<div class="mui-slider-cell">
+					<div class="oa-contact-cell mui-table">
+						<div class="oa-contact-avatar mui-table-cell">
+							<img src="images/60x60.gif" />
+						</div>
+						<div class="oa-contact-content mui-table-cell">
+							<div class="mui-clearfix">
+								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
+								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
+							</div>
+							<p class="oa-contact-email mui-h6">
+								天河&nbsp;&nbsp;11月25日起工作（共96天）
+							</p>
+							<div class="bottom clearfix">
+								<div class="money">14元/小时</div>
+								<div class="time">刚刚</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+
+			<li class="mui-table-view-cell">
+				<div class="mui-slider-cell">
+					<div class="oa-contact-cell mui-table">
+						<div class="oa-contact-avatar mui-table-cell">
+							<img src="images/60x60.gif" />
+						</div>
+						<div class="oa-contact-content mui-table-cell">
+							<div class="mui-clearfix">
+								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
+								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
+							</div>
+							<p class="oa-contact-email mui-h6">
+								天河&nbsp;&nbsp;11月25日起工作（共96天）
+							</p>
+							<div class="bottom clearfix">
+								<div class="money">14元/小时</div>
+								<div class="time">刚刚</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+
+			<li class="mui-table-view-cell">
+				<div class="mui-slider-cell">
+					<div class="oa-contact-cell mui-table">
+						<div class="oa-contact-avatar mui-table-cell">
+							<img src="images/60x60.gif" />
+						</div>
+						<div class="oa-contact-content mui-table-cell">
+							<div class="mui-clearfix">
+								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
+								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
+							</div>
+							<p class="oa-contact-email mui-h6">
+								天河&nbsp;&nbsp;11月25日起工作（共96天）
+							</p>
+							<div class="bottom clearfix">
+								<div class="money">14元/小时</div>
+								<div class="time">刚刚</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+
+			<li class="mui-table-view-cell">
+				<div class="mui-slider-cell">
+					<div class="oa-contact-cell mui-table">
+						<div class="oa-contact-avatar mui-table-cell">
+							<img src="images/60x60.gif" />
+						</div>
+						<div class="oa-contact-content mui-table-cell">
+							<div class="mui-clearfix">
+								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
+								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
+							</div>
+							<p class="oa-contact-email mui-h6">
+								天河&nbsp;&nbsp;11月25日起工作（共96天）
+							</p>
+							<div class="bottom clearfix">
+								<div class="money">14元/小时</div>
+								<div class="time">刚刚</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
