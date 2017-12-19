@@ -68,51 +68,7 @@
 					<div class="mui-indicator"></div>
 				</div>
 			</div>
-
-			<!--遮罩-->
-			<div class="index_address_list_box">
-				<!--区域选择-->
-				<div class="index_address_list">
-					<div class="index_address_tit">
-						<div class="active index_address_list1">
-							<span>区域</span>
-							<img src="images/icon/down_active.png" />
-						</div>
-						<div class="index_address_list2">
-							<span>类型</span>
-							<img src="images/icon/down.png" />
-						</div>
-						<div class="index_address_list3">
-							<span>时间</span>
-							<img src="images/icon/down.png" />
-						</div>
-					</div>
-					<div class="index_address_cont index_address_cont1">
-						<div>选择区域</div>
-						<ul class="index_address_cont_text">
-							<p><span>全部</span></p>
-							<li v-for="ja in jobArea"><span>{{ja.areaName}}</span></li>
-						</ul>
-					</div>
-					<div class="index_address_cont index_address_cont2">
-						<div>选择类型</div>
-						<ul class="index_address_cont_text">
-							<p><span>全部</span></p>
-							<li v-for="jt in jobType"><span>{{jt.jtName}}</span></li>
-						</ul>
-					</div>
-					<div class="index_address_cont index_address_cont3">
-						<div>选择时间</div>
-						<ul class="index_address_cont_text3">
-							<li class="active"><span>全部</span></li>
-							<li><span>日兼职</span></li>
-							<li><span>长期兼职</span></li>
-							<li><span>周末兼职</span></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
+	
 			<!--岗位-->
 			<div class="index_g">
 				<div>
@@ -131,12 +87,13 @@
 				</div>
 			</div>
 		</div>
+		<div id="vueJob" >
 		<div class="index_box2">
 			<header class="mui-bar mui-bar-nav per_head">
-				<a class="index_box2_left mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-				<a class="myed par_s">搜索 </a>
+				<a class="index_box2_left mui-action-back mui-icon mui-icon-left-nav mui-pull-left"  @click="returnJob"></a>
+				<a class="myed par_s" @click="searchJob">搜索 </a>
 				<div class="mui-input-row mui-search sousuo">
-					<input type="text" class="index_sou1" placeholder="大家都在搜：实习">
+					<input type="text" class="index_sou1" placeholder="大家都在搜：实习" v-model="name">
 				</div>
 			</header>
 			<ul class="par_box">
@@ -153,145 +110,82 @@
 			</ul>
 			<div class="index_box2_ss"></div>
 		</div>
-		<ul class="mui-table-view mui-table-view-striped index_ mui-table-view-condensed">
-			<li class="mui-table-view-cell">
+		
+		<!--遮罩-->
+			<div class="index_address_list_box">
+				<!--区域选择-->
+				<div class="index_address_list">
+					<div class="index_address_tit">
+						<div class="active index_address_list1">
+							<span v-if="areaName == null">区域</span>
+							<span v-if="areaName != null">{{areaName}}</span>
+							<img src="images/icon/down_active.png" />
+						</div>
+						<div class="index_address_list2">
+							<span v-if="jtName == null ">类型</span>
+							<span v-if="jtName != null ">{{jtName}}</span>
+							<img src="images/icon/down.png" />
+						</div>
+						<div class="index_address_list3">
+							<span v-if="jttName == null">时间</span>
+							<span v-if="jttName != null">{{jttName}}</span>
+							<img src="images/icon/down.png" />
+						</div>
+					</div>
+					<div class="index_address_cont index_address_cont1">
+						<div>选择区域</div>
+						<ul class="index_address_cont_text">
+							<p @click="jobTypeArea(0,$event)"><span>全部</span></p>
+							<li v-for="ja in jobArea" @click="jobTypeArea(ja,$event)"><span>{{ja.areaName}}</span></li>
+						</ul>
+					</div>
+					<div class="index_address_cont index_address_cont2">
+						<div>选择类型</div>
+						<ul class="index_address_cont_text">
+							<p @click="jobSelectType(0,$event)"><span>全部</span></p>
+							<li v-for="jt in jobType" @click="jobSelectType(jt,$event)"><span>{{jt.jtName}}</span></li>
+						</ul>
+					</div>
+					<div class="index_address_cont index_address_cont3">
+						<div v-if="jttName == null">选择时间</div>
+						<div v-if="jttName != null">{{jttName}}</div>
+						<ul class="index_address_cont_text3">
+							<li class="active" @click="jobTimeType(null,0,$event)"><span>全部</span></li>
+							<li><span @click="jobTimeType('日兼职',1,$event)">日兼职</span></li>
+							<li><span @click="jobTimeType('长期兼职',2,$event)">长期兼职</span></li>
+							<li><span @click="jobTimeType('周末兼职',3,$event)">周末兼职</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		
+		<ul class="mui-table-view mui-table-view-striped index_ mui-table-view-condensed" id="jobLi">
+
+			<li class="mui-table-view-cell" v-for="j in job" @click="intoJob(j)">
 				<div class="mui-slider-cell">
 					<div class="oa-contact-cell mui-table">
 						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
+							<img :src="j.userPhoto | photo" />
 						</div>
 						<div class="oa-contact-content mui-table-cell">
 							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
+								<h4 class="oa-contact-name tit">{{j.jobName}}</h4>
 								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
 							</div>
 							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
+								{{j.areaName}}&nbsp;&nbsp;{{j.jobWorkbeginTime | formatTiem}}&nbsp;&nbsp;起工作（共{{j.time}}天）
 							</p>
 							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-								<div class="time">刚刚</div>
+								<div class="money">{{j.jobNumber}}{{j.jttName}}</div>
+								<div class="time">{{j.jobCreateTtime | showTime}}</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</li>
 
-			<li class="mui-table-view-cell">
-				<div class="mui-slider-cell">
-					<div class="oa-contact-cell mui-table">
-						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
-						</div>
-						<div class="oa-contact-content mui-table-cell">
-							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-							</div>
-							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
-							</p>
-							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-								<div class="time">刚刚</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li class="mui-table-view-cell">
-				<div class="mui-slider-cell">
-					<div class="oa-contact-cell mui-table">
-						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
-						</div>
-						<div class="oa-contact-content mui-table-cell">
-							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-							</div>
-							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
-							</p>
-							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-								<div class="time">刚刚</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li class="mui-table-view-cell">
-				<div class="mui-slider-cell">
-					<div class="oa-contact-cell mui-table">
-						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
-						</div>
-						<div class="oa-contact-content mui-table-cell">
-							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-							</div>
-							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
-							</p>
-							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-								<div class="time">刚刚</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li class="mui-table-view-cell">
-				<div class="mui-slider-cell">
-					<div class="oa-contact-cell mui-table">
-						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
-						</div>
-						<div class="oa-contact-content mui-table-cell">
-							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-							</div>
-							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
-							</p>
-							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-								<div class="time">刚刚</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li class="mui-table-view-cell">
-				<div class="mui-slider-cell">
-					<div class="oa-contact-cell mui-table">
-						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
-						</div>
-						<div class="oa-contact-content mui-table-cell">
-							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-							</div>
-							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
-							</p>
-							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-								<div class="time">刚刚</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
 		</ul>
+		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>

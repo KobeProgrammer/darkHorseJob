@@ -96,11 +96,14 @@ define(function() {
 				}
 			})
 		},
-		adress : function(){
+		/**
+		 * 选择地址
+		 */
+		adress: function() {
 			(function($, doc) {
 				$.init();
 				$.ready(function() {
-							var cityPicker3 = new $.PopPicker({
+					var cityPicker3 = new $.PopPicker({
 						layer: 3
 					});
 					cityPicker3.setData(cityData3);
@@ -108,18 +111,40 @@ define(function() {
 					var cityResult3 = doc.querySelector(".adddss")
 					showCityPickerButton.addEventListener('tap', function(event) {
 						cityPicker3.show(function(items) {
-							if(items[2].text == undefined){
-								cityResult3.value =items[0].text + items[1].text;
-							}else{
-								cityResult3.value =items[0].text + items[1].text + items[2].text;
+							if(items[2].text == undefined) {
+								cityResult3.value = items[0].text + items[1].text;
+							} else {
+								cityResult3.value = items[0].text + items[1].text + items[2].text;
 							}
-							
+
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});
 					}, false);
-							});
+				});
 			})(mui, document);
+		},
+		/**
+		 * 主页 选项卡
+		 */
+		indexTypeClick: function() {
+			$(".index_address_tit>div").click(function() {
+				$(this).addClass("active").siblings().removeClass("active");
+				$(this).find("img").attr("src", "images/icon/down_active.png").parent().siblings().find("img").attr("src", "images/icon/down.png")
+				if($(".index_address_list1").hasClass("active")) {
+					$(".index_address_cont1").show(300);
+					$(".index_address_cont2").hide(300);
+					$(".index_address_cont3").hide(300);
+				} else if($(".index_address_list2").hasClass("active")) {
+					$(".index_address_cont2").show(300);
+					$(".index_address_cont1").hide(300);
+					$(".index_address_cont3").hide(300);
+				} else if($(".index_address_list3").hasClass("active")) {
+					$(".index_address_cont3").show(300);
+					$(".index_address_cont2").hide(300);
+					$(".index_address_cont1").hide(300);
+				}
+			})
 		},
 	}
 });

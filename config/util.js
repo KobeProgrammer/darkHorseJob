@@ -21,7 +21,7 @@ define(function() {
 		 * 不合法 true ， 合法 false
 		 * @param {Object} val
 		 */
-		cardValidator : function(val){
+		cardValidator: function(val) {
 			if(!(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(val))) {
 				return true;
 			}
@@ -56,6 +56,19 @@ define(function() {
 				wait--;
 				return wait;
 			}
+		},
+		/**
+		 * 获取地址栏中的参数信息
+		 * 
+		 * @param name
+		 *            参数名
+		 */
+		GetQueryString: function(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			var r = window.location.search.substr(1).match(reg);
+			if(r != null)
+				return unescape(r[2]);
+			return null;
 		}
 	}
 });
