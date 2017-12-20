@@ -1123,8 +1123,9 @@ oa-contact-position {
 }
 .index_sou1{
 	display: block;
-	height: 2.7rem !important;
+	height: 2.3rem !important;
 	background: #fff !important;
+	margin-top: .2rem  !important;
 }
 .index_box2{
 	display:none;
@@ -1159,4 +1160,12 @@ oa-contact-position {
 }
 .index_box2_ss{
 	height: 2.7rem;
+}
+/*无数据页面*/
+.close_bg{
+	width: 50%;
+	position: relative;
+	left: 50%;
+	margin-left: -25%;
+	margin-top: 10rem;
 }
