@@ -93,13 +93,14 @@
 				<div>选择地址</div>
 				<div class="iss_text_img">
 					<input id='showCityPicker3' class="adddss" type="text" placeholder="请选择地址" readonly="readonly" />
+					<input type="hidden" value="" class="areadId" />
 					<img src="images/icon/down.png" />
 				</div>
 			</li>
 			<li>
 				<div>详细地址</div>
 				<div>
-					<input type="text" placeholder="请输入详细地址" v-model="jobAddress"/>
+					<input type="text"  placeholder="请输入详细地址" v-model="jobAddress"/>
 				</div>
 			</li>
 			<li>
@@ -152,7 +153,6 @@
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/mui.picker.min.js" ></script>
-		<script type="text/javascript" src="js/city.data.js" ></script>
 		<script type="text/javascript" src="js/city.data-3.js" ></script>
 		<script type="text/javascript" src="js/mui.picker.js" ></script>
 		<script type="text/javascript" src="js/mui.poppicker.js" ></script>

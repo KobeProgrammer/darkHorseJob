@@ -109,12 +109,15 @@ define(function() {
 					cityPicker3.setData(cityData3);
 					var showCityPickerButton = doc.getElementById('showCityPicker3');
 					var cityResult3 = doc.querySelector(".adddss")
+					var areadId = doc.querySelector(".areadId")
 					showCityPickerButton.addEventListener('tap', function(event) {
 						cityPicker3.show(function(items) {
 							if(items[2].text == undefined) {
 								cityResult3.value = items[0].text + items[1].text;
+								areadId.value = items[1].value;
 							} else {
 								cityResult3.value = items[0].text + items[1].text + items[2].text;
+								areadId.value = items[2].value;
 							}
 
 							//返回 false 可以阻止选择框的关闭

@@ -35,7 +35,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 				},
 			],
 			jobTypeText: null, //选中的兼职类型
-			sex : "不限",
+			sex: "不限",
 			jobMoneyText: '元/天', //选中的工资待遇
 			jobTypeId: null, //兼职类型ID
 			jobMoneyId: null, //选中的工资待遇ID
@@ -102,49 +102,56 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					mui.toast('请输入发布机构！');
 					return false;
 				} else if($(".iss_cont1 li:nth-of-type(3) input").val() == "") {
-					mui.toast('请输入详细地址！');
+					mui.toast('请选择地址！');
 					return false;
 				} else if($(".iss_cont1 li:nth-of-type(4) input").val() == "") {
-					mui.toast('请输入姓名！');
+					mui.toast('请输入详细地址！');
 					return false;
 				} else if($(".iss_cont1 li:nth-of-type(5) input").val() == "") {
+					mui.toast('请输入姓名！');
+					return false;
+				} else if($(".iss_cont1 li:nth-of-type(6) input").val() == "") {
 					mui.toast('请输入手机号！');
 					return false;
-				} else if(util.mobileValidator($(".iss_cont1 li:nth-of-type(5) input").val())) {
+				} else if(util.mobileValidator($(".iss_cont1 li:nth-of-type(6) input").val())) {
 					mui.toast('手机号有误！');
 					return false;
 				} else {
 					$.ajax({
 						url: url + '/job/dojob',
 						data: {
-							"jobAreadId":'520101',
-							"jobUserId" : ini.getLocalParams("userId"),//发布者id
-							"jobJtid" : _this.jobTypeId,//兼职类型ID
-							"jobJttid" : _this.jobMoneyId,//选中的工资待遇ID
+							"jobAreadId": $(".areadId").val(),
+							"jobUserId": ini.getLocalParams("userId"), //发布者id
+							"jobJtid": _this.jobTypeId, //兼职类型ID
+							"jobJttid": _this.jobMoneyId, //选中的工资待遇ID
 							"jobName": _this.jobName, //兼职名
 							"jobNumber": _this.jobNumber, //需招聘人数
 							"jobSex": _this.jobSex, //性别要求
 							"jobMoney": _this.jobMoney, //工资待遇
-							"jobAddress": _this.jobAddress, //工作地点
+							"jobAddress": $(".adddss").val() + _this.jobAddress, //工作地点
 							"jobCompany": _this.jobCompany, //机构名
 							"jobContacts": _this.jobContacts, //联系人
 							"jobCall": _this.jobCall, //联系人电话
 							"jobText": _this.jobText, //工作内容
-							"jobWorkbeginTime": $(".demo2_ti").html(),//	开始上班
-							"jobWorkendTime": $(".demo2_ti1").html(),//	结束上班
-							"jobBegintime": $(".demo1_ti").html(),////工作开始时间
-							"jobBegintime" : $(".demo1_ti1").html(),//工作结束时间
-							'jobComment' : ""//备注
+							"jobWorkbeginTime": $(".demo2_ti").html(), //	开始上班
+							"jobWorkendTime": $(".demo2_ti1").html(), //	结束上班
+							"jobBegintime": $(".demo1_ti").html(), ////工作开始时间
+							"jobEndtime": $(".demo1_ti1").html(), //工作结束时间
+							'jobComment': "" //备注
 						},
 						type: 'POST',
 						dataType: 'json',
 						success: function(data) {
 							if(data.code == 200) {
-
+								mui.toast('发布成功！');
+								setTimeout(function() {
+									location.href = "myissue.html"
+								}, 1000);
+							}else{
+								mui.toast('发布失败，是否填写完整！');
 							}
 						}
 					})
-					mui.toast('发布成功！');
 
 				}
 			},
@@ -192,11 +199,11 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 */
 			selectSexJob: function(e, val) {
 				this.sex = val;
-				if(val == "女"){
+				if(val == "女") {
 					this.jobSex = 0;
-				}else if(val == "男"){
+				} else if(val == "男") {
 					this.jobSex = 1;
-				}else{
+				} else {
 					this.jobSex = 2;
 				}
 				$(e.target).addClass("active").siblings().removeClass("active")

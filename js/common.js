@@ -173,31 +173,31 @@ $(function(){
 		event.stopPropagation();//阻止冒泡 
 		 return false;  
 	})
-	//收藏
-	var i =0;
-	$(".iss_sc").click(function(){
-		
-		if(i==0){
-			$(".iss_sc").find("img").attr("src","images/icon/shoucang_active.png");
-			mui.toast('已收藏');
-			++i;
-		}else{
-			$(".iss_sc").find("img").attr("src","images/icon/shouchang.png");
-			mui.toast('已取消收藏');
-			--i;
-		}
-	})
+//	//收藏
+//	var i =0;
+//	$(".iss_sc").click(function(){
+//		
+//		if(i==0){
+//			$(".iss_sc").find("img").attr("src","images/icon/shoucang_active.png");
+//			mui.toast('已收藏');
+//			++i;
+//		}else{
+//			$(".iss_sc").find("img").attr("src","images/icon/shouchang.png");
+//			mui.toast('已取消收藏');
+//			--i;
+//		}
+//	})
 	//报名
-	var ii = 0;
-	$(".baomin").click(function(){
-		if(ii==0){
-			$(".baomin").text("已报名");
-			mui.toast('报名成功');
-			++ii;
-		}
-	})
+//	var ii = 0;
+//	$(".baomin").click(function(){
+//		if(ii==0){
+//			$(".baomin").text("已报名");
+//			mui.toast('报名成功');
+//			++ii;
+//		}
+//	})
 	//手机号码正则
-	var  phone = /^1[34578]\d{9}$/;
+//	var  phone = /^1[34578]\d{9}$/;
 	//发布
 //	$(".issue_btn").click(function(){
 //		if($(".iss_cont2 li:nth-of-type(1) input").val()==""){
@@ -223,16 +223,16 @@ $(function(){
 //		}
 //	})
 	//点击选中收藏
-	$(".mysc_>li").click(function(){
-		$(this).find(".mysc_time").find("img").attr("src","images/icon/checked.png");
-		$(this).addClass("mysc_active");
-		$(this).siblings("li").find(".mysc_time").find("img").attr("src","images/icon/yuan_checked.png")
-		$(this).siblings().removeClass("mysc_active");
-	})
-	//点击取消收藏
-	$(".mysc_bott>span:first-of-type").click(function(){
-		$(".mysc_>.mysc_active").remove();
-	})
+//	$(".mysc_>li").click(function(){
+//		$(this).find(".mysc_time").find("img").attr("src","images/icon/checked.png");
+//		$(this).addClass("mysc_active");
+//		$(this).siblings("li").find(".mysc_time").find("img").attr("src","images/icon/yuan_checked.png")
+//		$(this).siblings().removeClass("mysc_active");
+//	})
+//	//点击取消收藏
+//	$(".mysc_bott>span:first-of-type").click(function(){
+//		$(".mysc_>.mysc_active").remove();
+//	})
 	//登录
 //	$(".login_btn").click(function(){
 //		if(!(phone.test($(".log_phone").val()))){

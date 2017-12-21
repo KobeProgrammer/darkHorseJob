@@ -23,7 +23,11 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 	 * 时间格式化
 	 */
 	Vue.filter('formatTiem', function(value) {
-		return value.substring(0, value.indexOf(" "))
+		if(value.indexOf(" ") < 0) {
+			return value
+		} else {
+			return value.substring(0, value.indexOf(" "))
+		}
 	})
 
 	/**

@@ -32,7 +32,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			userBirthday: null,
 			userPhoto: null,
 			userComment: null,
-			walletBean : 0,
+			walletBean: 0,
 			file: null,
 		},
 		watch: { //存入 监听值得变化
@@ -84,19 +84,19 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 				} else {
 
 					var formData = new FormData();
-					formData.append("userId",_this.userId)
-					formData.append("userName",_this.userName)
-					formData.append("userCall",_this.userCall)
-					formData.append("userSex",$('input[name="userSex"]:checked').val())
-					formData.append("userCard",_this.userCard)
-					formData.append("userBirthday",_this.userBirthday)
-					formData.append("userPwd",_this.userPwd)
-					formData.append("userState",1)
-					formData.append("file",_this.file)
+					formData.append("userId", _this.userId)
+					formData.append("userName", _this.userName)
+					formData.append("userCall", _this.userCall)
+					formData.append("userSex", $('input[name="userSex"]:checked').val())
+					formData.append("userCard", _this.userCard)
+					formData.append("userBirthday", _this.userBirthday)
+					formData.append("userPwd", _this.userPwd)
+					formData.append("userState", 1)
+					formData.append("file", _this.file)
 					$.ajax({
 						type: "POST",
 						url: url + '/user/doUser',
-						data:formData, // 你的formid
+						data: formData, // 你的formid
 						processData: false,
 						contentType: false,
 						error: function(request) {
@@ -106,7 +106,9 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 						success: function(data) {
 							if(data.code > 0) {
 								mui.toast('更新成功');
-								setTimeout(function(){ location.href="personal.html"; }, 1000);
+								setTimeout(function() {
+									location.href = "personal.html";
+								}, 1000);
 							} else if(data.code < 0) {
 								mui.toast('更新失败');
 							}
@@ -144,22 +146,57 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 				}
 				return url;
 			},
-			myBm : function(){//我的报名
-				location.href="mybm.html"
+			myBm: function() { //我的报名
+				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
+					mui.toast('请先登录！');
+					setTimeout(function() {
+						location.href = "loging.html"
+					}, 1000);
+					return;
+				}
+				location.href = "mybm.html"
 			},
-			myQb : function(){//我的钱包
-				location.href="wallet.html"
+			myQb: function() { //我的钱包
+				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
+					mui.toast('请先登录！');
+					setTimeout(function() {
+						location.href = "loging.html"
+					}, 1000);
+					return;
+				}
+				location.href = "wallet.html"
 			},
-			MySc : function(){//我的收藏
-				location.href="mysc.html"
+			MySc: function() { //我的收藏
+				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
+					mui.toast('请先登录！');
+					setTimeout(function() {
+						location.href = "loging.html"
+					}, 1000);
+					return;
+				}
+				location.href = "mysc.html"
 			},
-			myFb:function(){//我要发布
-				location.href="myissue.html"
+			myFb: function() { //我要发布
+				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
+					mui.toast('请先登录！');
+					setTimeout(function() {
+						location.href = "loging.html"
+					}, 1000);
+					return;
+				}
+				location.href = "myissue.html"
 			},
-			myUpdata : function(){
-				location.href="pwdupdata.html"
+			myUpdata: function() {
+				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
+					mui.toast('请先登录！');
+					setTimeout(function() {
+						location.href = "loging.html"
+					}, 1000);
+					return;
+				}
+				location.href = "pwdupdata.html"
 			}
-			
+
 		},
 		updated: function() { // 创建成功后
 

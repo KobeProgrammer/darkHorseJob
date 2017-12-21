@@ -13,169 +13,47 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav per_head">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">我的收藏</h1>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的收藏</h1>
 		</header>
-		<!--头部end-->
-		<ul class="mysc_ mui-table-view mui-table-view-striped mui-table-view-condensed">
-			<li class="mui-table-view-cell">
-				<div class="mui-slider-cell">
-					<div class="oa-contact-cell mui-table">
-						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
-						</div>
-						<div class="oa-contact-content mui-table-cell">
-							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-							</div>
-							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
-							</p>
-							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-							</div>
-							<div class="mysc_time">
-								<img src="images/icon/yuan_checked.png" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
+		<div id="vueMySc">
+			<!--头部end-->
+			<ul class="mysc_ mui-table-view mui-table-view-striped mui-table-view-condensed">
 
-			<li class="mui-table-view-cell">
-				<div class="mui-slider-cell">
-					<div class="oa-contact-cell mui-table">
-						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
-						</div>
-						<div class="oa-contact-content mui-table-cell">
-							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
+				<li class="mui-table-view-cell" v-for="j in job" @click="selectCollectGetJobId(j.jobId,$event)">
+					<div class="mui-slider-cell">
+						<div class="oa-contact-cell mui-table">
+							<div class="oa-contact-avatar mui-table-cell">
+								<img :src="j.userPhoto | photo" />
 							</div>
-							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
-							</p>
-							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-							</div>
-							<div class="mysc_time">
-								<img src="images/icon/yuan_checked.png" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li class="mui-table-view-cell">
-				<div class="mui-slider-cell">
-					<div class="oa-contact-cell mui-table">
-						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
-						</div>
-						<div class="oa-contact-content mui-table-cell">
-							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-							</div>
-							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
-							</p>
-							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-							</div>
-							<div class="mysc_time">
-								<img src="images/icon/yuan_checked.png" />
+							<div class="oa-contact-content mui-table-cell">
+								<div class="mui-clearfix">
+									<h4 class="oa-contact-name tit">{{j.jobName}}</h4>
+								</div>
+								<p class="oa-contact-email mui-h6">
+									{{j.areaName}}&nbsp;&nbsp;{{j.jobWorkbeginTime | formatTiem}}&nbsp;&nbsp;起工作（共{{j.time}}天）
+								</p>
+								<div class="bottom clearfix">
+									<div class="money">{{j.jobNumber}}{{j.jttName}}</div>
+								</div>
+								<div class="mysc_time" >
+									<img src="images/icon/yuan_checked.png"  />
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</li>
-
-			<li class="mui-table-view-cell">
-				<div class="mui-slider-cell">
-					<div class="oa-contact-cell mui-table">
-						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
-						</div>
-						<div class="oa-contact-content mui-table-cell">
-							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-							</div>
-							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
-							</p>
-							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-							</div>
-							<div class="mysc_time">
-								<img src="images/icon/yuan_checked.png" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li class="mui-table-view-cell">
-				<div class="mui-slider-cell">
-					<div class="oa-contact-cell mui-table">
-						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
-						</div>
-						<div class="oa-contact-content mui-table-cell">
-							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-							</div>
-							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
-							</p>
-							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-							</div>
-							<div class="mysc_time">
-								<img src="images/icon/yuan_checked.png" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-
-			<li class="mui-table-view-cell">
-				<div class="mui-slider-cell">
-					<div class="oa-contact-cell mui-table">
-						<div class="oa-contact-avatar mui-table-cell">
-							<img src="images/60x60.gif" />
-						</div>
-						<div class="oa-contact-content mui-table-cell">
-							<div class="mui-clearfix">
-								<h4 class="oa-contact-name tit">海记火锅门店服务生兼职</h4>
-								<!--<span class="oa-contact-position mui-h6">董事长</span>-->
-							</div>
-							<p class="oa-contact-email mui-h6">
-								天河&nbsp;&nbsp;11月25日起工作（共96天）
-							</p>
-							<div class="bottom clearfix">
-								<div class="money">14元/小时</div>
-							</div>
-							<div class="mysc_time">
-								<img src="images/icon/yuan_checked.png" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
-		<div class="mysc_bott_box"></div>
-		<div class="mysc_bott">
-			<span>取消收藏</span>
-			<span>我要报名</span>
+				</li>
+			</ul>
+			<div class="mysc_bott_box"></div>
+			<div class="mysc_bott">
+				<span @click="doCollect">取消收藏</span>
+				<span @click="baomin">我要报名</span>
+			</div>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
+		<script src="js/require.js" data-main="js/user/mySc.js"></script>
 	</body>
 
 </html>
