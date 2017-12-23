@@ -49,11 +49,14 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			jobCall: null, //联系人电话
 			jobText: null, //工作内容
 
+			walletBean: 0, //用户兼职豆
+
 		},
 		watch: { //存入 监听值得变化
 		},
 		mounted: function() { //页面初始化时 执行
 			this.queryJobType(); //查询出全部的类型
+			this.getUserWallet(); //查询用户兼职豆
 			commont.selectTime(); //MUI时间插件
 			commont.NoTime(); //点击禁止选择时间
 			commont.adress();
@@ -117,43 +120,96 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					mui.toast('手机号有误！');
 					return false;
 				} else {
-					$.ajax({
-						url: url + '/job/dojob',
-						data: {
-							"jobAreadId": $(".areadId").val(),
-							"jobUserId": ini.getLocalParams("userId"), //发布者id
-							"jobJtid": _this.jobTypeId, //兼职类型ID
-							"jobJttid": _this.jobMoneyId, //选中的工资待遇ID
-							"jobName": _this.jobName, //兼职名
-							"jobNumber": _this.jobNumber, //需招聘人数
-							"jobSex": _this.jobSex, //性别要求
-							"jobMoney": _this.jobMoney, //工资待遇
-							"jobAddress": $(".adddss").val() + _this.jobAddress, //工作地点
-							"jobCompany": _this.jobCompany, //机构名
-							"jobContacts": _this.jobContacts, //联系人
-							"jobCall": _this.jobCall, //联系人电话
-							"jobText": _this.jobText, //工作内容
-							"jobWorkbeginTime": $(".demo2_ti").html(), //	开始上班
-							"jobWorkendTime": $(".demo2_ti1").html(), //	结束上班
-							"jobBegintime": $(".demo1_ti").html(), ////工作开始时间
-							"jobEndtime": $(".demo1_ti1").html(), //工作结束时间
-							'jobComment': "" //备注
-						},
-						type: 'POST',
-						dataType: 'json',
-						success: function(data) {
-							if(data.code == 200) {
-								mui.toast('发布成功！');
-								setTimeout(function() {
-									location.href = "myissue.html"
-								}, 1000);
-							}else{
-								mui.toast('发布失败，是否填写完整！');
-							}
-						}
-					})
-
+					if(_this.walletBean > 150) {
+						_this.dojob(); //新增兼职信息
+					} else {
+						mui.toast('您的兼职豆不足');
+						return false;
+					}
 				}
+			},
+			/**
+			 * 发布兼职扣150个，
+			 */
+			doUpdateWallet: function() {
+				var _this = this;
+				$.ajax({
+					url: url + '/user/doUpdateWallet',
+					data: {
+						userCall: ini.getLocalParams("call"),
+						userId: ini.getLocalParams("userId"),
+						walletBean: 150
+					},
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
+						if(data.code == 200) {
+							mui.toast('发布成功！');
+							setTimeout(function() {
+								location.href = "myissue.html"
+							}, 1000);
+						} else {
+							mui.toast(data.mssage);
+						}
+					}
+				})
+			},
+			/**
+			 * 发布兼职
+			 */
+			dojob: function() {
+				$.ajax({
+					url: url + '/job/dojob',
+					data: {
+						"jobAreadId": $(".areadId").val(),
+						"jobUserId": ini.getLocalParams("userId"), //发布者id
+						"jobJtid": _this.jobTypeId, //兼职类型ID
+						"jobJttid": _this.jobMoneyId, //选中的工资待遇ID
+						"jobName": _this.jobName, //兼职名
+						"jobNumber": _this.jobNumber, //需招聘人数
+						"jobSex": _this.jobSex, //性别要求
+						"jobMoney": _this.jobMoney, //工资待遇
+						"jobAddress": $(".adddss").val() + _this.jobAddress, //工作地点
+						"jobCompany": _this.jobCompany, //机构名
+						"jobContacts": _this.jobContacts, //联系人
+						"jobCall": _this.jobCall, //联系人电话
+						"jobText": _this.jobText, //工作内容
+						"jobWorkbeginTime": $(".demo2_ti").html(), //	开始上班
+						"jobWorkendTime": $(".demo2_ti1").html(), //	结束上班
+						"jobBegintime": $(".demo1_ti").html(), ////工作开始时间
+						"jobEndtime": $(".demo1_ti1").html(), //工作结束时间
+						'jobComment': "" //备注
+					},
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
+						if(data.code == 200) {
+							_this.doUpdateWallet(); //扣除兼职豆
+						} else {
+							mui.toast('发布失败，是否填写完整！');
+						}
+					}
+				})
+			},
+			/**
+			 * 获取用户的兼职豆
+			 */
+			getUserWallet: function() {
+				var _this = this;
+				$.ajax({
+					url: url + '/user/queryWalletByCall',
+					data: {
+						userCall: ini.getLocalParams("call")
+					},
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
+						if(data.code == 200) {
+							_this.walletBean = data.obj.walletBean;
+						}
+					}
+				})
+
 			},
 			/**
 			 * 打开选择性别

@@ -270,20 +270,20 @@ $(function(){
 //		location.href="loging.html"
 //	})
 	//修改密码
-	$(".updata_btn").click(function(){
-		if(!($(".updata_oldpwd").val()==123456)){
-			mui.toast('旧密码有误！');
-		}else if($(".updata_newpwd").val().length>12 || $(".updata_newpwd").val().length<6){
-			mui.toast('请输入新密码！');
-		}else if($(".updata_newpwd").val()!=$(".updata_yespwd").val()){
-			mui.toast('两次密码不一致！');
-		}else{
-			mui.toast('保存成功！');
-			setTimeout(function(){
-				location.href="personal.html"
-			},2000)
-		}
-	})
+//	$(".updata_btn").click(function(){
+//		if(!($(".updata_oldpwd").val()==123456)){
+//			mui.toast('旧密码有误！');
+//		}else if($(".updata_newpwd").val().length>12 || $(".updata_newpwd").val().length<6){
+//			mui.toast('请输入新密码！');
+//		}else if($(".updata_newpwd").val()!=$(".updata_yespwd").val()){
+//			mui.toast('两次密码不一致！');
+//		}else{
+//			mui.toast('保存成功！');
+//			setTimeout(function(){
+//				location.href="personal.html"
+//			},2000)
+//		}
+//	})
 	//简历保存
 //	var  namee = /^[\u4E00-\u9FA5]{1,6}$/;
 //	var sfz = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;

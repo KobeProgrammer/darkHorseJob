@@ -93,8 +93,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 */
 			queryBmUser: function(jobId, e) {
 				if(this.isSelectcheckBox) {
-					var ul = $(e.target).parents("li");
-					console.log(ul.html())
+					location.href="bmUser.html?jobId="+jobId;
 				} 
 					this.isSelectcheckBox = true;
 

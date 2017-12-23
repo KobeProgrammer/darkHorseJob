@@ -37,6 +37,8 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			telCall: null, //拨通电话
 			isCollect: false, //是否收藏该兼职  false没有收藏   true已收藏
 
+			walletBean: 0, //用户兼职豆
+
 		},
 		watch: { //存入 监听值得变化
 
@@ -164,27 +166,74 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					return;
 				}
 
+				if(_this.walletBean < 2) { //兼职豆不足
+					mui.toast('您的兼职豆不足');
+				} else {
+					$.ajax({
+						url: url + '/job/doInsertJobByUser',
+						type: 'POST',
+						data: {
+							jobId: _this.jobId,
+							userId: ini.getLocalParams("userId")
+						},
+						dataType: 'json',
+						success: function(data) {
+							console.log(data);
+							if(data.code == 200) {
+								_this.doUpdateWallet();//报名扣除兼职豆
+							} else {
+								mui.toast('报名失败！');
+							}
+						}
+					})
+				}
+
+			},
+			/**
+			 * 获取用户的兼职豆
+			 */
+			getUserWallet: function() {
+				var _this = this;
 				$.ajax({
-					url: url + '/job/doInsertJobByUser',
-					type: 'POST',
+					url: url + '/user/queryWalletByCall',
 					data: {
-						jobId: _this.jobId,
-						userId: ini.getLocalParams("userId")
+						userCall: ini.getLocalParams("call")
 					},
+					type: 'POST',
 					dataType: 'json',
 					success: function(data) {
-						console.log(data);
+						if(data.code == 200) {
+							_this.walletBean = data.obj.walletBean;
+						}
+					}
+				})
+			},
+			/**
+			 * 发布兼职扣2个，
+			 */
+			doUpdateWallet: function() {
+				var _this = this;
+				$.ajax({
+					url: url + '/user/doUpdateWallet',
+					data: {
+						userCall: ini.getLocalParams("call"),
+						userId: ini.getLocalParams("userId"),
+						walletBean: 2
+					},
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
 						if(data.code == 200) {
 							mui.toast('报名成功！');
 							setTimeout(function() {
 								location.href = "mybm.html"
 							}, 1000);
 						} else {
-							mui.toast('报名失败！');
+							mui.toast(data.mssage);
 						}
 					}
 				})
-			}
+			},
 		},
 		updated: function() { // 创建成功后
 

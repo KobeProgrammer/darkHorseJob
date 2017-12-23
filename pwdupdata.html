@@ -14,28 +14,30 @@
 
 	<body style="background: #fff;">
 		<header class="mui-bar mui-bar-nav per_head">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">修改密码</h1>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">修改密码</h1>
 		</header>
-		<div class="updata_box">
-			<div>
-				<label>旧 密 码 ：</label>
-				<input class="updata_oldpwd" type="password" placeholder="请输入旧密码" />
+		<div id="vueUpdatePwd">
+			<div class="updata_box">
+				<div>
+					<label>旧 密 码 ：</label>
+					<input class="updata_oldpwd" v-model="odlPwd" type="password" placeholder="请输入旧密码" />
+				</div>
+				<div>
+					<label>新 密 码 ：</label>
+					<input class="updata_newpwd" v-model="newPwd" type="password" placeholder="请输入6-12位新密码" />
+				</div>
+				<div>
+					<label>确认密码：</label>
+					<input class="updata_yespwd" v-model="agePwd" type="password" placeholder="请再次输入新密码" />
+				</div>
 			</div>
-			<div>
-				<label>新 密 码 ：</label>
-				<input class="updata_newpwd" type="password" placeholder="请输入6-12位新密码" />
-			</div>
-			<div>
-				<label>确认密码：</label>
-				<input class="updata_yespwd" type="password" placeholder="请再次输入新密码" />
-			</div>
+			<div class="updata_btn" @click="updatePwd">确定修改</div>
 		</div>
-		<div class="updata_btn">确定修改</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
-
+		<script src="js/require.js" data-main="js/user/updatePwd.js"></script>
 	</body>
 
 </html>

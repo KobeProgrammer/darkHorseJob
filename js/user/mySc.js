@@ -29,7 +29,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		} else {
 			return value.substring(0, value.indexOf(" "))
 		}
-		
+
 	})
 
 	/**
@@ -50,11 +50,14 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			job: [], //分页兼职信息
 			jobId: null, //选中的兼职ID
 
+			walletBean: 0, //用户兼职豆
+
 		},
 		watch: { //存入 监听值得变化
 		},
 		mounted: function() { //页面初始化时 执行
 			this.initialCollect(); //初始化我收藏
+			this.getUserWallet(); //获取用户兼职豆
 		},
 		methods: {
 			initialCollect: function() { //初始化我收藏
@@ -76,7 +79,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			/**
 			 *  点击选中收藏赋值jobId
 			 */
-			selectCollectGetJobId : function(jobId,e){
+			selectCollectGetJobId: function(jobId, e) {
 				this.jobId = jobId;
 				var li = $(e.target).parents("li");
 				li.find(".mysc_time").find("img").attr("src", "images/icon/checked.png");
@@ -89,12 +92,12 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 */
 			doCollect: function() {
 				var _this = this;
-				
-				if(_this.jobId == null){
+
+				if(_this.jobId == null) {
 					mui.toast('请选择兼职');
 					return;
 				}
-				
+
 				$.ajax({
 					url: url + '/user/doDeleteCollect',
 					type: 'POST',
@@ -117,27 +120,74 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 */
 			baomin: function() {
 				var _this = this;
+				if(_this.walletBean < 2) { //兼职豆不足
+					mui.toast('您的兼职豆不足');
+				} else {
+					$.ajax({
+						url: url + '/job/doInsertJobByUser',
+						type: 'POST',
+						data: {
+							jobId: _this.jobId,
+							userId: ini.getLocalParams("userId")
+						},
+						dataType: 'json',
+						success: function(data) {
+							console.log(data);
+							if(data.code == 200) {
+								_this.doUpdateWallet(); //扣除2个兼职豆
+							} else {
+								mui.toast('报名失败！,请选择兼职');
+							}
+						}
+					})
+				}
+
+			},
+			/**
+			 * 获取用户的兼职豆
+			 */
+			getUserWallet: function() {
+				var _this = this;
 				$.ajax({
-					url: url + '/job/doInsertJobByUser',
-					type: 'POST',
+					url: url + '/user/queryWalletByCall',
 					data: {
-						jobId: _this.jobId,
-						userId: ini.getLocalParams("userId")
+						userCall: ini.getLocalParams("call")
 					},
+					type: 'POST',
 					dataType: 'json',
 					success: function(data) {
-						console.log(data);
+						if(data.code == 200) {
+							_this.walletBean = data.obj.walletBean;
+						}
+					}
+				})
+			},
+			/**
+			 * 发布兼职扣2个，
+			 */
+			doUpdateWallet: function() {
+				var _this = this;
+				$.ajax({
+					url: url + '/user/doUpdateWallet',
+					data: {
+						userCall: ini.getLocalParams("call"),
+						userId: ini.getLocalParams("userId"),
+						walletBean: 2
+					},
+					type: 'POST',
+					dataType: 'json',
+					success: function(data) {
 						if(data.code == 200) {
 							mui.toast('报名成功！');
 							setTimeout(function() {
 								location.href = "mybm.html"
 							}, 1000);
 						} else {
-							mui.toast('报名失败！,请选择兼职');
+							mui.toast(data.mssage);
 						}
 					}
 				})
-			}
+			},
 		},
 		updated: function() { // 创建成功后
 
