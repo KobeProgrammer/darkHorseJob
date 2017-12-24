@@ -51,7 +51,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					},
 					type: 'POST',
 					dataType: 'json',
-					success: function(data) {
+					success: function(data) {	
 						if(data.code == 200) {
 							_this.userName = data.obj.userName;
 							_this.userCall = data.obj.userCall;
@@ -62,7 +62,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 							_this.userPwd = data.obj.userPwd;
 							_this.walletBean = data.obj.walletBean
 							if(data.obj.userPhoto != null) {
-								_this.userPhoto = url + "/" + data.obj.userPhoto;
+								_this.userPhoto = url + "/images/" + data.obj.userPhoto;
 							} else {
 								_this.userPhoto = "images/60x60.gif";
 							}

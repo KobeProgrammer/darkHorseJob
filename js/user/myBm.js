@@ -54,7 +54,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 	 */
 	Vue.filter('photo', function(val) {
 		if(val != null) {
-			return url + "/" + val;
+			return url + "/images/" + val;
 		} else {
 			return "images/60x60.gif";
 		}

@@ -29,6 +29,7 @@
 					<span v-if="singinNumber >= 0 && singinNumber < 3 ">连续签到3天以上可获得5枚兼职豆</span>
 					<span v-if="singinNumber >= 3 && singinNumber < 5 ">连续签到5天以上可获得8枚兼职豆</span>
 					<span v-if="singinNumber >= 5 && singinNumber < 7 ">连续签到7天以上可获得12枚兼职豆</span>
+					<span v-if="singinNumber >= 7 ">连续签到3天以上可获得5枚兼职豆</span>
 				</div>
 			</div>
 			<div class="qiandao_right">
@@ -43,7 +44,7 @@
 				<li><span></span><span>连续签到3天后可以获得赠送5枚兼职豆</span></li>
 				<li><span></span><span>连续签到5天后可以获得赠送8枚兼职豆</span></li>
 				<li><span></span><span>连续签到7天后可以获得赠送12枚兼职豆</span></li>
-				<li v-if="isShowGetWallet"><span></span><span>您已经成功领取兼职豆</span></li>
+				<li v-if="isShowGetWallet == true && isSignin == true"><span></span><span>您已经成功领取兼职豆</span></li>
 			</ul>
 		</div>
 		<!--<div class="qiandao_l_btn" @click="walletBean" v-if="isShowGetWallet == true">领取兼职豆</div>-->

@@ -158,6 +158,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 * 发布兼职
 			 */
 			dojob: function() {
+				var _this = this;
 				$.ajax({
 					url: url + '/job/dojob',
 					data: {

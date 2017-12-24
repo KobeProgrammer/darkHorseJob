@@ -46,6 +46,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		mounted: function() { //页面初始化时 执行
 			this.detailsJob(); //兼职详情
 			this.isCollectJob(); //判断是否收藏该兼职
+			this.getUserWallet();//获取兼职信息
 		},
 		methods: {
 			/**

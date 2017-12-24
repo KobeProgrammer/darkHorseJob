@@ -51,7 +51,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 	Vue.filter('photo', function(val) {
 		console.log(val)
 		if(val != null) {
-			return url + "/" + val;
+			return url + "/images/" + val;
 		} else {
 			return "images/60x60.gif";
 		}
@@ -76,12 +76,16 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		watch: { //存入 监听值得变化
 		},
 		mounted: function() { //页面初始化时 执行
-			commont.indexTypeClick();
-			window.addEventListener('scroll', this.loadMore);
 			this.queryJobType(); //查询出全部的类型、区域
 			this.getjobByPage(); //初始化页面
+			commont.indexTypeClick();
+			window.addEventListener('scroll', this.loadMore);
+
 		},
 		methods: {
+			/**
+			 * 查询所有的区域和类型
+			 */
 			queryJobType: function() {
 				var _this = this;
 				$.ajax({
@@ -126,7 +130,8 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 						page: _this.page,
 						name: _this.name,
 						jtName: _this.jtName,
-						jttName: _this.jttName
+						jttName: _this.jttName,
+						areaId: _this.areaId
 					},
 					dataType: 'json',
 					success: function(data) {
@@ -161,7 +166,8 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					"border": "solid 1px #cdcbcb",
 					"color": "#333"
 				})
-				//				this.getjobByPage();//分页查询
+				this.page = 20;
+				this.getjobByPage(); //分页查询
 			},
 			/**
 			 * 选择兼职类型
@@ -185,7 +191,8 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					"border": "solid 1px #cdcbcb",
 					"color": "#333"
 				})
-				//				this.getjobByPage();//分页查询
+				this.page = 20;
+				this.getjobByPage(); //分页查询
 			},
 			/**
 			 * 兼职时间类型
@@ -194,7 +201,8 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 				this.jttName = jttName;
 				$(".index_address_list_box").hide(300);
 				$(e.target).parent().addClass("active").siblings().removeClass("active")
-				//				this.getjobByPage();//分页查询
+				this.page = 20;
+				this.getjobByPage(); //分页查询
 			},
 			/**
 			 * 关闭搜索
@@ -202,19 +210,30 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			returnJob: function() {
 				$(".index_box2").hide();
 				$(".index_box1").show();
+				$(".index_address_list_box").hide()
+				this.jtName = null;
+				this.jttName = null;
+				this.areaId = null;
+				this.name = null;
+				this.getjobByPage();
 			},
 			/**
 			 * 点击搜索
 			 */
 			searchJob: function() {
-				$(".par_box").hide()
+				$(".par_box").hide();
+				$(".index_address_list_box").hide()
+				this.jtName = null;
+				this.jttName = null;
+				this.areaId = null;
+				this.getjobByPage();
 			},
 			/**
 			 * 进入详细兼职中jobId
 			 * @param {Object} job
 			 */
-			intoJob : function(job){
-				location.href = "issue_part.html?jobId="+job.jobId
+			intoJob: function(job) {
+				location.href = "issue_part.html?jobId=" + job.jobId
 			}
 		},
 		updated: function() { // 创建成功后

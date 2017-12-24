@@ -13,8 +13,6 @@ require.config({
 		util: "config/util",
 		commont: "js/commont",
 	},
-
-	//	waitSeconds: 7//超时时间
 });
 
 require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util, commont) {
@@ -30,7 +28,6 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			isShowGetWallet: false, //是否显示领取兼职豆
 		},
 		watch: { //存入 监听值得变化
-
 		},
 		mounted: function() { //页面初始化时 执行
 			this.initialWallet(); //初始化钱包
@@ -70,7 +67,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					mui.toast('今天你已经签到过了哦！明天再来吧！');
 				} else { //没有签到
 					$.ajax({
-						url: url + '/user/doDeleteCollect',
+						url: url + '/user/doUpdateSigninByUserId',
 						type: 'POST',
 						data: {
 							userCall: ini.getLocalParams("call"),
@@ -82,7 +79,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 							if(data.code == 200) {
 								mui.toast('签到成功');
 								_this.initialWallet() //更新信息
-								_this.isToday(this.singinTime);
+								_this.isToday(_this.singinTime);
 							} else {
 								mui.toast('签到失败');
 								console.log(data);
@@ -95,11 +92,11 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			/**
 			 * 点击领取兼职豆
 			 */
-			walletBean: function() {
-				if(this.isShowGetWallet) {
-					
-				}
-			},
+//			walletBean: function() {
+//				if(this.isShowGetWallet) {
+//					
+//				}
+//			},
 			/**
 			 * 判断是签到是否在今天
 			 */

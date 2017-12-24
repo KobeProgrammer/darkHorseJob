@@ -20,10 +20,11 @@
 		    <h1 class="mui-title">我的钱包</h1>
 		</header>
 		<!--头部end-->
+		<div id="vuePaly" v-cloak>
 		<div class="wallet_box">
 			<div class="wallet_left">
 				<span>当前兼职豆</span>
-				<span>200枚</span>
+				<span>{{walletBean}}枚</span>
 			</div>
 			<div class="wallet_btn"><span>充值</span></div>
 		</div>
@@ -36,9 +37,11 @@
 			<li><span>20元/240枚</span></li>
 			<li><span>25元/300枚</span></li>
 		</ul>
+		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/require.js" data-main="js/user/userPaly.js"></script>
 	</body>
 
 </html>
