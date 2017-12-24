@@ -9,6 +9,9 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
 		<link rel="stylesheet" href="css/index.css" />
+		<style>
+			[v-cloak]{ display: none; }
+		</style>
 	</head>
 
 	<body>
@@ -17,7 +20,7 @@
 			<h1 class="mui-title">我的发布</h1>
 		</header>
 		<!--头部end-->
-		<div id="vueIssue">
+		<div id="vueIssue" v-cloak>
 			<ul class="mysc_ mui-table-view mui-table-view-striped mui-table-view-condensed">
 				
 				<li class="mui-table-view-cell" v-for="j in job" @click="queryBmUser(j.jobId,$event)">

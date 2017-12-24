@@ -10,6 +10,9 @@
 		<link rel="stylesheet" href="css/mui.min.css">
 		<link rel="stylesheet" href="css/mui.picker.min.css" />
 		<link rel="stylesheet" href="css/index.css" />
+		<style>
+			[v-cloak]{ display: none; }
+		</style>
 	</head>
 
 	<body style="background: #fff;">
@@ -17,7 +20,7 @@
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">修改密码</h1>
 		</header>
-		<div id="vueUpdatePwd">
+		<div id="vueUpdatePwd" v-cloak>
 			<div class="updata_box">
 				<div>
 					<label>旧 密 码 ：</label>

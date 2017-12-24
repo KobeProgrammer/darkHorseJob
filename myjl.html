@@ -9,6 +9,9 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
 		<link rel="stylesheet" href="css/index.css" />
+		<style>
+			[v-cloak]{ display: none; }
+		</style>
 	</head>
 
 	<body style="background: #FFF;">
@@ -17,7 +20,7 @@
 			<h1 class="mui-title">我的简历</h1>
 		</header>
 		<!--头部end-->
-		<div id="vueUser">
+		<div id="vueUser" v-cloak>
 		<form :action="urlAjax" enctype="multipart/form-data" id="form_user"  method="post">
 		<ul class="myjl_list">
 			<li>

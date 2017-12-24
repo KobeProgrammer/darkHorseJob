@@ -9,6 +9,9 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
 		<link rel="stylesheet" href="css/index.css" />
+		<style>
+			[v-cloak]{ display: none; }
+		</style>
 	</head>
 
 	<body>
@@ -87,7 +90,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="vueJob" >
+		<div id="vueJob" v-cloak>
 		<div class="index_box2">
 			<header class="mui-bar mui-bar-nav per_head">
 				<a class="index_box2_left mui-action-back mui-icon mui-icon-left-nav mui-pull-left"  @click="returnJob"></a>
