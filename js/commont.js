@@ -30,6 +30,7 @@ define(function() {
 								a++;
 								if(a == 1) {
 									result.innerHTML = rs.text;
+									_self.value="+截止日期";
 								} else {
 									result1.style.display = "block";
 									result1.innerHTML = rs.text;
@@ -147,7 +148,16 @@ define(function() {
 					$(".index_address_cont2").hide(300);
 					$(".index_address_cont1").hide(300);
 				}
+			});
+			
+			$(".addresse").click(function() {
+				if($(".index_address_list_box").is(":hidden")) {
+					$(".index_address_list_box").show();
+				} else {
+					$(".index_address_list_box").hide();
+				}
 			})
 		},
+		
 	}
 });

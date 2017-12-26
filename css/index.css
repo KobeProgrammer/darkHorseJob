@@ -240,14 +240,14 @@ oa-contact-position {
 }
 .index_address_tit{
 	width: 100%;
-	height: 2rem;
+	height: 3rem;
 	background: #fff;
 	border-bottom: solid 1px #cdcbcb;
 }
 .index_address_tit>div{
 	width: 33.3%;
-	height: 2rem;
-	line-height: 2rem;
+	height: 3rem;
+	line-height: 3rem;
 	float: left;
 	text-align: center;
 	border-left: solid 1px #cdcbcb ;
@@ -372,7 +372,7 @@ oa-contact-position {
 .per_top{
 	margin-top: 2.7rem;
 	width: 100%;
-	height: 9.5rem;
+	height: 8.5rem;
 	background: #fe7418;
 }
 .per_top_img{
@@ -385,7 +385,7 @@ oa-contact-position {
 	width: 6rem;
 	height: 6rem;
 	border-radius: 50%;
-	margin-top: 2rem;
+	margin-top: 1.5rem;
 	margin-left: 1rem;
 	float: left;
 }
@@ -1174,4 +1174,33 @@ oa-contact-position {
 	left: 50%;
 	margin-left: -25%;
 	margin-top: 10rem;
+}
+.addresse{
+	border-top:1px solid #eee ;
+}
+.jrgw{
+	padding-left: 12%;
+	box-sizing: border-box;
+}
+.ywc{
+	padding-left: 12%;
+	box-sizing: border-box;
+}
+.gylogo{
+	display: block;
+	width: 20%;
+	margin-top: 4.5rem;
+	margin-left: 40%;
+}
+.gy_text{
+	padding-left: 5%;
+	padding-right: 5%;
+	text-indent: 2rem;
+	margin-top: 1rem;
+}
+.gyerweima{
+	display: block;
+	width: 30%;
+	margin-left: 35%;
+	margin-top: 1rem;
 }
