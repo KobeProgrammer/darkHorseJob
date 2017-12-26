@@ -30,7 +30,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			return value.substring(0, value.indexOf(" "))
 		}
 	})
-	
+
 	/**
 	 * 计算发布的时间
 	 */
@@ -42,9 +42,12 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		var m = Math.floor(time % 86400 % 3600 / 60);
 		var s = time % 60;
 		if(d == 0) {
-			return h + '小时' + m + '分' + s + '秒前';
+			if(h == 0) {
+				return m + '分前';
+			}
+			return h + '小时' + m + '分前';
 		} else {
-			return d + "天" + h + '小时' + m + '分' + s + '秒前';
+			return d + "天" + h + '小时前';
 
 		}
 	});
@@ -71,6 +74,13 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		watch: { //存入 监听值得变化
 		},
 		mounted: function() { //页面初始化时 执行
+			if(typeof(ini.getLocalParams("call")) == "undefined" || ini.getLocalParams("call") == null) {
+				mui.toast('请先登录！');
+				setTimeout(function() {
+					location.href = "loging.html"
+				}, 200);
+				return;
+			}
 			this.initialBm(); //初始化我报名
 		},
 		methods: {
@@ -94,10 +104,10 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 * 进入详细兼职中jobId
 			 * @param {Object} job
 			 */
-			intoJob : function(job){
-				location.href = "issue_part.html?jobId="+job.jobId
+			intoJob: function(job) {
+				location.href = "issue_part.html?jobId=" + job.jobId
 			}
-			
+
 		},
 		updated: function() { // 创建成功后
 

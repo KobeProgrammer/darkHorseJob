@@ -41,11 +41,12 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		var m = Math.floor(time % 86400 % 3600 / 60);
 		var s = time % 60;
 		if(d == 0) {
-//			return h + '小时' + m + '分' + s + '秒前';
-			return h + '小时' + m;
+			if(h == 0) {
+				return m + '分前';
+			}
+			return h + '小时' + m + '分前';
 		} else {
-//			return d + "天" + h + '小时' + m + '分' + s + '秒前';
-			return d + "天" + h + '小时';
+			return d + "天" + h + '小时前';
 
 		}
 	});
@@ -80,6 +81,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		mounted: function() { //页面初始化时 执行
 			this.queryJobType(); //查询出全部的类型、区域
 			this.getjobByPage(); //初始化页面
+			this.queryJobNumber(); //查询已完成,查询今日岗位 
 			commont.indexTypeClick();
 			window.addEventListener('scroll', this.loadMore);
 
@@ -141,6 +143,25 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 						if(data.code == 200) {
 							_this.count = data.obj.count;
 							_this.job = data.obj.data;
+						}
+					}
+				})
+			},
+			queryJobNumber: function() { //查询已完成,查询今日岗位 
+				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
+					return;
+				}
+				$.ajax({
+					url: url + '/job/queryJobNumber',
+					type: 'POST',
+					data: {
+						jobId : ini.getLocalParams("userId")
+					},
+					dataType: 'json',
+					success: function(data) {
+						if(data.code == 200) {
+							$("#jobNumber").html(data.obj.jobNumber);
+							$("#finishJobnumber").html(data.obj.finishJobnumber);
 						}
 					}
 				})

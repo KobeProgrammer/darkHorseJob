@@ -272,7 +272,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 * @param {Object} val
 			 */
 			selectMoneyJob: function(e, val) {
-				this.jobMoney = val.jttName;
+				this.jobMoneyText = val.jttName;
 				this.jobMoneyId = val.jttId;
 				$(e.target).addClass("active").siblings().removeClass("active")
 				$(".iss_box").hide(100);

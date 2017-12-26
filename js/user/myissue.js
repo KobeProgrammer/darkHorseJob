@@ -54,6 +54,13 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		watch: { //存入 监听值得变化
 		},
 		mounted: function() { //页面初始化时 执行
+			if(typeof(ini.getLocalParams("call")) == "undefined" || ini.getLocalParams("call") == null) {
+				mui.toast('请先登录！');
+				setTimeout(function() {
+					location.href = "loging.html"
+				}, 200);
+				return;
+			}
 			this.initialIssue(); //初始化我发布
 		},
 		methods: {
@@ -93,9 +100,9 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 */
 			queryBmUser: function(jobId, e) {
 				if(this.isSelectcheckBox) {
-					location.href="bmUser.html?jobId="+jobId;
-				} 
-					this.isSelectcheckBox = true;
+					location.href = "bmUser.html?jobId=" + jobId;
+				}
+				this.isSelectcheckBox = true;
 
 			},
 			/**

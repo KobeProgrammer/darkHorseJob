@@ -28,7 +28,6 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			userPwd: null,
 			userCall: null,
 			userSex: null,
-			userCard: null,
 			userBirthday: null,
 			userPhoto: null,
 			userComment: null,
@@ -57,7 +56,6 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 							_this.userName = data.obj.userName;
 							_this.userCall = data.obj.userCall;
 							_this.userSex = data.obj.userSex;
-							_this.userCard = data.obj.userCard;
 							_this.userBirthday = data.obj.userBirthday;
 							_this.userId = data.obj.userId;
 							_this.userPwd = data.obj.userPwd;
@@ -94,9 +92,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 				var _this = this;
 				if(this.userName == null) {
 					mui.toast('请输入真实姓名');
-				} else if(util.cardValidator(this.userCard)) {
-					mui.toast('身份证号码有误');
-				} else if(util.mobileValidator(this.userCall)) {
+				}else if(util.mobileValidator(this.userCall)) {
 					mui.toast('手机号有误');
 				} else {
 
@@ -105,7 +101,6 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					formData.append("userName", _this.userName)
 					formData.append("userCall", _this.userCall)
 					formData.append("userSex", $('input[name="userSex"]:checked').val())
-					formData.append("userCard", _this.userCard)
 					formData.append("userBirthday", _this.userBirthday)
 					formData.append("userPwd", _this.userPwd)
 					formData.append("userState", 1)

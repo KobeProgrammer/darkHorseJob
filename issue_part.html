@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="css/mui.min.css">
 		<link rel="stylesheet" href="css/mui.picker.min.css" />
 		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="js/layer/theme/default/layer.css" />
 		<style>
 			[v-cloak]{ display: none; }
 		</style>
@@ -73,7 +74,7 @@
 					</div>
 				</li>
 		</ul>
-		<ul class="iss_cont iss_cont1" v-if="isBm == true">
+		<ul class="iss_cont iss_cont1" >
 			<li>
 				<div>公司信息</div>
 				<div>
@@ -86,14 +87,14 @@
 					<input type="text" v-model="jobContacts" readonly="readonly" />
 				</div>
 			</li>
-			<li>
+			<li v-if="isBm == true">
 				<div>联系电话</div>
 				<div>
 					<a :href="telCall">{{jobCall}}</a>
 				</div>
 			</li>
 		</ul>
-		<ul class="iss_cont iss_cont1" v-if="isBm == true">
+		<ul class="iss_cont iss_cont1" >
 			<li class="iss_he_box">
 					<div>公司地址</div>
 					<div>
