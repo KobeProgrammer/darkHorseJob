@@ -36,8 +36,9 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 	 * 发布者图片
 	 */
 	Vue.filter('photo', function(val) {
+		console.log(val)
 		if(val != null) {
-			return url + "/" + val;
+			return url + "/images/" + val;
 		} else {
 			return "images/60x60.gif";
 		}
@@ -51,6 +52,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			jobId: null, //选中的兼职ID
 
 			walletBean: 0, //用户兼职豆
+			isClick : true,//是否可以点击报名
 
 		},
 		watch: { //存入 监听值得变化
@@ -181,7 +183,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 							mui.toast('报名成功！');
 							setTimeout(function() {
 								location.href = "mybm.html"
-							}, 1000);
+							}, 200);
 						} else {
 							mui.toast(data.mssage);
 						}

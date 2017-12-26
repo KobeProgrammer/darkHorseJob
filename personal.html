@@ -27,11 +27,11 @@
 					<div class="per_top_text">
 						<span v-if="userName == null">Hello</span>
 						<span v-if="userName != null">{{userName}}</span>
-						<span class="qd" ><a href="qiandao.html" style="color: #fff;">我要签到</a></span>
+						<span class="qd" ><a @click="qiandao()" style="color: #fff;">我要签到</a></span>
 					</div>
 				</div>
 				<div class="per_top_right">
-					<a href="myjl.html"><span style="color: #fff;">编辑简历</span></a>
+					<a @click="myJl"><span style="color: #fff;">编辑简历</span></a>
 					<img src="images/icon/rightt.png" />
 				</div>
 			</div>

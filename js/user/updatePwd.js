@@ -96,7 +96,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 							mui.toast('修改成功');
 							setTimeout(function() {
 								location.href = "personal.html";
-							}, 1000)
+							}, 200)
 						}
 					}
 				})

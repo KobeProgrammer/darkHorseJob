@@ -39,6 +39,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		},
 		mounted: function() { //页面初始化时 执行
 			this.queryUserById(); //根据用户ID查询用户的指定信息
+			this.initialWallet();//初始化钱包信息
 
 		},
 		methods: {
@@ -51,8 +52,8 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					},
 					type: 'POST',
 					dataType: 'json',
-					success: function(data) {	
-						if(data.code == 200) {
+					success: function(data) {
+						if(data.code == 200 && data.obj != null) {
 							_this.userName = data.obj.userName;
 							_this.userCall = data.obj.userCall;
 							_this.userSex = data.obj.userSex;
@@ -60,12 +61,28 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 							_this.userBirthday = data.obj.userBirthday;
 							_this.userId = data.obj.userId;
 							_this.userPwd = data.obj.userPwd;
-							_this.walletBean = data.obj.walletBean
 							if(data.obj.userPhoto != null) {
 								_this.userPhoto = url + "/images/" + data.obj.userPhoto;
 							} else {
 								_this.userPhoto = "images/60x60.gif";
 							}
+						}
+					}
+				})
+			},
+			initialWallet: function() { //初始化钱包
+				var _this = this;
+				$.ajax({
+					url: url + '/user/queryWalletByCall',
+					type: 'POST',
+					data: {
+						userCall: ini.getLocalParams("call")
+					},
+					async: false,
+					dataType: 'json',
+					success: function(data) {
+						if(data.code == 200 && data.obj != null) {
+							_this.walletBean = data.obj.walletBean
 						}
 					}
 				})
@@ -108,7 +125,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 								mui.toast('更新成功');
 								setTimeout(function() {
 									location.href = "personal.html";
-								}, 1000);
+								}, 200);
 							} else if(data.code < 0) {
 								mui.toast('更新失败');
 							}
@@ -151,7 +168,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					mui.toast('请先登录！');
 					setTimeout(function() {
 						location.href = "loging.html"
-					}, 1000);
+					}, 200);
 					return;
 				}
 				location.href = "mybm.html"
@@ -161,7 +178,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					mui.toast('请先登录！');
 					setTimeout(function() {
 						location.href = "loging.html"
-					}, 1000);
+					}, 200);
 					return;
 				}
 				location.href = "wallet.html"
@@ -171,7 +188,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					mui.toast('请先登录！');
 					setTimeout(function() {
 						location.href = "loging.html"
-					}, 1000);
+					}, 200);
 					return;
 				}
 				location.href = "mysc.html"
@@ -181,7 +198,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					mui.toast('请先登录！');
 					setTimeout(function() {
 						location.href = "loging.html"
-					}, 1000);
+					}, 200);
 					return;
 				}
 				location.href = "myissue.html"
@@ -191,10 +208,30 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					mui.toast('请先登录！');
 					setTimeout(function() {
 						location.href = "loging.html"
-					}, 1000);
+					}, 200);
 					return;
 				}
 				location.href = "pwdupdata.html"
+			},
+			qiandao: function() {
+				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
+					mui.toast('请先登录！');
+					setTimeout(function() {
+						location.href = "loging.html"
+					}, 200);
+					return;
+				}
+				location.href = "qiandao.html"
+			},
+			myJl : function(){
+				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
+					mui.toast('请先登录！');
+					setTimeout(function() {
+						location.href = "loging.html"
+					}, 200);
+					return;
+				}
+				location.href = "myjl.html"
 			}
 
 		},

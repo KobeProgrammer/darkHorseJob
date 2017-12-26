@@ -167,6 +167,8 @@ ul,li{
 
 .oa-contact-avatar img {
 	border-radius: 50%;
+	width: 4rem;
+	height: 4rem;
 }
 
 .oa-contact-content {

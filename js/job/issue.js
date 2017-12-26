@@ -147,7 +147,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 							mui.toast('发布成功！');
 							setTimeout(function() {
 								location.href = "myissue.html"
-							}, 1000);
+							}, 200);
 						} else {
 							mui.toast(data.mssage);
 						}

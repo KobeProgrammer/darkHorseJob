@@ -35,20 +35,13 @@ require(['jquery', 'ini', 'Vue', 'util'], function($, ini, Vue, util) {
 				dataType: 'json',
 				success: function(data) {
 					if(data.code > 0) {
-						var setCOde = setInterval(function() {
-							var wait = util.time(_this); //定时效果60s
-							console.log(wait)
-							if(wait == 60) {
-								clearInterval(setCOde);
-							}
-						}, 1000);
+						time(_this);
 						ini.setSessionParams("verificationCode", data.obj); //把验证码存入sessionStorage
 					} else if(data.code == -400) { //已被注册
 						mui.toast(data.mssage);
 					} else {
 						mui.toast('发送验证失败！');
 					}
-
 				}
 			});
 		}
@@ -70,21 +63,21 @@ require(['jquery', 'ini', 'Vue', 'util'], function($, ini, Vue, util) {
 			mui.toast('验证码有误');
 		} else {
 			$.ajax({
-			type: "post",
-			url: url + "/user/register",
-			data: {
-				"userCall": $(".reg_phone").val(),
-				"userPwd": $(".reg_pwd").val()
-			},
-			dataType: 'json',
-			success: function(data) {
-				if(data.code > 0) {
-					login($(".reg_phone").val(),$(".reg_pwd").val());
-				} else {
-					mui.toast('注册失败!!');
+				type: "post",
+				url: url + "/user/register",
+				data: {
+					"userCall": $(".reg_phone").val(),
+					"userPwd": $(".reg_pwd").val()
+				},
+				dataType: 'json',
+				success: function(data) {
+					if(data.code > 0) {
+						login($(".reg_phone").val(), $(".reg_pwd").val());
+					} else {
+						mui.toast('注册失败!!');
+					}
 				}
-			}
-		});
+			});
 		}
 	});
 
@@ -98,11 +91,11 @@ require(['jquery', 'ini', 'Vue', 'util'], function($, ini, Vue, util) {
 		} else if($(".log_pwd").val().length > 12 || $(".log_pwd").val().length < 6) {
 			mui.toast('请输入6-12位密码！');
 		} else {
-			login($(".log_phone").val(),$(".log_pwd").val()); //登录
+			login($(".log_phone").val(), $(".log_pwd").val()); //登录
 		}
 	});
 
-	function login(call,pwd) {
+	function login(call, pwd) {
 		$.ajax({
 			type: "post",
 			url: url + "/user/login",
@@ -112,7 +105,6 @@ require(['jquery', 'ini', 'Vue', 'util'], function($, ini, Vue, util) {
 			},
 			dataType: 'json',
 			success: function(data) {
-				console.log(data.obj.userId)
 				if(data.code > 0) {
 					window.localStorage.clear();
 					//把电话号码存入localStorage
@@ -120,10 +112,29 @@ require(['jquery', 'ini', 'Vue', 'util'], function($, ini, Vue, util) {
 					ini.setLocalParams("userId", data.obj.userId);
 					location.href = "index.html"
 				} else {
-					mui.toast('失败!!');
+					mui.toast('密码或账号有误!');
 				}
 			}
 		});
+	}
+
+	var wait = 60;
+
+	function time(o) {
+		if(wait == 0) {
+			o.removeAttribute("disabled");
+			o.value = "获取验证码";
+			o.innerHTML = "获取验证码";
+			wait = 60;
+		} else {
+			o.setAttribute("disabled", true);
+			o.value = "重新发送(" + wait + ")";
+			o.innerHTML = "重新发送(" + wait + ")";
+			wait--;
+			setTimeout(function() {
+				time(o)
+			}, 1000)
+		}
 	}
 
 });

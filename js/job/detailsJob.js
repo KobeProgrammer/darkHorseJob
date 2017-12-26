@@ -38,6 +38,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			isCollect: false, //是否收藏该兼职  false没有收藏   true已收藏
 
 			walletBean: 0, //用户兼职豆
+			isBm : false,//是否报名
 
 		},
 		watch: { //存入 监听值得变化
@@ -47,6 +48,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			this.detailsJob(); //兼职详情
 			this.isCollectJob(); //判断是否收藏该兼职
 			this.getUserWallet();//获取兼职信息
+			this.queryMyUserJobBuId();//查询我的报名信息
 		},
 		methods: {
 			/**
@@ -108,6 +110,33 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 				})
 			},
 			/**
+			 * 判断用户是否已经报名
+			 */
+			queryMyUserJobBuId : function(){
+				var _this = this;
+				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
+					return;
+				}
+				$.ajax({
+					url: url + '/user/queryMyUserJobBuId',
+					type: 'POST',
+					data: {
+						userCall: ini.getLocalParams("call"),
+						jobId : _this.jobId
+					},
+					dataType: 'json',
+					success: function(data) {
+						console.log(data);
+						if(data.code == 200) {
+							if(data.obj.length != 0) {
+								$(".baomin").css("background","#777777")
+								_this.isBm = true;
+							}
+						}
+					}
+				})
+			},
+			/**
 			 * 点击我的收藏
 			 */
 			doCollect: function() {
@@ -116,7 +145,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					mui.toast('请先登录！');
 					setTimeout(function() {
 						location.href = "loging.html"
-					}, 1000);
+					}, 200);
 					return;
 				}
 
@@ -159,11 +188,16 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 */
 			baomin: function() {
 				var _this = this;
+				
+				if(_this.isBm == true){//已经报名
+					return;
+				}
+				
 				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
 					mui.toast('请先登录！');
 					setTimeout(function() {
 						location.href = "loging.html"
-					}, 1000);
+					}, 200);
 					return;
 				}
 
@@ -204,7 +238,9 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					dataType: 'json',
 					success: function(data) {
 						if(data.code == 200) {
-							_this.walletBean = data.obj.walletBean;
+							if(data.obj != null){
+								_this.walletBean = data.obj.walletBean;
+							}
 						}
 					}
 				})
@@ -228,7 +264,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 							mui.toast('报名成功！');
 							setTimeout(function() {
 								location.href = "mybm.html"
-							}, 1000);
+							}, 200);
 						} else {
 							mui.toast(data.mssage);
 						}

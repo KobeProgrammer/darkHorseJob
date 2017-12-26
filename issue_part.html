@@ -73,7 +73,7 @@
 					</div>
 				</li>
 		</ul>
-		<ul class="iss_cont iss_cont1">
+		<ul class="iss_cont iss_cont1" v-if="isBm == true">
 			<li>
 				<div>公司信息</div>
 				<div>
@@ -93,7 +93,7 @@
 				</div>
 			</li>
 		</ul>
-		<ul class="iss_cont iss_cont1">
+		<ul class="iss_cont iss_cont1" v-if="isBm == true">
 			<li class="iss_he_box">
 					<div>公司地址</div>
 					<div>
@@ -113,7 +113,8 @@
 				<img src="images/icon/fenxiang.png"/>
 				<span>分享</span>
 			</div>
-			<div class="baomin" @click="baomin">我要报名</div>
+			<div v-if="isBm == true" class="baomin" @click="baomin">已报名</div>
+			<div v-if="isBm == false" class="baomin" @click="baomin">我要报名</div>
 		</div>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>

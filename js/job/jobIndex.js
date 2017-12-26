@@ -41,9 +41,11 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		var m = Math.floor(time % 86400 % 3600 / 60);
 		var s = time % 60;
 		if(d == 0) {
-			return h + '小时' + m + '分' + s + '秒前';
+//			return h + '小时' + m + '分' + s + '秒前';
+			return h + '小时' + m;
 		} else {
-			return d + "天" + h + '小时' + m + '分' + s + '秒前';
+//			return d + "天" + h + '小时' + m + '分' + s + '秒前';
+			return d + "天" + h + '小时';
 
 		}
 	});
@@ -114,7 +116,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 							var height = vueGoods.clientHeight;
 							vueGoods.style.height = height + 68.4 * 20 + 'px';
 							_this.getjobByPage();
-						}, 1000)
+						}, 300)
 					}
 				}
 			},
