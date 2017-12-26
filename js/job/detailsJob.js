@@ -9,6 +9,7 @@ require.config({
 		jquery: "js/jquery-1.11.0",
 		Vue: "js/vue.min",
 		resource: "js/vue-resource",
+		layer: "js/layer/layer",
 		ini: "config/ini",
 		util: "config/util",
 		commont: "js/commont",
@@ -16,7 +17,7 @@ require.config({
 	//	waitSeconds: 7//超时时间
 });
 
-require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util, commont) {
+require(['jquery', 'ini', 'Vue', 'util', 'commont','layer'], function($, ini, Vue, util, commont,layer) {
 	var url = ini.url; //获取通用的url
 	var vm = new Vue({
 		el: '#detailsJob',
@@ -36,9 +37,8 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			jobSex: null, //性别
 			telCall: null, //拨通电话
 			isCollect: false, //是否收藏该兼职  false没有收藏   true已收藏
-
 			walletBean: 0, //用户兼职豆
-			isBm : false,//是否报名
+			isBm: false, //是否报名
 
 		},
 		watch: { //存入 监听值得变化
@@ -47,8 +47,8 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		mounted: function() { //页面初始化时 执行
 			this.detailsJob(); //兼职详情
 			this.isCollectJob(); //判断是否收藏该兼职
-			this.getUserWallet();//获取兼职信息
-			this.queryMyUserJobBuId();//查询我的报名信息
+			this.getUserWallet(); //获取兼职信息
+			this.queryMyUserJobBuId(); //查询我的报名信息
 		},
 		methods: {
 			/**
@@ -71,7 +71,9 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 							_this.jobName = data.obj.jobName //兼职名称
 							_this.jobAddress = data.obj.jobAddress //工作地点
 							_this.jobCompany = data.obj.jobCompany //机构名
-							_this.jobContacts = data.obj.jobContacts //联系人
+							if(data.obj.jobContacts != null) { //隐藏用户的名
+								_this.jobContacts = data.obj.jobContacts.substring(0, 1) + "**" //联系人
+							}
 							_this.jobCall = data.obj.jobCall //联系人电话
 							_this.jobText = data.obj.jobText //工作内容
 							_this.jtName = data.obj.jtName //类型名
@@ -112,7 +114,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			/**
 			 * 判断用户是否已经报名
 			 */
-			queryMyUserJobBuId : function(){
+			queryMyUserJobBuId: function() {
 				var _this = this;
 				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
 					return;
@@ -122,14 +124,14 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					type: 'POST',
 					data: {
 						userCall: ini.getLocalParams("call"),
-						jobId : _this.jobId
+						jobId: _this.jobId
 					},
 					dataType: 'json',
 					success: function(data) {
 						console.log(data);
 						if(data.code == 200) {
 							if(data.obj.length != 0) {
-								$(".baomin").css("background","#777777")
+								$(".baomin").css("background", "#777777")
 								_this.isBm = true;
 							}
 						}
@@ -188,11 +190,10 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 */
 			baomin: function() {
 				var _this = this;
-				
-				if(_this.isBm == true){//已经报名
+				if(_this.isBm == true) { //已经报名
 					return;
 				}
-				
+
 				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
 					mui.toast('请先登录！');
 					setTimeout(function() {
@@ -215,7 +216,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 						success: function(data) {
 							console.log(data);
 							if(data.code == 200) {
-								_this.doUpdateWallet();//报名扣除兼职豆
+								_this.doUpdateWallet(); //报名扣除兼职豆
 							} else {
 								mui.toast('报名失败！');
 							}
@@ -238,7 +239,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					dataType: 'json',
 					success: function(data) {
 						if(data.code == 200) {
-							if(data.obj != null){
+							if(data.obj != null) {
 								_this.walletBean = data.obj.walletBean;
 							}
 						}
@@ -261,10 +262,18 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					dataType: 'json',
 					success: function(data) {
 						if(data.code == 200) {
-							mui.toast('报名成功！');
-							setTimeout(function() {
-								location.href = "mybm.html"
-							}, 200);
+							layer.open({
+								content: '报名成功,您确定要拨打' + _this.jobCall+"?",
+								btn: ['拨打', '取消'],
+								yes: function(index) {
+									window.location.href = "tel:"+ _this.jobCall;
+									layer.close(index);
+								},
+								end: function() {
+									location.href = "mybm.html"
+								}
+
+							});
 						} else {
 							mui.toast(data.mssage);
 						}

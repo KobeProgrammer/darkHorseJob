@@ -30,6 +30,14 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		watch: { //存入 监听值得变化
 		},
 		mounted: function() { //页面初始化时 执行
+			if(typeof(ini.getLocalParams("call")) == "undefined" || ini.getLocalParams("call") == null) {
+				mui.toast('请先登录！');
+				setTimeout(function() {
+					location.href = "loging.html"
+				}, 200);
+				return;
+			}
+			
 			this.initialWallet(); //初始化钱包
 			this.isToday(this.singinTime); //判断是否已经签到
 		},
@@ -92,11 +100,11 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			/**
 			 * 点击领取兼职豆
 			 */
-//			walletBean: function() {
-//				if(this.isShowGetWallet) {
-//					
-//				}
-//			},
+			//			walletBean: function() {
+			//				if(this.isShowGetWallet) {
+			//					
+			//				}
+			//			},
 			/**
 			 * 判断是签到是否在今天
 			 */
