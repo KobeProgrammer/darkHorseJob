@@ -129,21 +129,21 @@
 			</div>
 
 			<!--遮罩-->
-			<div class="index_address_list_box">
+			<div class="index_address_list_box" @click="closeType($event)">
 				<!--区域选择-->
-				<div class="index_address_list">
+				<div class="index_address_list" @click.stop="closeStopType">
 					<div class="index_address_tit">
-						<div class="active index_address_list1">
+						<div class="active index_address_list11">
 							<span v-if="areaName == null">区域</span>
 							<span v-if="areaName != null">{{areaName}}</span>
 							<img src="images/icon/down_active.png" />
 						</div>
-						<div class="index_address_list2">
+						<div class="index_address_list22">
 							<span v-if="jtName == null ">类型</span>
 							<span v-if="jtName != null ">{{jtName}}</span>
 							<img src="images/icon/down.png" />
 						</div>
-						<div class="index_address_list3">
+						<div class="index_address_list33">
 							<span v-if="jttName == null">时间</span>
 							<span v-if="jttName != null">{{jttName}}</span>
 							<img src="images/icon/down.png" />
@@ -153,14 +153,14 @@
 						<div>选择区域</div>
 						<ul class="index_address_cont_text">
 							<p @click="jobTypeArea(0,$event)"><span>全部</span></p>
-							<li v-for="ja in jobArea" @click="jobTypeArea(ja,$event)"><span>{{ja.areaName}}</span></li>
+							<li v-for="ja in jobArea" ><span @click="jobTypeArea(ja,$event)">{{ja.areaName}}</span></li>
 						</ul>
 					</div>
 					<div class="index_address_cont index_address_cont2">
 						<div>选择类型</div>
 						<ul class="index_address_cont_text">
 							<p @click="jobSelectType(0,$event)"><span>全部</span></p>
-							<li v-for="jt in jobType" @click="jobSelectType(jt,$event)"><span>{{jt.jtName}}</span></li>
+							<li v-for="jt in jobType"><span  @click="jobSelectType(jt,$event)">{{jt.jtName}}</span></li>
 						</ul>
 					</div>
 					<div class="index_address_cont index_address_cont3">

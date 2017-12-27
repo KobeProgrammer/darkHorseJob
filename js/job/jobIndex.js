@@ -52,7 +52,6 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 	});
 
 	Vue.filter('photo', function(val) {
-		console.log(val)
 		if(val != null) {
 			return url + "/images/" + val;
 		} else {
@@ -113,7 +112,6 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					var _this = this;
 					if(_this.count != $("#jobLi li").length) {
 						_this.page = _this.page + 20;
-						console.log(_this.page)
 						setTimeout(function() {
 							var vueGoods = document.querySelector('#vueJob')
 							var height = vueGoods.clientHeight;
@@ -140,7 +138,6 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					},
 					dataType: 'json',
 					success: function(data) {
-						console.log(data)
 						if(data.code == 200) {
 							_this.count = data.obj.count;
 							_this.job = data.obj.data;
@@ -185,7 +182,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					this.areaName = job.areaName;
 				}
 				$(".index_address_list_box").hide(300);
-				$(e.target).parent().addClass("active").siblings().removeClass("active")
+				$(e.target).parent("li").addClass("active").siblings().removeClass("active")
 				$(e.target).parent().siblings("p").find("span").css({
 					"border": "solid 1px #cdcbcb",
 					"color": "#333"
@@ -201,6 +198,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			jobSelectType: function(job, e) {
 				if(job == 0) {
 					this.jtName = null;
+					$(e.target).parent().addClass("active").siblings().removeClass("active")
 					$(e.target).parent().find("span").css({
 						"border": "solid 1px #fe7418",
 						"color": "#fe7418"
@@ -209,8 +207,6 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					this.jtName = job.jtName;
 				}
 				$(".index_address_list_box").hide(300);
-				console.log($(e.target).html())
-				$(e.target).parent().addClass("active").siblings().removeClass("active")
 				$(e.target).parent().siblings("p").find("span").css({
 					"border": "solid 1px #cdcbcb",
 					"color": "#333"
@@ -258,6 +254,16 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 */
 			intoJob: function(job) {
 				location.href = "issue_part.html?jobId=" + job.jobId
+			},
+			/**
+			 * 阻止冒泡
+			 * @param {Object} e	
+			 */
+			closeType : function(e){
+				$(e.target).hide()
+			},
+			closeStopType : function(){
+				
 			}
 		},
 		updated: function() { // 创建成功后

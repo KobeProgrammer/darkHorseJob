@@ -133,63 +133,24 @@ define(function() {
 		 */
 		indexTypeClick: function() {
 			$(".index_address_tit>div").click(function() {
+				$(".index_address_list_box").show();
 				$(this).addClass("active").siblings().removeClass("active");
 				$(this).find("img").attr("src", "images/icon/down_active.png").parent().siblings().find("img").attr("src", "images/icon/down.png")
-				if($(".index_address_list1").hasClass("active")) {
+				if($(".index_address_list11").hasClass("active")) {
 					$(".index_address_cont1").show(300);
 					$(".index_address_cont2").hide(300);
 					$(".index_address_cont3").hide(300);
-					var heighttt = $(window).height();
-					var heightt =$(this).parent().parent().height();
-					var c_height = heighttt - heightt - 80 +"px"
-					$(".close_box").css("height",c_height);
-				} else if($(".index_address_list2").hasClass("active")) {
+				} else if($(".index_address_list22").hasClass("active")) {
 					$(".index_address_cont2").show(300);
 					$(".index_address_cont1").hide(300);
 					$(".index_address_cont3").hide(300);
-					var heighttt = $(window).height();
-					var heightt =$(this).parent().parent().height();
-					var c_height = heighttt - heightt - 80 +"px"
-					$(".close_box").css("height",c_height);
-				} else if($(".index_address_list3").hasClass("active")) {
+				} else if($(".index_address_list33").hasClass("active")) {
 					$(".index_address_cont3").show(300);
 					$(".index_address_cont2").hide(300);
 					$(".index_address_cont1").hide(300);
-					var heighttt = $(window).height();
-					var heightt =$(this).parent().parent().height();
-					var c_height = heighttt - heightt - 80 +"px"
-					$(".close_box").css("height",c_height);
-				}
-				
-				//得到页面宽高
-				var heighttt = $(window).height();
-				var heightt =$(this).parent().parent().height();
-				var c_height = heighttt - heightt - 80 +"px"
-				$(".close_box").css("height",c_height);
-				
-			});
-
-			$(".addresse").click(function() {
-				if($(".index_address_list_box").is(":hidden")) {
-					$(".index_address_list_box").show();
-				} else {
-					$(".index_address_list_box").hide();
 				}
 			});
-			$(".close_box").click(function(){
-				$(".index_address_list_box").hide();
-			})
 		},
-//		close_box: function(){
-//			//得到页面宽高
-//			var heighttt = $(window).height();
-//			var widthhh = $(window).width();
-//			var widthh =$(".index_address_list").width();
-//			var heightt =$(".index_address_list").height();
-//			var c_width = widthhh - widthh +"px"
-//			var c_height = heighttt - heightt +"px"
-//			$(".close_box").css("height",c_height);
-//		},
 
 	}
 });
