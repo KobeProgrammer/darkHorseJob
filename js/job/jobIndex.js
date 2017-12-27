@@ -79,9 +79,10 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		watch: { //存入 监听值得变化
 		},
 		mounted: function() { //页面初始化时 执行
+//			commont.close_box();
 			this.queryJobType(); //查询出全部的类型、区域
 			this.getjobByPage(); //初始化页面
-			this.queryJobNumber(); //查询已完成,查询今日岗位 
+//			this.queryJobNumber(); //查询已完成,查询今日岗位 
 			commont.indexTypeClick();
 			window.addEventListener('scroll', this.loadMore);
 

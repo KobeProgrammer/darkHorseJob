@@ -30,7 +30,7 @@ define(function() {
 								a++;
 								if(a == 1) {
 									result.innerHTML = rs.text;
-									_self.value="+截止日期";
+									_self.value = "+截止日期";
 								} else {
 									result1.style.display = "block";
 									result1.innerHTML = rs.text;
@@ -139,25 +139,57 @@ define(function() {
 					$(".index_address_cont1").show(300);
 					$(".index_address_cont2").hide(300);
 					$(".index_address_cont3").hide(300);
+					var heighttt = $(window).height();
+					var heightt =$(this).parent().parent().height();
+					var c_height = heighttt - heightt - 80 +"px"
+					$(".close_box").css("height",c_height);
 				} else if($(".index_address_list2").hasClass("active")) {
 					$(".index_address_cont2").show(300);
 					$(".index_address_cont1").hide(300);
 					$(".index_address_cont3").hide(300);
+					var heighttt = $(window).height();
+					var heightt =$(this).parent().parent().height();
+					var c_height = heighttt - heightt - 80 +"px"
+					$(".close_box").css("height",c_height);
 				} else if($(".index_address_list3").hasClass("active")) {
 					$(".index_address_cont3").show(300);
 					$(".index_address_cont2").hide(300);
 					$(".index_address_cont1").hide(300);
+					var heighttt = $(window).height();
+					var heightt =$(this).parent().parent().height();
+					var c_height = heighttt - heightt - 80 +"px"
+					$(".close_box").css("height",c_height);
 				}
+				
+				//得到页面宽高
+				var heighttt = $(window).height();
+				var heightt =$(this).parent().parent().height();
+				var c_height = heighttt - heightt - 80 +"px"
+				$(".close_box").css("height",c_height);
+				
 			});
-			
+
 			$(".addresse").click(function() {
 				if($(".index_address_list_box").is(":hidden")) {
 					$(".index_address_list_box").show();
 				} else {
 					$(".index_address_list_box").hide();
 				}
+			});
+			$(".close_box").click(function(){
+				$(".index_address_list_box").hide();
 			})
 		},
-		
+//		close_box: function(){
+//			//得到页面宽高
+//			var heighttt = $(window).height();
+//			var widthhh = $(window).width();
+//			var widthh =$(".index_address_list").width();
+//			var heightt =$(".index_address_list").height();
+//			var c_width = widthhh - widthh +"px"
+//			var c_height = heighttt - heightt +"px"
+//			$(".close_box").css("height",c_height);
+//		},
+
 	}
 });
