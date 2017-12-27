@@ -1,7 +1,7 @@
 /**
- * 修改密码
+ * 忘记密码
  * @user 谢东生
- * @time :2017年12月12日22:33:39
+ * @time :2017年12月27日20:45:50
  */
 require.config({
 	baseUrl: "", //根目录
@@ -24,34 +24,33 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		el: '#vueUpdatePwd',
 		data: {
 			userCall: ini.getLocalParams("call"),
-			odlPwd: null,
+			oldPwd : null,
 			newPwd: null,
 			agePwd: null,
 			isPass: false, //原是否通过验证
+			code : null,//短信验证码
 
 		},
 		watch: { //存入 监听值得变化
 		},
 		mounted: function() { //页面初始化时 执行
-
+			this.queryUser();
 		},
 		methods: {
 			/**
 			 * 修改密码
 			 */
 			updatePwd: function() {
-				this.queryUser();
-				console.log(this.isPass)
-				if(this.isPass == false) { //原密码不正确
-					mui.toast('旧密码有误！');
-				}else if(this.agePwd == null || this.newPwd == null){
+				if(this.code == null || this.code != ini.getSessionParams("verificationCode")){
+					mui.toast('验证码有误');
+				}else if(this.newPwd == null || this.agePwd == null) {
 					mui.toast('密码不能为空！');
-				}else if(this.agePwd != this.newPwd) {
+				} else if(this.agePwd != this.newPwd) {
 					mui.toast('两次密码不一致！');
 				} else if(this.agePwd.length < 6 || this.agePwd.length > 12) {
 					mui.toast('密码长度在6~12之间');
 				} else {
-					this.doUserPwd();//修改密码
+					this.doUserPwd(); //修改密码
 				}
 			},
 			/**
@@ -63,22 +62,19 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					url: url + '/user/login',
 					type: 'POST',
 					data: {
-						userCall: _this.userCall,
-						userPwd: _this.odlPwd
+						userCall: _this.userCall
 					},
 					dataType: 'json',
-					async : false, 
+					async: false,
 					success: function(data) {
 						if(data.code == 200 && data.obj != null) {
-							_this.isPass = true;
-						}else{
-							_this.isPass = false;
+							_this.oldPwd = data.obj.userPwd;
 						}
 					}
 				})
 			},
 			/**
-			 * 修改密码
+			 * 重置密码
 			 */
 			doUserPwd: function() {
 				_this = this;
@@ -87,8 +83,8 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					type: 'POST',
 					data: {
 						userCall: _this.userCall,
-						oldPwd: _this.odlPwd,
-						newPwd : _this.newPwd
+						oldPwd: _this.oldPwd,
+						newPwd: _this.newPwd
 					},
 					dataType: 'json',
 					success: function(data) {
@@ -100,11 +96,60 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 						}
 					}
 				})
+			},
+			/**
+			 * 点击获取验证码
+			 */
+			getCode: function(e) {
+				var _this = this;
+				if(util.mobileValidator(_this.userCall)) {
+					mui.toast('手机号有误！');
+				} else {
+					$.ajax({
+						type: "post",
+						url: url + "/user/userSendCode",
+						data: {
+							"userCall":_this.userCall,
+							"type" : 1
+						},
+						dataType: 'json',
+						success: function(data) {
+							if(data.code > 0) {
+								time(e.target);
+								ini.setSessionParams("verificationCode", data.obj); //把验证码存入sessionStorage
+							}else {
+								mui.toast('发送验证失败！');
+							}
+						}
+					});
+				}
 			}
+
 		},
 		updated: function() { // 创建成功后
 
 		}
 	})
+
+	var wait = 60;
+	/**
+	 * 时间倒计时
+	 */
+	function time(o) {
+		if(wait == 0) {
+			o.removeAttribute("disabled");
+			o.value = "获取验证码";
+			o.innerHTML = "获取验证码";
+			wait = 60;
+		} else {
+			o.setAttribute("disabled", true);
+			o.value = "重新发送(" + wait + ")";
+			o.innerHTML = "重新发送(" + wait + ")";
+			wait--;
+			setTimeout(function() {
+				time(o)
+			}, 1000)
+		}
+	}
 
 });

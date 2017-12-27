@@ -82,7 +82,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 //			commont.close_box();
 			this.queryJobType(); //查询出全部的类型、区域
 			this.getjobByPage(); //初始化页面
-//			this.queryJobNumber(); //查询已完成,查询今日岗位 
+			this.queryJobNumber(); //查询已完成,查询今日岗位 
 			commont.indexTypeClick();
 			window.addEventListener('scroll', this.loadMore);
 

@@ -30,7 +30,8 @@ require(['jquery', 'ini', 'Vue', 'util'], function($, ini, Vue, util) {
 				type: "post",
 				url: url + "/user/userSendCode",
 				data: {
-					"userCall": $(".reg_phone").val()
+					"userCall": $(".reg_phone").val(),
+					"type" : 0
 				},
 				dataType: 'json',
 				success: function(data) {

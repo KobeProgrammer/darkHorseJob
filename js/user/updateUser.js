@@ -38,7 +38,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		},
 		mounted: function() { //页面初始化时 执行
 			this.queryUserById(); //根据用户ID查询用户的指定信息
-			this.initialWallet();//初始化钱包信息
+			this.initialWallet(); //初始化钱包信息
 
 		},
 		methods: {
@@ -92,7 +92,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 				var _this = this;
 				if(this.userName == null) {
 					mui.toast('请输入真实姓名');
-				}else if(util.mobileValidator(this.userCall)) {
+				} else if(util.mobileValidator(this.userCall)) {
 					mui.toast('手机号有误');
 				} else {
 
@@ -218,7 +218,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 				}
 				location.href = "qiandao.html"
 			},
-			myJl : function(){
+			myJl: function() {
 				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
 					mui.toast('请先登录！');
 					setTimeout(function() {
@@ -227,6 +227,25 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					return;
 				}
 				location.href = "myjl.html"
+			},
+			/**
+			 * 忘记密码
+			 */
+			myForGetPwd: function() {
+				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
+					mui.toast('请先登录！');
+					setTimeout(function() {
+						location.href = "loging.html"
+					}, 200);
+					return;
+				}
+				location.href = "forGetPwd.html"
+			},
+			/**
+			 * 关于我们
+			 */
+			mygy: function() {
+				location.href = "mygy.html"
 			}
 
 		},
