@@ -1211,3 +1211,7 @@ oa-contact-position {
 	left: 0;
 	z-index: 100;
 }
+#slider img{
+	height: 16rem !important;
+	
+}

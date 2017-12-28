@@ -32,7 +32,7 @@
 					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate">
 						<a href="#">
-							<img src="images/yuantiao.jpg">
+							<!--<img src="images/yuantiao.jpg">-->
 						</a>
 					</div>
 					<!-- 第一张 -->
@@ -89,17 +89,17 @@
 			<!--区域-->
 			<div class="index_address_tit addresse">
 				<div class="index_address_list1">
-					<span v-if="areaName == null">区域</span>
+					<span class="index_t" v-if="areaName == null">区域</span>
 					<span v-if="areaName != null">{{areaName}}</span>
 					<img src="images/icon/down.png" />
 				</div>
 				<div class="index_address_list2">
-					<span v-if="jtName == null ">类型</span>
+					<span class="index_t" v-if="jtName == null ">类型</span>
 					<span v-if="jtName != null ">{{jtName}}</span>
 					<img src="images/icon/down.png" />
 				</div>
 				<div class="index_address_list3">
-					<span v-if="jttName == null">时间</span>
+					<span class="index_t" v-if="jttName == null">时间</span>
 					<span v-if="jttName != null">{{jttName}}</span>
 					<img src="images/icon/down.png" />
 				</div>
@@ -134,17 +134,17 @@
 				<div class="index_address_list" @click.stop="closeStopType">
 					<div class="index_address_tit">
 						<div class="active index_address_list11">
-							<span v-if="areaName == null">区域</span>
+							<span class="index_t" v-if="areaName == null">区域</span>
 							<span v-if="areaName != null">{{areaName}}</span>
 							<img src="images/icon/down_active.png" />
 						</div>
 						<div class="index_address_list22">
-							<span v-if="jtName == null ">类型</span>
+							<span class="index_t" v-if="jtName == null ">类型</span>
 							<span v-if="jtName != null ">{{jtName}}</span>
 							<img src="images/icon/down.png" />
 						</div>
 						<div class="index_address_list33">
-							<span v-if="jttName == null">时间</span>
+							<span class="index_t" v-if="jttName == null">时间</span>
 							<span v-if="jttName != null">{{jttName}}</span>
 							<img src="images/icon/down.png" />
 						</div>
