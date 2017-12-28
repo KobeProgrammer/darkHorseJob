@@ -11,12 +11,13 @@ require.config({
 		resource: "js/vue-resource",
 		ini: "config/ini",
 		util: "config/util",
-		commont: "js/commont"
+		commont: "js/commont",
+		layer: "js/layer/layer",
 	}
 	//	waitSeconds: 7//超时时间
 });
 
-require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util, commont) {
+require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, Vue, util, commont, layer) {
 	var url = ini.url; //获取通用的url
 
 	var vm = new Vue({
@@ -50,6 +51,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			jobText: null, //工作内容
 
 			walletBean: 0, //用户兼职豆
+			isBeanEnough : false,//是否有足够的兼职豆发布  
 
 		},
 		watch: { //存入 监听值得变化
@@ -89,6 +91,9 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 */
 			jobCommit: function() {
 				var _this = this;
+				if(_this.isBeanEnough == false){
+					return false;
+				}
 				if($(".iss_cont2 li:nth-of-type(1) input").val() == "") {
 					mui.toast('请输入兼职标题！');
 					return false;
@@ -207,6 +212,18 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					success: function(data) {
 						if(data.code == 200) {
 							_this.walletBean = data.obj.walletBean;
+							if(_this.walletBean < 150) {
+								layer.confirm('您的兼职豆不足是否要充值？', {
+									btn: ['充值', '取消'] //按钮
+								}, function() {//充值
+									location.href="wallet.html"
+								}, function() {//取消
+									_this.isBeanEnough = false;
+									$(".issue_btn").css("background","#777777");
+								});
+							}else{//有足够的兼职豆发布消息
+								_this.isBeanEnough = true;
+							}
 						}
 					}
 				})
