@@ -136,6 +136,33 @@ define(function() {
 				$(".index_address_list_box").show();
 				$(this).addClass("active").siblings().removeClass("active");
 				$(this).find("img").attr("src", "images/icon/down_active.png").parent().siblings().find("img").attr("src", "images/icon/down.png")
+				if($(this).find(".index_t").text()=="区域"){
+					$(".index_address_list1").addClass("active");
+					$(".index_address_list2").removeClass("active");
+					$(".index_address_list3").removeClass("active");
+					$(".index_address_list1").find("img").attr("src","images/icon/down_active.png");
+					$(".index_address_list2").find("img").attr("src","images/icon/down.png");
+					$(".index_address_list3").find("img").attr("src","images/icon/down.png");
+				}
+				else if($(this).find(".index_t").text()=="类型"){
+					$(".index_address_list2").addClass("active");
+					$(".index_address_list1").removeClass("active");
+					$(".index_address_list3").removeClass("active");
+					$(".index_address_list2").find("img").attr("src","images/icon/down_active.png");
+					$(".index_address_list1").find("img").attr("src","images/icon/down.png");
+					$(".index_address_list3").find("img").attr("src","images/icon/down.png");
+				}
+				else if($(this).find(".index_t").text()=="时间"){
+					$(".index_address_list3").addClass("active");
+					$(".index_address_list2").removeClass("active");
+					$(".index_address_list1").removeClass("active");
+					$(".index_address_list3").find("img").attr("src","images/icon/down_active.png");
+					$(".index_address_list2").find("img").attr("src","images/icon/down.png");
+					$(".index_address_list1").find("img").attr("src","images/icon/down.png");
+				}
+				
+				
+				
 				if($(".index_address_list11").hasClass("active")) {
 					$(".index_address_cont1").show(300);
 					$(".index_address_cont2").hide(300);
@@ -145,6 +172,51 @@ define(function() {
 					$(".index_address_cont1").hide(300);
 					$(".index_address_cont3").hide(300);
 				} else if($(".index_address_list33").hasClass("active")) {
+					$(".index_address_cont3").show(300);
+					$(".index_address_cont2").hide(300);
+					$(".index_address_cont1").hide(300);
+				}
+			});
+			
+			$(".addresse>div").click(function() {
+				$(".index_address_list_box").show();
+				$(this).addClass("active").siblings().removeClass("active");
+				$(this).find("img").attr("src", "images/icon/down_active.png").parent().siblings().find("img").attr("src", "images/icon/down.png")
+				if($(this).find(".index_t").text()=="区域"){
+					$(".index_address_list11").addClass("active");
+					$(".index_address_list22").removeClass("active");
+					$(".index_address_list33").removeClass("active");
+					$(".index_address_list11").find("img").attr("src","images/icon/down_active.png");
+					$(".index_address_list22").find("img").attr("src","images/icon/down.png");
+					$(".index_address_list33").find("img").attr("src","images/icon/down.png");
+				}
+				else if($(this).find(".index_t").text()=="类型"){
+					$(".index_address_list22").addClass("active");
+					$(".index_address_list11").removeClass("active");
+					$(".index_address_list33").removeClass("active");
+					$(".index_address_list22").find("img").attr("src","images/icon/down_active.png");
+					$(".index_address_list11").find("img").attr("src","images/icon/down.png");
+					$(".index_address_list33").find("img").attr("src","images/icon/down.png");
+				}
+				else if($(this).find(".index_t").text()=="时间"){
+					$(".index_address_list33").addClass("active");
+					$(".index_address_list22").removeClass("active");
+					$(".index_address_list11").removeClass("active");
+					$(".index_address_list33").find("img").attr("src","images/icon/down_active.png");
+					$(".index_address_list22").find("img").attr("src","images/icon/down.png");
+					$(".index_address_list11").find("img").attr("src","images/icon/down.png");
+				}
+				
+				
+				if($(".index_address_list1").hasClass("active")) {
+					$(".index_address_cont1").show(300);
+					$(".index_address_cont2").hide(300);
+					$(".index_address_cont3").hide(300);
+				} else if($(".index_address_list2").hasClass("active")) {
+					$(".index_address_cont2").show(300);
+					$(".index_address_cont1").hide(300);
+					$(".index_address_cont3").hide(300);
+				} else if($(".index_address_list3").hasClass("active")) {
 					$(".index_address_cont3").show(300);
 					$(".index_address_cont2").hide(300);
 					$(".index_address_cont1").hide(300);
