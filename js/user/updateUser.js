@@ -232,13 +232,6 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 * 忘记密码
 			 */
 			myForGetPwd: function() {
-				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
-					mui.toast('请先登录！');
-					setTimeout(function() {
-						location.href = "loging.html"
-					}, 200);
-					return;
-				}
 				location.href = "forGetPwd.html"
 			},
 			/**

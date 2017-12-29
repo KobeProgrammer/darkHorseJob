@@ -24,11 +24,11 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		el: '#vueUpdatePwd',
 		data: {
 			userCall: ini.getLocalParams("call"),
-			oldPwd : null,
+			oldPwd: null,
 			newPwd: null,
 			agePwd: null,
 			isPass: false, //原是否通过验证
-			code : null,//短信验证码
+			code: null, //短信验证码
 
 		},
 		watch: { //存入 监听值得变化
@@ -41,9 +41,9 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 * 修改密码
 			 */
 			updatePwd: function() {
-				if(this.code == null || this.code != ini.getSessionParams("verificationCode")){
+				if(this.code == null || this.code != ini.getSessionParams("verificationCode")) {
 					mui.toast('验证码有误');
-				}else if(this.newPwd == null || this.agePwd == null) {
+				} else if(this.newPwd == null || this.agePwd == null) {
 					mui.toast('密码不能为空！');
 				} else if(this.agePwd != this.newPwd) {
 					mui.toast('两次密码不一致！');
@@ -78,6 +78,10 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 */
 			doUserPwd: function() {
 				_this = this;
+				if(_this.isPass == false){
+					mui.toast('您输入的号码没有注册！');
+					return;
+				}
 				$.ajax({
 					url: url + '/user/doUserPwd',
 					type: 'POST',
@@ -104,20 +108,26 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 				var _this = this;
 				if(util.mobileValidator(_this.userCall)) {
 					mui.toast('手机号有误！');
+					_this.isPass = false;
+					
 				} else {
 					$.ajax({
 						type: "post",
 						url: url + "/user/userSendCode",
 						data: {
-							"userCall":_this.userCall,
-							"type" : 1
+							"userCall": _this.userCall
 						},
 						dataType: 'json',
 						success: function(data) {
-							if(data.code > 0) {
+							if(data.code == -400) {//已经注册
 								time(e.target);
 								ini.setSessionParams("verificationCode", data.obj); //把验证码存入sessionStorage
+								_this.isPass = true;
+							}else if(data.code > 0 	){//没有注册
+								mui.toast('您输入的号码没有注册！');
+								_this.isPass = false;
 							}else {
+								_this.isPass = false;
 								mui.toast('发送验证失败！');
 							}
 						}
