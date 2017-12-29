@@ -376,7 +376,7 @@ oa-contact-position {
 	background: #fe7418;
 }
 .per_top_img{
-	width: 75%;
+	width: 60%;
 	height: 100%;
 	float: left;
 }
@@ -427,6 +427,7 @@ oa-contact-position {
 	padding-right: 3%;
 	border-bottom: 1px solid #eee;
 	box-sizing: border-box;
+	clear: both;
 }
 .per_list>li>div:first-of-type{
 	height: 4rem;
