@@ -115,7 +115,8 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 						type: "post",
 						url: url + "/user/userSendCode",
 						data: {
-							"userCall": _this.userCall
+							"userCall": _this.userCall,
+							"type" : 1
 						},
 						dataType: 'json',
 						success: function(data) {

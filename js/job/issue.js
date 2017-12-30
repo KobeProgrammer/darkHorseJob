@@ -51,7 +51,8 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 			jobText: null, //工作内容
 
 			walletBean: 0, //用户兼职豆
-			isBeanEnough : false,//是否有足够的兼职豆发布  
+			isBeanEnough: false, //是否有足够的兼职豆发布  
+			issueNumber: 0, //发布
 
 		},
 		watch: { //存入 监听值得变化
@@ -91,7 +92,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 			 */
 			jobCommit: function() {
 				var _this = this;
-				if(_this.isBeanEnough == false){
+				if(_this.isBeanEnough == false) {
 					return false;
 				}
 				if($(".iss_cont2 li:nth-of-type(1) input").val() == "") {
@@ -188,7 +189,19 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 					},
 					type: 'POST',
 					dataType: 'json',
+					beforeSend: function() {
+						var index = layer.load(1, {
+							shade: [0.5, '#fff'] //0.1透明度的白色背景
+						});
+					},
 					success: function(data) {
+						if(_this.issueNumber == 0) {
+							mui.toast('发布成功！');
+							setTimeout(function() {
+								location.href = "myissue.html"
+							}, 200);
+							return;
+						}
 						if(data.code == 200) {
 							_this.doUpdateWallet(); //扣除兼职豆
 						} else {
@@ -212,16 +225,28 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 					success: function(data) {
 						if(data.code == 200) {
 							_this.walletBean = data.obj.walletBean;
+							_this.issueNumber = data.obj.issueNumber;
+							if(_this.issueNumber == 0) { //首次发布
+								_this.isBeanEnough = true;
+								layer.alert('您是首次发布,可免费发布一次', {
+									skin: 'layui-layer-lan',
+									closeBtn: 0,
+									anim: 4 //动画类型
+								});
+								return;
+
+							}
 							if(_this.walletBean < 150) {
 								layer.confirm('您的兼职豆不足是否要充值？', {
+									skin: 'layui-layer-lan',
 									btn: ['充值', '取消'] //按钮
-								}, function() {//充值
-									location.href="wallet.html"
-								}, function() {//取消
+								}, function() { //充值
+									location.href = "wallet.html"
+								}, function() { //取消
 									_this.isBeanEnough = false;
-									$(".issue_btn").css("background","#777777");
+									$(".issue_btn").css("background", "#777777");
 								});
-							}else{//有足够的兼职豆发布消息
+							} else { //有足够的兼职豆发布消息
 								_this.isBeanEnough = true;
 							}
 						}

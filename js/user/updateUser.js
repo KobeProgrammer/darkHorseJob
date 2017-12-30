@@ -12,12 +12,13 @@ require.config({
 		ini: "config/ini",
 		util: "config/util",
 		commont: "js/commont",
+		layer: "js/layer/layer",
 	},
 
 	//	waitSeconds: 7//超时时间
 });
 
-require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util, commont) {
+require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, Vue, util, commont, layer) {
 	var url = ini.url; //获取通用的url
 	var vm = new Vue({
 		el: '#vueUser',
@@ -115,13 +116,19 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 							mui.toast('更新失败');
 							console.log(request)
 						},
+						beforeSend: function() {
+							var index = layer.load(1, {
+								shade: [0.5, '#fff'] //0.1透明度的白色背景
+							});
+						},
 						success: function(data) {
 							if(data.code > 0) {
-								mui.toast('更新成功');
+								mui.toast('更新成功');	
 								setTimeout(function() {
 									location.href = "personal.html";
 								}, 200);
 							} else if(data.code < 0) {
+								layer.closeAll('loading'); //关闭加载层
 								mui.toast('更新失败');
 							}
 						}
