@@ -867,7 +867,6 @@ oa-contact-position {
 	border-radius:.2rem ;
 }
 .login_p{
-	text-align: center;
 	margin-top: .5rem;
 }
 .reg_yzm{
@@ -1215,4 +1214,13 @@ oa-contact-position {
 #slider img{
 	height: 16rem !important;
 	
+}
+.login_p>a{
+	display: inline-block;
+}
+.login_p>a:first-of-type{
+	margin-left: 4.5rem;
+}
+.login_p>a:last-of-type{
+	margin-left: 12.5rem;
 }
