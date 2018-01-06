@@ -30,12 +30,12 @@
 		</div>
 		<!--内容头部end-->
 		<ul class="wallet_ul">
-			<li><span>1元/10枚</span></li>
-			<li><span>5元/55枚</span></li>
-			<li><span>10元/120枚</span></li>
-			<li><span>15元/180枚</span></li>
-			<li><span>20元/240枚</span></li>
-			<li><span>25元/300枚</span></li>
+			<li @click="payMoney(0.01,10)"><span>1元/10枚</span></li>
+			<li @click="payMoney(0.01,55)"><span>5元/55枚</span></li>
+			<li @click="payMoney(0.01,120)"><span>10元/120枚</span></li>
+			<li @click="payMoney(0.01,180)"><span>15元/180枚</span></li>
+			<li @click="payMoney(0.01,240)"><span>20元/240枚</span></li>
+			<li @click="payMoney(0.01,300)"><span>25元/300枚</span></li>
 		</ul>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>

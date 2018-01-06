@@ -19,7 +19,6 @@ require.config({
 
 require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util, commont) {
 	var url = ini.url; //获取通用的url
-
 	var vm = new Vue({
 		el: '#vueUpdatePwd',
 		data: {

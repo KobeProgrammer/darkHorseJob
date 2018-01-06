@@ -12,8 +12,11 @@ define(function() {
 		/**
 		 * 跨域的网址的通用部分
 		 */
-//		url: "http://127.0.0.1:8080/darkHorseJob",
-		url: "http://job.aidianming.cn/darkHorseJob",
+		url: "http://127.0.0.1:8080/darkHorseJob",
+//		url: "http://job.aidianming.cn/darkHorseJob",
+		
+		APPID : "wx2973a8a5c59ba057",//支付appid
+		
 		/**
 		 * 获取session中的值
 		 * @param {Object} type
