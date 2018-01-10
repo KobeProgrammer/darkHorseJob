@@ -183,7 +183,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 					}, 200);
 					return;
 				}
-				location.href = "wallet.html"
+				location.href = "temp.html"
 			},
 			MySc: function() { //我的收藏
 				if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
