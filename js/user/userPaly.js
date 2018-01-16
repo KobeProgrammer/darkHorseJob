@@ -17,12 +17,12 @@ require.config({
 	},
 });
 
-require(['jquery', 'ini', 'Vue', 'util', 'commont', "wx","layer"], function($, ini, Vue, util, commont, wx,layer) {
+require(['jquery', 'ini', 'Vue', 'util', 'commont', "wx", "layer"], function($, ini, Vue, util, commont, wx, layer) {
 	var url = ini.url; //获取通用的url
 	var code = util.GetQueryString("code"); //获取微信授权后的code
 	if(code == null) {
-//		util.getWeiXinCode(ini.returnUrl + '/wallet.html', 'snsapi_base'); //微信登录(直接跳转，只能获取用户openid)
-		location.href="temp.html"
+		//		util.getWeiXinCode(ini.returnUrl + '/wallet.html', 'snsapi_base'); //微信登录(直接跳转，只能获取用户openid)
+		location.href = "temp.html"
 	}
 	var vm = new Vue({
 		el: '#vuePaly',
@@ -36,7 +36,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', "wx","layer"], function($, i
 		},
 		mounted: function() { //页面初始化时 执行
 			this.initialWallet(); //初始化钱包
-			if(code != null){
+			if(code != null) {
 				this.wxJsApiCheck(); //初始化获取JSAPI签名
 			}
 		},
@@ -83,7 +83,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', "wx","layer"], function($, i
 								jsApiList: ['chooseWXPay'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 							});
 							wx.ready(function() {
-								
+
 							});
 							wx.error(function(res) {
 								alert("JSSDK失败")
@@ -119,6 +119,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', "wx","layer"], function($, i
 							_this.wxPay(data.obj); //微信支付信息
 						} else {
 							mui.toast('支付失败');
+							layer.closeAll('loading'); //关闭加载层
 						}
 
 					}
@@ -126,28 +127,28 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', "wx","layer"], function($, i
 
 			},
 			wxPay: function(obj) {
+				console.log(obj)
 				var _this = this;
 				wx.checkJsApi({
 					jsApiList: ['chooseWXPay'], // 检查微信支付接口是否可用
 					success: function(res) { //支持
-						if(res.checkResult.chooseWXPay) {
-							wx.chooseWXPay({
-								'timestamp': obj.timeStamp,
-								'nonceStr': obj.nonceStr,
-								'package': obj.packageValue,
-								'paySign': obj.paySign,
-								'signType': 'MD5', // 支付签名
-								cancel: function(res) { //用户取消支付
-			
-								},
-								error: function(res) { //支付错误
-									alert("支付错误"+JSON.stringify(res))
-								},
-								success: function(res) { //支付成功
-									_this.doWalletPay();
-								}
-							});
-						}
+						console.log(res)
+						wx.chooseWXPay({
+							'timestamp': obj.timeStamp,
+							'nonceStr': obj.nonceStr,
+							'package': obj.packageValue,
+							'paySign': obj.paySign,
+							'signType': 'MD5', // 支付签名
+							cancel: function(res) { //用户取消支付
+
+							},
+							error: function(res) { //支付错误
+								alert("支付错误" + JSON.stringify(res))
+							},
+							success: function(res) { //支付成功
+								_this.doWalletPay();
+							}
+						});
 					}
 				});
 			},
@@ -161,7 +162,6 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', "wx","layer"], function($, i
 					type: 'POST',
 					data: {
 						userCall: ini.getLocalParams("call"),
-						userId: ini.getLocalParams("userId"),
 						walletBean: _this.bean,
 						walletNumber: _this.walletNumber
 					},
@@ -170,8 +170,11 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', "wx","layer"], function($, i
 						if(data.code == 200) {
 							layer.closeAll('loading'); //关闭加载层
 							mui.toast('支付成功');
+							this.initialWallet(); //初始化钱包
+							layer.closeAll('loading'); //关闭加载层
 						} else {
 							mui.toast('支付失败');
+							layer.closeAll('loading'); //关闭加载层
 						}
 
 					}

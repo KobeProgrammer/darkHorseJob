@@ -121,8 +121,11 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 				}
 
 				var d = new Date();
-				var day = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-
+				var month = d.getMonth() + 1;
+				if(month < 10){
+					month = "0"+month;
+				}
+				var day = d.getFullYear() + "-" + month + "-" + d.getDate();
 				if(day == dateTime) {
 					this.isSignin = true;
 				} else {

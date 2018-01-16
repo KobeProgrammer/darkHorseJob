@@ -51,6 +51,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 						"userCall": ini.getLocalParams("call")
 					},
 					type: 'POST',
+					async: false,
 					dataType: 'json',
 					success: function(data) {
 						if(data.code == 200 && data.obj != null) {
@@ -80,6 +81,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 					async: false,
 					dataType: 'json',
 					success: function(data) {
+						console.log(data.obj.walletBean)
 						if(data.code == 200 && data.obj != null) {
 							_this.walletBean = data.obj.walletBean
 						}

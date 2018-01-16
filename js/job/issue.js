@@ -74,6 +74,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 					url: url + '/job/jobTypeAndAreaAndTime',
 					type: 'POST',
 					dataType: 'json',
+					async: false,
 					success: function(data) {
 						if(data.code == 200) {
 							_this.jobTimeType = data.obj.jobTimeType;
@@ -226,6 +227,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 					},
 					type: 'POST',
 					dataType: 'json',
+					async: false,
 					success: function(data) {
 						if(data.code == 200) {
 							_this.walletBean = data.obj.walletBean;

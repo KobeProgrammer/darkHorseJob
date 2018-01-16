@@ -35,7 +35,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 	 */
 	Vue.filter('showTime', function(nDate) {
 		var oDate = new Date(); // 获取当地显示器的时间
-		var time = Math.floor((oDate - new Date(nDate)) / 1000);
+		var time = Math.floor((oDate - new Date(nDate.replace(/\-/g, "/"))) / 1000);
 		var d = Math.floor(time / 86400);
 		var h = Math.floor(time % 86400 / 3600);
 		var m = Math.floor(time % 86400 % 3600 / 60);
@@ -78,7 +78,6 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 		watch: { //存入 监听值得变化
 		},
 		mounted: function() { //页面初始化时 执行
-//			commont.close_box();
 			this.queryJobType(); //查询出全部的类型、区域
 			this.getjobByPage(); //初始化页面
 			this.queryJobNumber(); //查询已完成,查询今日岗位 
@@ -96,6 +95,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					url: url + '/job/jobTypeAndAreaAndTime',
 					type: 'POST',
 					dataType: 'json',
+					async: false,
 					success: function(data) {
 						if(data.code == 200) {
 							_this.jobArea = data.obj.jobArea;
@@ -136,6 +136,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 						jttName: _this.jttName,
 						areaId: _this.areaId
 					},
+					async: false,
 					dataType: 'json',
 					success: function(data) {
 						if(data.code == 200) {
@@ -155,6 +156,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					data: {
 						jobId : ini.getLocalParams("userId")
 					},
+					async: false,
 					dataType: 'json',
 					success: function(data) {
 						if(data.code == 200) {
