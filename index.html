@@ -9,6 +9,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
 		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/job.css">
 		<style>
 			[v-cloak] {
 				display: none;
@@ -183,7 +184,8 @@
 					<div class="mui-slider-cell">
 						<div class="oa-contact-cell mui-table">
 							<div class="oa-contact-avatar mui-table-cell">
-								<img :src="j.userPhoto | photo" />
+								<!--<img :src="j.userPhoto | photo" />-->
+								<i :class="[type , j.typePinYin]"></i>
 							</div>
 							<div class="oa-contact-content mui-table-cell">
 								<div class="mui-clearfix">

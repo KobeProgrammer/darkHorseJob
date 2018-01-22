@@ -35,11 +35,11 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 	 */
 	Vue.filter('showTime', function(nDate) {
 		var oDate = new Date(); // 获取当地显示器的时间
-		var time = Math.floor((oDate - new Date(nDate.replace(/\-/g, "/"))) / 1000);
+		var timeTemp = nDate.substr(0,nDate.lastIndexOf(":")).replace(/\-/g, "/");
+		var time = Math.floor((oDate - new Date(timeTemp)) / 1000);
 		var d = Math.floor(time / 86400);
 		var h = Math.floor(time % 86400 / 3600);
 		var m = Math.floor(time % 86400 % 3600 / 60);
-		var s = time % 60;
 		if(d == 0) {
 			if(h == 0) {
 				return m + '分前';
@@ -73,6 +73,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			jttName: null, //兼职日期
 			areaId: null, //兼职地址ID
 			areaName: null, //兼职地址名称
+			type : "type"//class属性
 
 		},
 		watch: { //存入 监听值得变化
@@ -82,7 +83,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			this.getjobByPage(); //初始化页面
 			this.queryJobNumber(); //查询已完成,查询今日岗位 
 			commont.indexTypeClick();
-			window.addEventListener('scroll', this.loadMore);
+//			window.addEventListener('scroll', this.loadMore);
 
 		},
 		methods: {
@@ -154,14 +155,14 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 					url: url + '/job/queryJobNumber',
 					type: 'POST',
 					data: {
-						jobId : ini.getLocalParams("userId")
+						jobId: ini.getLocalParams("userId")
 					},
 					async: false,
 					dataType: 'json',
 					success: function(data) {
 						if(data.code == 200) {
-							$("#jobNumber").html(data.obj.jobNumber);
-							$("#finishJobnumber").html(data.obj.finishJobnumber);
+							$("#jobNumber").html(data.obj.jobNumber + 2780);
+							$("#finishJobnumber").html(data.obj.finishJobnumber + 8000);
 						}
 					}
 				})
@@ -261,11 +262,11 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont'], function($, ini, Vue, util,
 			 * 阻止冒泡
 			 * @param {Object} e	
 			 */
-			closeType : function(e){
+			closeType: function(e) {
 				$(e.target).hide()
 			},
-			closeStopType : function(){
-				
+			closeStopType: function() {
+
 			}
 		},
 		updated: function() { // 创建成功后

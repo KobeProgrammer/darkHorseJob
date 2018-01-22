@@ -78,8 +78,32 @@ define(["ini"], function(ini) {
 		 * 				应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且， 即使在未关注的情况下，只要用户授权，也能获取其信息 ）
 		 */
 		getWeiXinCode: function(redirect_uri, scope) {
-			var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ini.APPID+'&redirect_uri=' + redirect_uri + '&response_type=code&scope='+scope+'&state=123#wechat_redirect';
-			window.location.href=encodeURI(url);
+			var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + ini.APPID + '&redirect_uri=' + redirect_uri + '&response_type=code&scope=' + scope + '&state=123#wechat_redirect';
+			window.location.href = encodeURI(url);
+		},
+		/**
+		 * 格式化时间
+		 * @param {Object} time new date(时间)
+		 * @param {Object} format 时间合适 ：yyyy/MM/dd hh:mm:ss
+		 */
+		format: function(time,format) {
+			var o = {
+				"M+": time.getMonth() + 1, //month
+				"d+": time.getDate(), //day
+				"h+": time.getHours(), //hour
+				"m+": time.getMinutes(), //minute
+				"s+": time.getSeconds(), //second
+				"q+": Math.floor((time.getMonth() + 3) / 3), //quarter
+				"S": time.getMilliseconds() //millisecond
+			}
+			if(/(y+)/.test(format)) format = format.replace(RegExp.$1,
+				(time.getFullYear() + "").substr(4 - RegExp.$1.length));
+			for(var k in o)
+				if(new RegExp("(" + k + ")").test(format))
+					format = format.replace(RegExp.$1,
+						RegExp.$1.length == 1 ? o[k] :
+						("00" + o[k]).substr(("" + o[k]).length));
+			return format;
 		}
 	}
 });
