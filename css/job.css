@@ -13,30 +13,29 @@
 
 .type:after {
 	display: block;
-	width: 2rem;
-	height: 2rem;
-	line-height: 2rem;
+	width: 4rem;
+	height: 4rem;
+	line-height: 4rem;
 	text-align: center;
 	font-style: normal;
 	color: #FFF;
 	font-size: .8rem;
-	border-radius: 1rem
+	border-radius: 50%;
 }
 
 .lsg:after {
 	background: #247dac;
-	font-size: .45rem;
 	content: "临时工"
 }
 
 .dy:after {
 	background: #9cd332;
-	content: "调研"
+	content: "调　研"
 }
 
 .sx:after {
 	background: #27b394;
-	content: "实习"
+	content: "实　习"
 }
 
 .mt:after {
@@ -46,105 +45,96 @@
 
 .yc:after {
 	background: #9d8ef5;
-	content: "演出"
+	content: "演　出"
 }
 
 .pd:after {
 	background: #eb5353;
-	content: "派单"
+	content: "派　单"
 }
 
 .ly:after {
 	background: #fa8334;
-	content: "礼仪"
+	content: "礼　仪"
 }
 
 .sj:after {
 	background: #57b6ed;
-	content: "设计"
+	content: "设　计"
 }
 
 .wy:after {
 	background: #958bca;
-	content: "文员"
+	content: "文　员"
 }
 
 .xs:after {
 	background: #f2cc1c;
-	content: "销售"
+	content: "销　售"
 }
 
 .cx:after {
 	background: #cb699c;
-	content: "促销"
+	content: "促　销"
 }
 
 .jj:after {
 	background: #5691e8;
-	content: "家教"
+	content: "家　教"
 }
 
 .kf:after {
 	background: #e85682;
-	content: "客服"
+	content: "客　服"
 }
 
 .xn:after {
 	background: #6bba48;
-	content: "校内"
+	content: "校　内"
 }
 
 .fwy:after {
 	background: #b59f8a;
-	font-size: .45rem;
 	content: "服务员"
 }
 
 .fy:after {
 	background: #f29f33;
-	content: "翻译"
+	content: "翻　译"
 }
 
 .qt:after {
 	background: #5fb7a6;
-	content: "其他"
+	content: "其　他"
 }
 
 .scy:after {
 	background: #ff8875;
-	font-size: .45rem;
 	content: "送餐员"
 }
 
 .ab:after {
 	background: #568db2;
-	content: "安保"
+	content: "安　保"
 }
 
 .m_qt:after {
 	background: #fff;
 	border: 1px solid #36ae68;
 	color: #36ae68;
-	content: "其他"
+	content: "其　他"
 }
 
-.m_fx:after {
-	background: #fff;
-	border: 1px solid #ffc515;
-	color: #ffc515;
-	content: "分享"
-}
-
-.m_hd:after {
+.m_lsg:after {
 	background: #fff;
 	border: 1px solid #69ceff;
 	color: #69ceff;
-	content: "互动"
+	content: "临时工"
 }
 
 .m_ty:after {
 	background: #fff;
 	border: 1px solid #fd5720;
 	color: #fd5720;
-	content: "体验"
+	content: "体　验"
 }
