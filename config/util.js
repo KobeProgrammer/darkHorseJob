@@ -111,13 +111,15 @@ define(["ini"], function(ini) {
 		nes : function() {
 				//获取列表父容器
 				var vip = document.getElementById("vip");
+				//得到li个数
+				var numb = $("#list li").length;
 				//获取信息列表
 				var list = document.getElementById("list");
 				//创建第二个列表设置一系列样式id等
 				var list1 = document.createElement("ul");
 				list1.setAttribute("id", "list1");
 				//初始位置为300正好在第一个列表的下面
-				list1.style.top = 100 + "px";
+				list1.style.top = 50*numb + "px";
 				list1.style.position = "absolute";
 				//插入文档流
 				vip.appendChild(list1);
@@ -128,7 +130,7 @@ define(["ini"], function(ini) {
 					//top值为当前的top减10   
 					list.style.top = parseInt(list.style.top) - 10 + "px";
 					//如果top值为-300那么初始化top
-					if(parseInt(list.style.top) == -100) {
+					if(parseInt(list.style.top) == -50*numb) {
 						list.style.top = 0;
 					}
 					//这里是实现间隔滚动判断
