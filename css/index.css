@@ -46,7 +46,7 @@ small {
 
 a {
 	text-decoration: none;
-	color: #fe7418;
+	color: #2f9bca;
 }
 
 ul,
@@ -134,8 +134,8 @@ li {
 }
 
 .filter_wrap .btn_item.selected {
-	color: #fe7418;
-	border-color: #fe7418;
+	color: #2f9bca;
+	border-color: #2f9bca;
 }
 
 .filter_wrap .btn_item {
@@ -215,7 +215,7 @@ oa-contact-position {
 }
 
 .bottom .money {
-	color: #fe7418;
+	color: #2f9bca;
 	float: left;
 }
 
@@ -331,21 +331,21 @@ oa-contact-position {
 }
 
 .index_address_cont_text>p>span {
-	border: solid 1px #fe7418;
+	border: solid 1px #2f9bca;
 	padding: .3rem .8rem;
 	border-radius: .3rem;
 	box-sizing: border-box;
-	color: #fe7418;
+	color: #2f9bca;
 }
 
 .index_address_cont_text .active>span {
-	border: solid 1px #fe7418;
-	color: #fe7418;
+	border: solid 1px #2f9bca;
+	color: #2f9bca;
 }
 
 .index_address_cont_text3 .active>span {
-	border: solid 1px #fe7418;
-	color: #fe7418;
+	border: solid 1px #2f9bca;
+	color: #2f9bca;
 }
 
 .index_address_cont_text3 {
@@ -411,7 +411,7 @@ oa-contact-position {
 
 .index_g div span:last-of-type {
 	font-size: .8rem;
-	color: #fe7418;
+	color: #2f9bca;
 }
 
 .index_g>div:last-of-type>div>span:last-of-type {
@@ -429,7 +429,7 @@ oa-contact-position {
 	margin-top: 2.7rem;
 	width: 100%;
 	height: 8.5rem;
-	background: #fe7418;
+	background: #2f9bca;
 }
 
 .per_top_img {
@@ -589,7 +589,7 @@ oa-contact-position {
 
 .iss_cont>li>div:last-of-type .iss_time_btn {
 	width: 40%;
-	background: #fe7418;
+	background: #2f9bca;
 	color: #fff;
 	margin-left: 1rem;
 	float: left;
@@ -626,7 +626,7 @@ oa-contact-position {
 }
 
 .iss_qian {
-	color: #fe7418 !important;
+	color: #2f9bca !important;
 }
 
 .iss_cont .iss_he_box {
@@ -643,7 +643,7 @@ oa-contact-position {
 
 .mui-checkbox input[type=checkbox]:checked:before,
 .mui-radio input[type=radio]:checked:before {
-	color: #fe7418;
+	color: #2f9bca;
 }
 
 .iss_ch_span {
@@ -719,7 +719,7 @@ oa-contact-position {
 }
 
 .iss_mob .active {
-	background: #fe7418;
+	background: #2f9bca;
 	color: #fff;
 }
 
@@ -740,7 +740,7 @@ oa-contact-position {
 }
 
 .iss_moob .active {
-	background: #fe7418;
+	background: #2f9bca;
 	color: #fff;
 }
 
@@ -754,7 +754,7 @@ oa-contact-position {
 	left: 0;
 	width: 100%;
 	height: 3rem;
-	background: #fe7418;
+	background: #2f9bca;
 	color: #fff;
 	line-height: 3rem;
 	text-align: center;
@@ -790,7 +790,7 @@ oa-contact-position {
 }
 
 .par_list .active {
-	background: #fe7418;
+	background: #2f9bca;
 	color: #fff;
 }
 
@@ -812,7 +812,7 @@ oa-contact-position {
 }
 
 .issue_part_>div {
-	width: 20%;
+	width: 40%;
 	height: 3rem;
 	float: left;
 }
@@ -825,7 +825,7 @@ oa-contact-position {
 	display: block;
 	width: 1.5rem;
 	margin-top: .75rem;
-	margin-left: .5rem;
+	margin-left: 3.5rem;
 	float: left;
 }
 
@@ -835,13 +835,13 @@ oa-contact-position {
 	height: 3rem;
 	line-height: 3rem;
 	margin-left: .5rem;
-	color: #fe7418;
+	color: #2f9bca;
 }
 
 .issue_part_>div:last-of-type {
 	width: 60%;
 	height: 3rem;
-	background: #fe7418;
+	background: #2f9bca;
 	color: #fff;
 	float: left;
 	line-height: 3rem;
@@ -854,7 +854,7 @@ oa-contact-position {
 .wallet_box {
 	width: 100%;
 	margin-top: 2.7rem;
-	background: #fe7418;
+	background: #2f9bca;
 	height: 8rem;
 }
 
@@ -917,8 +917,8 @@ oa-contact-position {
 	line-height: 2rem;
 	text-align: center;
 	margin-top: .5rem;
-	border: solid 1px #fe7418;
-	color: #fe7418;
+	border: solid 1px #2f9bca;
+	color: #2f9bca;
 	border-radius: .4rem;
 }
 
@@ -962,12 +962,12 @@ oa-contact-position {
 	line-height: 3rem;
 	text-align: center;
 	background: #fff;
-	color: #fe7418;
+	color: #2f9bca;
 	float: left;
 }
 
 .mysc_bott>span:last-of-type {
-	background: #fe7418;
+	background: #2f9bca;
 	color: #fff;
 }
 
@@ -992,12 +992,12 @@ oa-contact-position {
 }
 
 .login_cont label {
-	color: #fe7418;
+	color: #2f9bca;
 }
 
 .login_cont input {
 	width: 80%;
-	border-bottom: solid 1px #fe7418;
+	border-bottom: solid 1px #2f9bca;
 	border-left: none;
 	border-right: none;
 	border-top: none;
@@ -1011,7 +1011,7 @@ oa-contact-position {
 	width: 70%;
 	margin-left: 15%;
 	height: 2.5rem;
-	background: #FE7418;
+	background: #2f9bca;
 	color: #FFF;
 	text-align: center;
 	line-height: 2.5rem;
@@ -1040,14 +1040,14 @@ oa-contact-position {
 	outline: none !important;
 	transform: translateY(-.7rem);
 	border: none !important;
-	background: #FE7418;
+	background: #2f9bca;
 }
 
 .reg_btn {
 	width: 70%;
 	margin-left: 15%;
 	height: 2.5rem;
-	background: #FE7418;
+	background: #2f9bca;
 	color: #FFF;
 	text-align: center;
 	line-height: 2.5rem;
@@ -1085,7 +1085,7 @@ oa-contact-position {
 	width: 70%;
 	margin-left: 15%;
 	height: 2.5rem;
-	background: #FE7418;
+	background: #2f9bca;
 	color: #FFF;
 	text-align: center;
 	line-height: 2.5rem;
@@ -1097,7 +1097,7 @@ oa-contact-position {
 	width: 70%;
 	margin-left: 15%;
 	height: 2.5rem;
-	background: #FE7418;
+	background: #2f9bca;
 	color: #FFF;
 	text-align: center;
 	line-height: 2.5rem;
@@ -1205,7 +1205,7 @@ oa-contact-position {
 	height: 2.5rem;
 	line-height: 2.5rem;
 	color: #fff;
-	background: #FE7418;
+	background: #2f9bca;
 	text-align: center;
 	border-radius: .5rem;
 	margin-top: 2rem;
@@ -1249,7 +1249,7 @@ oa-contact-position {
 
 .qiandao_cont>p {
 	font-size: 1.1rem;
-	color: #FE7418;
+	color: #2f9bca;
 }
 
 .qiandao_list {
@@ -1272,7 +1272,7 @@ oa-contact-position {
 .qiandao_list>li>span:first-of-type {
 	width: .5rem;
 	height: .5rem;
-	background: #FE7418;
+	background: #2f9bca;
 	border-radius: 50%;
 	margin-top: .6rem;
 }
@@ -1282,7 +1282,7 @@ oa-contact-position {
 	height: 2.5rem;
 	line-height: 2.5rem;
 	text-align: center;
-	background: #FE7418;
+	background: #2f9bca;
 	color: #fff;
 	margin-left: 15%;
 	margin-top: 1rem;
@@ -1358,7 +1358,7 @@ oa-contact-position {
 	float: left;
 	text-align: center;
 	margin-top: .5rem;
-	color: #FE7418;
+	color: #2f9bca;
 }
 
 .par_cont {
@@ -1447,7 +1447,7 @@ oa-contact-position {
 	background: #eee;
 	width: 100%;
 	height: 27px;
-	color: #FF92AD;
+	color: #2f9bca;
 	overflow: hidden;
 	position: relative;
 }
@@ -1461,4 +1461,9 @@ oa-contact-position {
 	line-height: 24px;
 	font-size: 12px;
 	margin-left: 30px;
+}
+#vip li img{
+	width: 1.2rem;
+	height: 1.2rem;
+	transform: translate(-.5rem,.2rem);
 }
