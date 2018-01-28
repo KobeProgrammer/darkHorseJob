@@ -150,9 +150,7 @@
 							})
 						},
 						queryJobNumber: function() { //查询已完成,查询今日岗位 
-							if(typeof(ini.getLocalParams("userId")) == "undefined" || ini.getLocalParams("userId") == null) {
-								return;
-							}
+							
 							$.ajax({
 								url: url + '/job/queryJobNumber',
 								type: 'POST',
