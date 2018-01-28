@@ -9,6 +9,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
 		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/job.css">
 		<style>
 			[v-cloak] {
 				display: none;
@@ -105,6 +106,14 @@
 				</div>
 			</div>
 			<!--区域end-->
+			
+			<!--广播-->
+			<div id="vip">
+				 <ul id="list" style="top: 0px;">
+					 <li>欢迎选择黑马兼职</li>
+					 <li>我们将竭诚为您服务</li>
+				 </ul> 
+			</div>
 			<div class="index_box2">
 				<header class="mui-bar mui-bar-nav per_head">
 					<a class="index_box2_left mui-icon mui-icon-left-nav mui-pull-left" @click="returnJob"></a>
@@ -183,7 +192,8 @@
 					<div class="mui-slider-cell">
 						<div class="oa-contact-cell mui-table">
 							<div class="oa-contact-avatar mui-table-cell">
-								<img :src="j.userPhoto | photo" />
+								<!--<img :src="j.userPhoto | photo" />-->
+								<i :class="[type , j.typePinYin]"></i>
 							</div>
 							<div class="oa-contact-content mui-table-cell">
 								<div class="mui-clearfix">
@@ -216,7 +226,7 @@
 			});
 			setTimeout(function(){
 				$(".time").html($(".time").html())
-			},500)
+			},500)			
 		</script>
 	</body>
 

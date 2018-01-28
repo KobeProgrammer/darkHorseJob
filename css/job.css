@@ -1,0 +1,140 @@
+
+
+.kj:before {
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: .8rem;
+	height: .8rem;
+	/*background: url(./img/kj.png?v=208b6d6) no-repeat;*/
+	background-size: .8rem
+}
+
+.type:after {
+	display: block;
+	width: 4rem;
+	height: 4rem;
+	line-height: 4rem;
+	text-align: center;
+	font-style: normal;
+	color: #FFF;
+	font-size: .8rem;
+	border-radius: 50%;
+}
+
+.lsg:after {
+	background: #247dac;
+	content: "临时工"
+}
+
+.dy:after {
+	background: #9cd332;
+	content: "调　研"
+}
+
+.sx:after {
+	background: #27b394;
+	content: "实　习"
+}
+
+.mt:after {
+	background: #ff89ff;
+	content: "模特"
+}
+
+.yc:after {
+	background: #9d8ef5;
+	content: "演　出"
+}
+
+.pd:after {
+	background: #eb5353;
+	content: "派　单"
+}
+
+.ly:after {
+	background: #fa8334;
+	content: "礼　仪"
+}
+
+.sj:after {
+	background: #57b6ed;
+	content: "设　计"
+}
+
+.wy:after {
+	background: #958bca;
+	content: "文　员"
+}
+
+.xs:after {
+	background: #f2cc1c;
+	content: "销　售"
+}
+
+.cx:after {
+	background: #cb699c;
+	content: "促　销"
+}
+
+.jj:after {
+	background: #5691e8;
+	content: "家　教"
+}
+
+.kf:after {
+	background: #e85682;
+	content: "客　服"
+}
+
+.xn:after {
+	background: #6bba48;
+	content: "校　内"
+}
+
+.fwy:after {
+	background: #b59f8a;
+	content: "服务员"
+}
+
+.fy:after {
+	background: #f29f33;
+	content: "翻　译"
+}
+
+.qt:after {
+	background: #5fb7a6;
+	content: "其　他"
+}
+
+.scy:after {
+	background: #ff8875;
+	content: "送餐员"
+}
+
+.ab:after {
+	background: #568db2;
+	content: "安　保"
+}
+
+.m_qt:after {
+	background: #fff;
+	border: 1px solid #36ae68;
+	color: #36ae68;
+	content: "其　他"
+}
+
+.m_lsg:after {
+	background: #fff;
+	border: 1px solid #69ceff;
+	color: #69ceff;
+	content: "临时工"
+}
+
+.m_ty:after {
+	background: #fff;
+	border: 1px solid #fd5720;
+	color: #fd5720;
+	content: "体　验"
+}

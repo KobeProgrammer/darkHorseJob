@@ -52,7 +52,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 
 			walletBean: 0, //用户兼职豆
 			isBeanEnough: false, //是否有足够的兼职豆发布  
-			issueNumber: 0, //发布
+			issueNumber: 0, //发布次数
 
 		},
 		watch: { //存入 监听值得变化
@@ -74,6 +74,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 					url: url + '/job/jobTypeAndAreaAndTime',
 					type: 'POST',
 					dataType: 'json',
+					async: false,
 					success: function(data) {
 						if(data.code == 200) {
 							_this.jobTimeType = data.obj.jobTimeType;
@@ -126,6 +127,10 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 					mui.toast('手机号有误！');
 					return false;
 				} else {
+					if(_this.issueNumber ==0){//首次发布
+						_this.dojob(); //新增兼职信息
+						return;
+					}
 					if(_this.walletBean > 150) {
 						_this.dojob(); //新增兼职信息
 					} else {
@@ -222,6 +227,7 @@ require(['jquery', 'ini', 'Vue', 'util', 'commont', 'layer'], function($, ini, V
 					},
 					type: 'POST',
 					dataType: 'json',
+					async: false,
 					success: function(data) {
 						if(data.code == 200) {
 							_this.walletBean = data.obj.walletBean;

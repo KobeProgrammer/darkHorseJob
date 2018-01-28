@@ -9,6 +9,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
 		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="js/layer/theme/default/layer.css" />
 		<style>
 			[v-cloak]{ display: none; }
 		</style>
@@ -26,16 +27,16 @@
 				<span>当前兼职豆</span>
 				<span>{{walletBean}}枚</span>
 			</div>
-			<div class="wallet_btn"><span>充值</span></div>
+			<!--<div class="wallet_btn"><span>充值</span></div>-->
 		</div>
 		<!--内容头部end-->
 		<ul class="wallet_ul">
-			<li><span>1元/10枚</span></li>
-			<li><span>5元/55枚</span></li>
-			<li><span>10元/120枚</span></li>
-			<li><span>15元/180枚</span></li>
-			<li><span>20元/240枚</span></li>
-			<li><span>25元/300枚</span></li>
+			<li @click="payMoney(1,10)"><span>1元/10枚</span></li>
+			<li @click="payMoney(5,55)"><span>5元/55枚</span></li>
+			<li @click="payMoney(10,120)"><span>10元/120枚</span></li>
+			<li @click="payMoney(15,180)"><span>15元/180枚</span></li>
+			<li @click="payMoney(20,240)"><span>20元/240枚</span></li>
+			<li @click="payMoney(25,300)"><span>25元/300枚</span></li>
 		</ul>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
